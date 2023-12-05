@@ -12,8 +12,25 @@
   </head>
   <body>
     <div class="container">
-      <header class="header"><h1>Hello world!</h1></header>
-      <main></main>
+      <header class="header">
+        <img class="header__logo" src="src/img/cinedo-logo.png" alt="" />
+        <form class="search">
+          <input
+            type="text"
+            class="search__field"
+            placeholder="Search for a movie!"
+          />
+          <button class="btn search__btn"><span>Search</span></button>
+        </form>
+
+        <nav>
+          <button class="btn random__btn">Random</button>
+          <button class="btn bookmarks__btn">Bookmarks</button>
+        </nav>
+      </header>
+
+      <div class="filters"></div>
+      <div class="results"></div>
     </div>
   </body>
 </html>
