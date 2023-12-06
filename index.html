@@ -12,6 +12,15 @@
       rel="stylesheet"
     />
 
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
     <link rel="stylesheet" href="/src/css/main.css" />
     <script type="module" src="/src/js/controller.js"></script>
 
@@ -21,7 +30,7 @@
     <div class="container">
       <header class="header">
         <img class="header__logo" src="src/img/cinedo-logo.png" alt="" />
-        <form class="search">
+        <form class="header__search">
           <input
             type="text"
             class="search__field"
@@ -30,9 +39,19 @@
           <button class="btn search__btn"><span>Search</span></button>
         </form>
 
-        <nav>
-          <button class="btn random__btn">Random</button>
-          <button class="btn bookmarks__btn">Bookmarks</button>
+        <nav class="header__nav">
+          <button class="btn random__btn">
+            <ion-icon
+              class="nav__icon random--icon"
+              name="shuffle-outline"
+            ></ion-icon>
+          </button>
+          <button class="btn bookmarks__btn">
+            <ion-icon
+              class="nav__icon bookmark--icon"
+              name="bookmark-outline"
+            ></ion-icon>
+          </button>
         </nav>
       </header>
 
