@@ -1,3 +1,47 @@
+/*
+--- 01 TYPOGRAPHY SYSTEM
+
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Font weights
+
+- Line heights
+1 - default
+
+- Letter spacing
+
+--- 02 COLORS
+
+- Gradients:
+linear-gradient(135deg, #240b36, #c31432)
+
+- Primary:
+#240b36
+#c31432
+
+- Tints:
+rgb(194, 20, 49, 0.15);
+
+- Shades: 
+rgba(7, 12, 11, 0.75)
+
+- Accents:
+
+- Greys:
+
+--- 05 SHADOWS
+
+--- 06 BORDER-RADIUS
+
+Default: 10px
+
+--- 07 WHITESPACE
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+
 * {
   margin: 0;
   padding: 0;
@@ -6,26 +50,32 @@
 
 html {
   font-size: 62.5%;
+  overflow-x: hidden;
 }
 
 body {
+  font-family: "Roboto", sans-serif;
+  color: #cccccc;
+  line-height: 1;
   background: linear-gradient(135deg, #240b36, #c31432);
+  overflow-x: hidden;
+  height: 100vh;
 }
 
 .container {
+  margin: 4.8rem auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 0.1fr 1fr;
-  margin: 4vw auto;
   max-width: 120rem;
   min-height: 80rem;
   background-color: rgba(7, 12, 11, 0.75);
-  border-radius: 10px;
+  border-radius: 9px;
 }
 
 .header__logo {
   width: 20rem;
-  margin: 2rem 2rem;
+  margin: 2rem;
 }
 
 .header {
@@ -36,15 +86,37 @@ body {
 }
 
 .filters {
-  background-color: rgba(200, 200, 200, 0.141);
+  background-color: rgb(194, 20, 49, 0.15);
   grid-row: 2 / -1;
-  margin: 0.5rem 0.5rem 1rem 1rem;
+  margin: 0.4rem 0.4rem 1.2rem 1.2rem;
   border-radius: 9px;
 }
 
 .results {
-  background-color: rgba(200, 200, 200, 0.141);
+  background-color: rgb(194, 20, 49, 0.15);
   grid-column: 2 / -1;
-  margin: 0.5rem 1rem 1rem 0.5rem;
+  margin: 0.4rem 1.2rem 1.2rem 0.4rem;
   border-radius: 9px;
+}
+
+.search {
+  display: flex;
+  height: 4.8rem;
+  background: rgb(194, 20, 49, 0.15);
+  box-shadow: 0px 2px 2rem #ffffff1f;
+  border-radius: 24px;
+  width: 50rem;
+  align-items: center;
+  padding-left: 1.2rem;
+  /* color: inherit; */
+}
+
+.search__field {
+  font-size: 2.4rem;
+  background: none;
+  border: none;
+}
+
+.btn {
+  font-family: inherit;
 }
