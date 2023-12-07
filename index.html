@@ -29,26 +29,27 @@
   <body>
     <div class="container">
       <header class="header">
-        <img class="header__logo" src="src/img/cinedo-logo.png" alt="" />
+        <img class="header--logo" src="src/img/cinedo-logo.png" alt="" />
         <form class="header__search">
-          <input
-            type="text"
-            class="search__field"
-            placeholder="Search for a movie!"
-          />
-          <button class="btn search__btn"><span>Search</span></button>
+          <input type="text" class="header__search--field" placeholder="" />
+          <button class="btn header__search--btn">
+            <ion-icon
+              class="header__search--icon"
+              name="search-outline"
+            ></ion-icon>
+          </button>
         </form>
 
         <nav class="header__nav">
-          <button class="btn random__btn">
+          <button class="btn header__nav--btn">
             <ion-icon
-              class="nav__icon random--icon"
+              class="header__nav--icon"
               name="shuffle-outline"
             ></ion-icon>
           </button>
-          <button class="btn bookmarks__btn">
+          <button class="btn header__nav--btn">
             <ion-icon
-              class="nav__icon bookmark--icon"
+              class="header__nav--icon"
               name="bookmark-outline"
             ></ion-icon>
           </button>

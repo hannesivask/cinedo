@@ -1,0 +1,78 @@
+/************* HEADER GENERAL ****************/
+.header {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header--logo {
+  width: 20rem;
+  margin: 2rem;
+}
+
+/************* SEARCH BAR ****************/
+
+.header__search {
+  display: flex;
+  height: 4.8rem;
+  align-items: center;
+  padding-left: 2.4rem;
+  border: 2px solid #a79daf;
+  border-radius: 50rem;
+}
+
+.header__search--field {
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  width: 36rem;
+  color: #a79daf;
+  letter-spacing: 1px;
+}
+
+.header__search--field::placeholder {
+  color: #a79daf;
+  font-family: inherit;
+}
+
+.header__search--field:focus {
+  outline: none;
+}
+
+.header__search--btn {
+  height: 4.8rem;
+  width: 8.4rem;
+  text-transform: uppercase;
+  border-radius: 24px;
+}
+
+.header__search--icon {
+  color: #a79daf;
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+/************* NAVIGATION ****************/
+
+.header__nav {
+  display: flex;
+  margin-right: 5rem;
+  gap: 2rem;
+}
+
+.header__nav--btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.8rem;
+  height: 4.8rem;
+  border: 2px solid #a79daf;
+  border-radius: 50%;
+}
+
+.header__nav--icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: #a79daf;
+}

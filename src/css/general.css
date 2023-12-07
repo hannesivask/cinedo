@@ -21,7 +21,7 @@ linear-gradient(135deg, #240b36, #c31432)
 #c31432
 
 - Tints:
-rgb(194, 20, 49, 0.15);
+#240b36 - #a79daf
 
 - Shades: 
 rgba(7, 12, 11, 0.75)
@@ -31,10 +31,12 @@ rgba(7, 12, 11, 0.75)
 - Greys:
 
 --- 05 SHADOWS
+Light:    0 0.8rem 5rem 1rem rgba(255, 255, 255, 0.05);
+Stronger: 0 0.2rem 1.5rem 0.1rem rgba(255, 255, 255, 0.2);
 
 --- 06 BORDER-RADIUS
 
-Default: 10px
+Default: 9px
 
 --- 07 WHITESPACE
 
@@ -42,11 +44,14 @@ Default: 10px
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
 */
 
+/************* INIT & ROOT ****************/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+/************* GENERAL ****************/
 
 html {
   font-size: 62.5%;
@@ -62,6 +67,8 @@ body {
   height: 100vh;
 }
 
+/************* GENERAL ELEMENTS ****************/
+
 .container {
   margin: 4.8rem auto;
   display: grid;
@@ -69,52 +76,13 @@ body {
   grid-template-rows: 0.1fr 1fr;
   max-width: 120rem;
   min-height: 80rem;
-  background-color: rgba(7, 12, 11, 0.75);
+  background: linear-gradient(
+    200deg,
+    rgba(36, 11, 54, 0.5),
+    rgba(195, 20, 50, 0.5)
+  );
   border-radius: 9px;
-  box-shadow: 0px 4px 16px rgba(255, 255, 255, 0.075);
-}
-
-.header__logo {
-  width: 20rem;
-  margin: 2rem;
-}
-
-.header {
-  grid-column: 1 / -1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.filters {
-  background-color: rgb(194, 20, 49, 0.15);
-  grid-row: 2 / -1;
-  margin: 0.4rem 0.4rem 1.2rem 1.2rem;
-  border-radius: 9px;
-}
-
-.results {
-  background-color: rgb(194, 20, 49, 0.15);
-  grid-column: 2 / -1;
-  margin: 0.4rem 1.2rem 1.2rem 0.4rem;
-  border-radius: 9px;
-}
-
-.header__search {
-  display: flex;
-  height: 4.8rem;
-  background: #f9e8eb;
-  box-shadow: 0px 4px 16px #ffffff3f;
-  border-radius: 24px;
-  align-items: center;
-  padding-left: 2.4rem;
-}
-
-.search__field {
-  font-size: 1.6rem;
-  background: none;
-  border: none;
-  width: 40rem;
+  box-shadow: 0 0.8rem 5rem 1rem rgba(255, 255, 255, 0.05);
 }
 
 .btn {
@@ -125,44 +93,6 @@ body {
   color: inherit;
 }
 
-.search__btn {
-  background-color: #edb9c2;
-  height: 4.8rem;
-  width: 9.6rem;
-  color: #240b36;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  border-radius: 24px;
-}
-
-.search__field:focus {
-  outline: none;
-}
-
 .btn:hover {
   cursor: pointer;
-}
-
-.header__nav {
-  display: flex;
-  margin-right: 2rem;
-  gap: 2rem;
-}
-
-.random__btn,
-.bookmarks__btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 4.8rem;
-  height: 4.8rem;
-  border: 2px solid #f9e8ebb0;
-  border-radius: 50%;
-}
-
-.nav__icon {
-  width: 2.4rem;
-  height: 2.4rem;
-  color: #f9e8ebb0;
 }

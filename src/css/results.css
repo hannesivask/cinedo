@@ -1,0 +1,6 @@
+.results {
+  /* background-color: #555; */
+  grid-column: 2 / -1;
+  margin: 0.4rem 1.2rem 1.2rem 0.4rem;
+  border-radius: 9px;
+}

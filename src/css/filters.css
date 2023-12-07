@@ -1,0 +1,6 @@
+.filters {
+  /* background-color: #555; */
+  grid-row: 2 / -1;
+  margin: 0.4rem 0.4rem 1.2rem 1.2rem;
+  border-radius: 9px;
+}
