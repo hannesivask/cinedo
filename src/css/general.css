@@ -7,7 +7,7 @@
 - Font weights
 
 - Line heights
-1 - default
+1.2 - default
 
 - Letter spacing
 
@@ -15,6 +15,7 @@
 
 - Gradients:
 linear-gradient(135deg, #240b36, #c31432)
+linear-gradient(200deg, rgba(36, 11, 54, 0.5), rgba(195, 20, 50, 0.5));
 
 - Primary:
 #240b36
@@ -24,19 +25,26 @@ linear-gradient(135deg, #240b36, #c31432)
 #240b36 - #a79daf
 
 - Shades: 
-rgba(7, 12, 11, 0.75)
+
+Borders: rgba(167, 157, 175, 0.5);
+Focus: rgba(167, 157, 175, 0.1);
 
 - Accents:
 
 - Greys:
 
+Lightest: #ddd
+Darker: #999
+
 --- 05 SHADOWS
 Light:    0 0.8rem 5rem 1rem rgba(255, 255, 255, 0.05);
 Stronger: 0 0.2rem 1.5rem 0.1rem rgba(255, 255, 255, 0.2);
+Black: rgba(0, 0, 0, 0.2);
 
 --- 06 BORDER-RADIUS
 
 Default: 9px
+Buttons: 50rem
 
 --- 07 WHITESPACE
 
@@ -51,6 +59,15 @@ Default: 9px
   box-sizing: border-box;
 }
 
+:root {
+  --main-font-color: #ddd;
+  --unfocused-font-color: #999;
+  --main-border-color: rgba(167, 157, 175, 0.5);
+  --focus-bg-color: rgba(167, 157, 175, 0.1);
+  --focus-border-color: #ddd;
+  --main-shadow-color: rgba(0, 0, 0, 0.2);
+}
+
 /************* GENERAL ****************/
 
 html {
@@ -59,12 +76,18 @@ html {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
-  color: #cccccc;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--main-font-color);
   line-height: 1;
   background: linear-gradient(135deg, #240b36, #c31432);
   overflow-x: hidden;
   height: 100vh;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 /************* GENERAL ELEMENTS ****************/
@@ -78,11 +101,11 @@ body {
   min-height: 80rem;
   background: linear-gradient(
     200deg,
-    rgba(36, 11, 54, 0.5),
-    rgba(195, 20, 50, 0.5)
+    rgba(36, 11, 54, 0.6),
+    rgba(195, 20, 50, 0.6)
   );
   border-radius: 9px;
-  box-shadow: 0 0.8rem 5rem 1rem rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0.8rem 5rem 1rem var(--main-shadow-color);
 }
 
 .btn {
@@ -91,8 +114,17 @@ body {
   background: none;
   border: none;
   color: inherit;
+  transition: all 0.2s;
 }
 
 .btn:hover {
+  color: var(--main-font-color);
   cursor: pointer;
+  border: 2px solid var(--focus-border-color);
+  background-color: var(--focus-bg-color);
+  box-shadow: 0 0.2rem 1.5rem 0.1rem var(--main-shadow-color);
+}
+
+.hidden {
+  display: none;
 }

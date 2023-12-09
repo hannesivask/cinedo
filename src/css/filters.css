@@ -1,6 +1,71 @@
+/************* CONTAINER ****************/
 .filters {
-  /* background-color: #555; */
+  border: 2px solid var(--main-border-color);
   grid-row: 2 / -1;
   margin: 0.4rem 0.4rem 1.2rem 1.2rem;
   border-radius: 9px;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+/************* TYPE SELECTOR ****************/
+
+.filters__type {
+  display: flex;
+  gap: 1.2rem;
+  height: 3rem;
+  margin: 1.2rem;
+}
+
+.filters__type--btn {
+  border: 2px solid var(--main-border-color);
+  width: 100%;
+  border-radius: 50rem;
+  color: var(--unfocused-font-color);
+}
+
+.btn--selected {
+  background-color: var(--focus-bg-color);
+  box-shadow: 0 0.2rem 1.5rem 0.1rem var(--main-shadow-color);
+  color: var(--main-font-color);
+}
+
+/************* FILTERS ****************/
+
+.filters__filter--list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0 1.2rem 0 1.2rem;
+}
+
+.filter--caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 2rem;
+  color: var(--unfocused-font-color);
+}
+
+.filters--list {
+  list-style-type: none;
+  margin-left: 1.2rem;
+}
+
+.list--selection {
+  color: var(--unfocused-font-color);
+}
+
+.list--selection:hover,
+.filter--caption:hover {
+  color: var(--main-font-color);
+}
+
+.filter--selected {
+  color: var(--main-font-color);
+}
+
+.filter--icon {
+  cursor: pointer;
 }
