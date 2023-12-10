@@ -51,98 +51,111 @@
         </nav>
       </header>
 
-      <div class="filters">
-        <div class="filters__type">
-          <button class="btn filters__type--btn btn--selected">
-            <span>Movies</span>
-          </button>
-          <button class="btn filters__type--btn"><span>Series</span></button>
+      <div class="container__search hidden">
+        <div class="filters">
+          <div class="filters__type">
+            <button class="btn filters__type--btn btn--selected">
+              <span>Movies</span>
+            </button>
+            <button class="btn filters__type--btn"><span>Series</span></button>
+          </div>
+
+          <div class="filters__filter--list">
+            <figure class="filter filters__genre">
+              <figcaption class="filter--caption filter--selected">
+                <a href="#">Genre</a
+                ><ion-icon
+                  class="filter--icon"
+                  name="chevron-down-outline"
+                ></ion-icon>
+              </figcaption>
+              <ul class="filters--list">
+                <li class="list--selection filter--selected">
+                  <a href="#">Comedy</a>
+                </li>
+                <li class="list--selection"><a href="#">Action</a></li>
+              </ul>
+            </figure>
+
+            <figure class="filter filters__year">
+              <figcaption class="filter--caption">
+                <a href="#">Year</a
+                ><ion-icon
+                  class="filter--icon"
+                  name="chevron-down-outline"
+                ></ion-icon>
+              </figcaption>
+              <ul class="filters--list hidden">
+                <li class="list--selection"><a href="#">2023</a></li>
+                <li class="list--selection"><a href="#">2022</a></li>
+                <li class="list--selection"><a href="#">2021</a></li>
+                <li class="list--selection"><a href="#">2020</a></li>
+                <li class="list--selection"><a href="#">2019</a></li>
+              </ul>
+            </figure>
+          </div>
         </div>
 
-        <div class="filters__filter--list">
-          <figure class="filter filters__genre">
-            <figcaption class="filter--caption filter--selected">
-              <a href="#">Genre</a
-              ><ion-icon
-                class="filter--icon"
-                name="chevron-down-outline"
-              ></ion-icon>
-            </figcaption>
-            <ul class="filters--list">
-              <li class="list--selection filter--selected">
-                <a href="#">Comedy</a>
-              </li>
-              <li class="list--selection"><a href="#">Action</a></li>
-            </ul>
-          </figure>
+        <div class="results">
+          <div class="results__result">
+            <img
+              class="result--img"
+              src="https://marketplace.canva.com/EAFVCFkAg3w/1/0/1131w/canva-red-and-black-horror-movie-poster-AOBSIAmLWOs.jpg"
+              alt=""
+            />
+          </div>
 
-          <figure class="filter filters__year">
-            <figcaption class="filter--caption">
-              <a href="#">Year</a
-              ><ion-icon
-                class="filter--icon"
-                name="chevron-down-outline"
-              ></ion-icon>
-            </figcaption>
-            <ul class="filters--list hidden">
-              <li class="list--selection"><a href="#">2023</a></li>
-              <li class="list--selection"><a href="#">2022</a></li>
-              <li class="list--selection"><a href="#">2021</a></li>
-              <li class="list--selection"><a href="#">2020</a></li>
-              <li class="list--selection"><a href="#">2019</a></li>
-            </ul>
-          </figure>
+          <div class="results__result">
+            <img
+              class="result--img"
+              src="https://s.yimg.com/ny/api/res/1.2/ZzAHlDHi8a2xdBRRbruaYQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTkyOA--/https://media.zenfs.com/en/homerun/feed_manager_auto_publish_494/d05a3f087fa57f6d41b865d53a42a5f5"
+              alt=""
+            />
+          </div>
+
+          <div class="results__result">
+            <img
+              class="result--img"
+              src="https://img.freepik.com/premium-photo/movie-poster-design_841014-8784.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="results__result">
+            <img
+              class="result--img"
+              src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/adventure-movie-poster-template-design-7b13ea2ab6f64c1ec9e1bb473f345547_screen.jpg?ts=1636999411"
+              alt=""
+            />
+          </div>
+
+          <div class="results__result">
+            <img
+              class="result--img"
+              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
+              alt=""
+            />
+          </div>
+
+          <div class="results__result">
+            <img
+              class="result--img"
+              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
+              alt=""
+            />
+          </div>
         </div>
       </div>
 
-      <div class="results">
-        <div class="results__result">
+      <div class="container__selected">
+        <div class="selected__result">
           <img
-            class="result--img"
-            src="https://marketplace.canva.com/EAFVCFkAg3w/1/0/1131w/canva-red-and-black-horror-movie-poster-AOBSIAmLWOs.jpg"
-            alt=""
+            class="selected__result--img"
+            src="https://observer.com/wp-content/uploads/sites/2/2023/10/Killers_Of_The_Flower_Moon_Photo_0108.jpg?quality=80"
+            alt=" Killers of the flower moon image"
           />
-          <p class="result--title">Dark</p>
-        </div>
-
-        <div class="results__result">
-          <img
-            class="result--img"
-            src="https://s.yimg.com/ny/api/res/1.2/ZzAHlDHi8a2xdBRRbruaYQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTkyOA--/https://media.zenfs.com/en/homerun/feed_manager_auto_publish_494/d05a3f087fa57f6d41b865d53a42a5f5"
-            alt=""
-          />
-          <p class="result--title">Moonlight</p>
-        </div>
-
-        <div class="results__result">
-          <img
-            class="result--img"
-            src="https://img.freepik.com/premium-photo/movie-poster-design_841014-8784.jpg"
-            alt=""
-          />
-          <p class="result--title">Tiistiy Mistity</p>
-        </div>
-
-        <div class="results__result">
-          <img
-            class="result--img"
-            src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/adventure-movie-poster-template-design-7b13ea2ab6f64c1ec9e1bb473f345547_screen.jpg?ts=1636999411"
-            alt=""
-          />
-          <p class="result--title">Archer</p>
-        </div>
-
-        <div class="results__result">
-          <img
-            class="result--img"
-            src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-            alt=""
-          />
-          <p class="result--title">Smile</p>
         </div>
       </div>
-
-      <div class="result hidden"></div>
     </div>
   </body>
 </html>
