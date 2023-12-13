@@ -24,6 +24,7 @@
 
     <title>Cinedo &mdash; Decide what to watch</title>
   </head>
+
   <body>
     <div class="container">
       <header class="header">
@@ -42,16 +43,16 @@
         </form>
 
         <nav class="header__nav">
-          <button class="btn header--btn">
+          <button class="btn header--btn shuffle--btn">
             <ion-icon class="header--icon" name="shuffle-outline"></ion-icon>
           </button>
-          <button class="btn header--btn">
+          <button class="btn header--btn bookmark--btn">
             <ion-icon class="header--icon" name="bookmark-outline"></ion-icon>
           </button>
         </nav>
       </header>
 
-      <div class="container__search hidden">
+      <div class="selection__container">
         <div class="filters">
           <div class="filters__type">
             <button class="btn filters__type--btn btn--selected">
@@ -85,7 +86,7 @@
                   name="chevron-down-outline"
                 ></ion-icon>
               </figcaption>
-              <ul class="filters--list hidden">
+              <ul class="filters--list">
                 <li class="list--selection"><a href="#">2023</a></li>
                 <li class="list--selection"><a href="#">2022</a></li>
                 <li class="list--selection"><a href="#">2021</a></li>
@@ -147,15 +148,15 @@
         </div>
       </div>
 
-      <div class="container__selected">
-        <div class="selected__result--container">
+      <div class="preview__container hidden">
+        <div class="preview__result">
           <img
-            class="selected__result--img"
+            class="preview__result--img"
             src="https://observer.com/wp-content/uploads/sites/2/2023/10/Killers_Of_The_Flower_Moon_Photo_0108.jpg?quality=80"
             alt="Scene from Movie"
           />
 
-          <div class="selected__result">
+          <div class="preview__result--info">
             <h2 class="result--info result--year">2023</h2>
             <h1 class="result--info result--title">
               Killers of the flower moon
@@ -172,9 +173,13 @@
             </p>
           </div>
 
-          <div class="selected__result--buttons">
-            <button class="btn">1</button>
-            <button class="btn">1</button>
+          <div class="preview__result--btns">
+            <button class="btn result--btn">
+              <ion-icon class="result--icon" name="bookmark-outline"></ion-icon>
+            </button>
+            <button class="btn result--btn">
+              <ion-icon class="result--icon" name="videocam-outline"></ion-icon>
+            </button>
           </div>
         </div>
       </div>

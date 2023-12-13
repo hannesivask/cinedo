@@ -110,7 +110,8 @@ p {
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 0.1fr 1fr;
   max-width: 120rem;
-  height: 93vh;
+  height: 84rem;
+  max-height: 93vh;
   background: linear-gradient(
     200deg,
     rgba(36, 11, 54, 0.6),
@@ -119,6 +120,22 @@ p {
   border-radius: 9px;
   box-shadow: 0 0.8rem 5rem 1rem var(--main-shadow-color);
   overflow: hidden;
+}
+
+.selection__container {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.preview__container {
+  margin: 0.4rem 1.2rem 1.2rem 1.2rem;
+  grid-column: 1 / -1;
+  border: 2px solid var(--main-border-color);
+  border-radius: 9px;
+  overflow: hidden;
+  position: relative;
+  background-color: black;
 }
 
 .btn {
