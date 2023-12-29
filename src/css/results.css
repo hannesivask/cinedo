@@ -4,22 +4,23 @@
   margin: 0.4rem 1.2rem 1.2rem 0.4rem;
   grid-column: 2 / -1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 12rem));
-  grid-auto-rows: 18rem;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, max-content));
+  grid-auto-rows: max-content;
   padding: 1.2rem;
   gap: 1.2rem;
   border: 2px solid var(--main-border-color);
   border-radius: 9px;
+  overflow-x: hidden;
 }
 
 .results__result {
   transition: all 0.3s;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   opacity: 0.5;
   cursor: pointer;
+  max-height: 23rem;
 }
 
 .result--img {

@@ -76,6 +76,9 @@ html {
 }
 
 body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "Nunito Sans", sans-serif;
   color: var(--main-font-color);
   line-height: 1;
@@ -105,11 +108,11 @@ p {
 /************* GENERAL ELEMENTS ****************/
 
 .container {
-  margin: 3.2rem auto;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 0.1fr 1fr;
-  max-width: 120rem;
+  grid-template-rows: 9.3rem 1fr;
+  margin: 3.2rem;
+  width: 120rem;
   height: 84rem;
   max-height: 93vh;
   background: linear-gradient(
@@ -126,6 +129,7 @@ p {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  overflow: hidden;
 }
 
 .preview__container {
