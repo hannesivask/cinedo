@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+    <link rel="icon" type="image/x-icon" href="./src/img/favicon.png" />
+
     <link
       href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700"
       rel="stylesheet"
@@ -42,7 +44,7 @@
           </button>
         </form>
 
-        <nav class="header__nav">
+        <nav class="header__nav desktop__nav">
           <button class="btn header--btn shuffle--btn">
             <ion-icon class="header--icon" name="shuffle-outline"></ion-icon>
           </button>
@@ -52,8 +54,66 @@
         </nav>
       </header>
 
+      <!-- MOBILE FILTERS SCREEN -->
+
       <div class="selection__container">
-        <div class="filters">
+        <div class="filters filters--mobile">
+          <nav class="header__nav mobile__nav">
+            <div class="filters__type">
+              <button class="btn filters__type--btn btn--selected">
+                <span>Movies</span>
+              </button>
+              <button class="btn filters__type--btn">
+                <span>Series</span>
+              </button>
+            </div>
+
+            <button class="btn header--btn shuffle--btn">
+              <ion-icon class="header--icon" name="shuffle-outline"></ion-icon>
+            </button>
+            <button class="btn header--btn bookmark--btn">
+              <ion-icon class="header--icon" name="bookmark-outline"></ion-icon>
+            </button>
+          </nav>
+
+          <div class="filters__filter--list filter--list--mobile">
+            <figure class="filter filters__genre">
+              <figcaption class="filter--caption filter--selected">
+                <a href="#">Genre</a
+                ><ion-icon
+                  class="filter--icon"
+                  name="chevron-down-outline"
+                ></ion-icon>
+              </figcaption>
+              <ul class="filters--list">
+                <li class="list--selection filter--selected">
+                  <a href="#">Comedy</a>
+                </li>
+                <li class="list--selection"><a href="#">Action</a></li>
+              </ul>
+            </figure>
+
+            <figure class="filter filters__year">
+              <figcaption class="filter--caption">
+                <a href="#">Year</a
+                ><ion-icon
+                  class="filter--icon"
+                  name="chevron-down-outline"
+                ></ion-icon>
+              </figcaption>
+              <ul class="filters--list">
+                <li class="list--selection"><a href="#">2023</a></li>
+                <li class="list--selection"><a href="#">2022</a></li>
+                <li class="list--selection"><a href="#">2021</a></li>
+                <li class="list--selection"><a href="#">2020</a></li>
+                <li class="list--selection"><a href="#">2019</a></li>
+              </ul>
+            </figure>
+          </div>
+        </div>
+
+        <!-- DESKTOP FILTERS SCREEN -->
+        <div class="filters filters--desktop">
           <div class="filters__type">
             <button class="btn filters__type--btn btn--selected">
               <span>Movies</span>
@@ -97,6 +157,7 @@
           </div>
         </div>
 
+        <!-- DESKTOP RESULTS SCREEN -->
         <div class="results">
           <div class="results__result">
             <img
@@ -121,145 +182,10 @@
               alt=""
             />
           </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/adventure-movie-poster-template-design-7b13ea2ab6f64c1ec9e1bb473f345547_screen.jpg?ts=1636999411"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
-
-          <div class="results__result">
-            <img
-              class="result--img"
-              src="https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f76710a9935109f855d4_smile-min.png"
-              alt=""
-            />
-          </div>
         </div>
       </div>
 
+      <!-- DESKTOP RESULT PREVIEW SCREEN -->
       <div class="preview__container hidden">
         <div class="preview__result">
           <img

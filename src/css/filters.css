@@ -69,3 +69,32 @@
 .filter--icon {
   cursor: pointer;
 }
+
+/************* MOBILE LAYOUT ****************/
+
+.filters--mobile {
+  display: none;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mobile__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 0;
+  margin: 0 1.2rem;
+}
+
+.line {
+  width: 100%;
+  height: 0.5rem;
+  background-color: #333;
+  border-radius: 50rem;
+}
+
+.filter--list--mobile {
+  padding: 1.2rem;
+  width: 100%;
+}
