@@ -1,0 +1,19 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "source": "index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "description": "",
+  "scripts": {
+    "sass-dev": "sass --watch --update --style=expanded src/scss:src/css",
+    "sass-prod": "sass --no-source-map --style=compressed src/scss:src/css",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.11.0",
+    "sass": "^1.70.0"
+  }
+}

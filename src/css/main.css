@@ -1,0 +1,26 @@
+/* 
+0- 600px:    Phone
+600-900px:   Tablet portrait
+900-1200px:  Tablet landscape
+1200-1800:   Normal styles
+1800+:       Big desktop
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}/*# sourceMappingURL=main.css.map */
