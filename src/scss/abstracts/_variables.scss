@@ -1,0 +1,54 @@
+:root {
+  // COLORS
+  --color-primary: #659999;
+  --color-primary-dark: #334d4d;
+  --color-primary-light: #a3c2c2;
+
+  --color-secondary: #f4791f;
+  --color-secondary-dark: #7a3d10;
+  --color-secondary-light: #f8af79;
+
+  --gradient-primary: linear-gradient(
+    to right bottom,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+
+  --gradient-primary-switched: linear-gradient(
+    to left bottom,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+
+  --gradient-primary-light: linear-gradient(
+    to right bottom,
+    var(--color-primary-light),
+    var(--color-secondary-light)
+  );
+
+  --color-white: #fff;
+  --color-black: #000;
+
+  --color-gray-dark-1: #333;
+  --color-gray-dark-2: #777;
+  --color-gray-dark-3: #999;
+
+  --color-gray-light-1: #f7f7f7;
+  --color-gray-light-2: #eee;
+  --color-gray-light-3: #ddd;
+
+  // TYPOGRAPHY
+  --font-size-default: 1.6rem;
+
+  // BORDER RADIUS
+  --border-radius-circle: 50%;
+
+  --border-radius-small: 0.3rem;
+  --border-radius-huge: 50rem;
+
+  // BOX-SHADOW
+
+  --box-shadow-small: 0 1rem 3rem rgba(0, 0, 0, 0.15);
+  --box-shadow-medium: 0 1.5rem 4rem rgba(0, 0, 0, 0.12);
+  --box-shadow-big: 0 2rem 5rem rgba(0, 0, 0, 0.1);
+}

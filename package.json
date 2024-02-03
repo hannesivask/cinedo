@@ -7,12 +7,16 @@
   "scripts": {
     "sass-dev": "sass --watch --update --style=expanded src/scss:src/css",
     "sass-prod": "sass --no-source-map --style=compressed src/scss:src/css",
-    "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "parcel-start": "parcel index.html",
+    "parcel-build": "parcel build index.html",
+    "open-browser": "open http://localhost:1234",
+    "start": "concurrently \"npm run sass-dev\" \"npm run parcel-start\" \"npm run open-browser\"",
+    "build": "concurrently \"npm run sass-prod\" \"npm run parcel-build\""
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "parcel": "^2.11.0",
     "sass": "^1.70.0"
   }

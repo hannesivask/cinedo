@@ -10,3 +10,10 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
+
+body {
+  background-image: var(--gradient-primary-switched);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}

@@ -14,7 +14,7 @@ Movie database app with a randomizer
 Clone it!
 
 ```
-git clone ...
+git clone https://github.com/hannesivask/cinedo.git
 ```
 
 ## Frontend
