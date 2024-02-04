@@ -9,6 +9,9 @@
   background-image: var(--gradient-primary);
   color: var(--color-gray-light-1);
 
+  background-size: 300% 300%;
+  animation: gradient 15s ease infinite;
+
   &__button {
     cursor: pointer;
     width: 50rem;
@@ -26,6 +29,9 @@
     box-shadow: var(--box-shadow-small);
 
     transition: all 0.2s;
+
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
 
     &:hover {
       transform: scale(1.04);
