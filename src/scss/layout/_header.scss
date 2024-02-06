@@ -1,11 +1,16 @@
 .header {
   display: flex;
-  align-items: stretch;
-  // justify-content: space-between;
+  align-items: center;
+  padding: 0 5rem;
   background-color: var(--color-gray-dark-1);
-  height: 7rem;
+  height: 6rem;
 }
 
 .logo__link {
-  margin-left: 5rem;
+  display: flex;
+  height: 4rem;
+}
+
+.logo__img {
+  height: 100%;
 }

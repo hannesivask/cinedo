@@ -109,8 +109,7 @@ body {
 .search {
   display: flex;
   align-items: center;
-  margin: 1rem 0;
-  margin-left: auto;
+  margin: 1rem auto;
   background-color: var(--color-gray-light-3);
   border-radius: 0.2rem;
   transition: all 0.3s;
@@ -152,6 +151,13 @@ body {
 .search__button:focus-visible {
   outline: none;
 }
+.search__icon {
+  width: 3.2rem;
+  height: 3.2rem;
+  margin-right: 1rem;
+  fill: var(--color-gray-dark-3);
+  transition: all 0.1s;
+}
 .search__button:focus-visible .search__icon {
   outline: none;
   fill: var(--color-gray-dark-1);
@@ -165,31 +171,28 @@ body {
   fill: var(--color-gray-dark-1);
   transform: translateY(-0.05rem);
 }
-.search__icon {
-  width: 3.2rem;
-  height: 3.2rem;
-  margin-right: 1rem;
-  fill: var(--color-gray-dark-3);
-  transition: all 0.1s;
-}
 
 .header {
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  padding: 0 5rem;
   background-color: var(--color-gray-dark-1);
-  height: 7rem;
+  height: 6rem;
 }
 
 .logo__link {
-  margin-left: 5rem;
+  display: flex;
+  height: 4rem;
+}
+
+.logo__img {
+  height: 100%;
 }
 
 .user-nav {
-  margin-right: 5rem;
-  height: 100%;
   display: flex;
   align-items: center;
-  margin-left: auto;
+  width: 14.28rem;
 }
 .user-nav__list {
   display: flex;
@@ -256,4 +259,10 @@ body {
 .randomizer__button:focus-visible {
   outline: none;
   border: 1px solid var(--color-gray-light-3);
+}
+
+.hero {
+  max-width: 120rem;
+  margin: 0 auto;
+  background-color: var(--color-white);
 }/*# sourceMappingURL=main.css.map */
