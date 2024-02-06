@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  align-items: stretch;
+  // justify-content: space-between;
+  background-color: var(--color-gray-dark-1);
+  height: 7rem;
+}
+
+.logo__link {
+  margin-left: 5rem;
+}

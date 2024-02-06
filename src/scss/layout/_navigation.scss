@@ -1,0 +1,35 @@
+.user-nav {
+  margin-right: 5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+
+  &__list {
+    display: flex;
+    gap: 3rem;
+  }
+
+  &__item:hover &__icon {
+    fill: var(--color-gray-light-3);
+    transform: scale(1.1);
+    box-shadow: var(--box-shadow-medium);
+  }
+
+  &__item:active &__icon {
+    fill: var(--color-gray-light-3);
+    transform: scale(1.05);
+    box-shadow: var(--box-shadow-small);
+  }
+
+  &__link {
+    display: flex;
+  }
+
+  &__icon {
+    height: 3.6rem;
+    width: 3.6rem;
+    fill: var(--color-gray-dark-3);
+    transition: all 0.2s;
+  }
+}
