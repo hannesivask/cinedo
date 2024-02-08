@@ -2,15 +2,45 @@
   &,
   &:link,
   &:visited {
-    position: relative;
     display: inline-block;
+    padding: 1rem 2rem;
+
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1.5rem 4rem;
-    transition: all 0.2s;
+    font-size: 1.2rem;
+    font-family: inherit;
+    font-weight: 600;
+    color: inherit;
 
-    // change for the <button> element
-    border: none;
     cursor: pointer;
+    background-color: var(--color-gray-black-3);
+    border: 1px solid var(--color-gray-dark-3);
+    border-radius: var(--border-radius-huge);
+
+    transition: all 0.2s;
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    // transform: translateY(-0.1rem);
+  }
+
+  &:hover {
+    border: 1px solid var(--color-gray-light-1);
+    transform: scale(1.02);
+  }
+
+  &:hover &__icon {
+    fill: var(--color-gray-light-1);
+    transform: scale(1.1);
+  }
+
+  &__icon {
+    display: flex;
+    fill: var(--color-gray-dark-3);
+    width: 3.2rem;
+    height: 3.2rem;
+    transition: all 0.2s;
   }
 }

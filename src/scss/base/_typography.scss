@@ -3,16 +3,26 @@ body {
   font-weight: 400;
   line-height: 1.7;
 
-  color: var(--color-gray-dark-3);
+  color: var(--color-gray-light-1);
 }
 
-.heading-primary {
-  font-size: 4.8rem;
-  font-weight: 600;
-  letter-spacing: 0.2rem;
+.heading {
   text-transform: uppercase;
+
+  &-primary {
+    font-size: 4.8rem;
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+  }
+
+  &-tertiary {
+    font-size: 2.4rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+  }
 }
 
 .paragraph {
   font-size: 1.6rem;
+  letter-spacing: 0.1rem;
 }

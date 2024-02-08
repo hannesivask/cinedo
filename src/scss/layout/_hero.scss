@@ -1,39 +1,73 @@
 .hero {
-  max-width: 120rem;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-
-  .image-box {
-    position: absolute;
-    top: 0;
-    left: 0;
+  &__image {
+    max-width: 170rem;
+    margin: 0 auto;
+    height: 60rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
     z-index: -1;
 
-    mask: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0) 3%,
-      rgba(0, 0, 0, 1) 35% 65%,
-      rgba(0, 0, 0, 0) 97%
-    );
+    mask: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 35%);
 
-    &__img {
+    &--movie {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
       width: 100%;
+
+      mask: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 1%,
+        rgba(0, 0, 0, 1) 35% 65%,
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
+
+    &--poster {
+      display: flex;
+      flex-basis: 30rem;
+      box-shadow: var(--box-shadow-dark);
+      overflow: hidden;
+      margin: 10rem 0 5rem 10rem;
+      border-radius: var(--border-radius-small);
+      object-fit: cover;
     }
   }
 
-  .poster-box {
-    display: flex;
-    flex-basis: 30rem;
-    box-shadow: var(--box-shadow-dark);
-    overflow: hidden;
-    margin: 10rem 0 5rem 2rem;
-    border-radius: var(--border-radius-small);
+  &__title {
+    max-width: 120rem;
+    // align-self: center;
+    margin: 0 auto;
+    padding: 0 5rem;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 1fr 1fr;
 
-    &__img {
-      width: 100%;
-      object-fit: cover;
+    &--main {
+      margin-bottom: auto;
+      display: flex;
+      align-items: baseline;
+      gap: 3rem;
     }
+
+    &--btns {
+      display: flex;
+      gap: 3rem;
+      margin: auto;
+    }
+
+    &--sub {
+      width: 75%;
+      color: var(--color-gray-light-4);
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 3rem;
   }
 }
