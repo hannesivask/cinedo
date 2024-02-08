@@ -19,23 +19,9 @@ $breakpoint argument choices:
   --color-secondary: #f4791f;
   --color-secondary-dark: #7a3d10;
   --color-secondary-light: #f8af79;
-  --gradient-primary: linear-gradient(
-    to right bottom,
-    var(--color-primary),
-    var(--color-secondary)
-  );
-  --gradient-primary-switched: linear-gradient(
-    to left bottom,
-    var(--color-primary),
-    var(--color-secondary)
-  );
-  --gradient-primary-light: linear-gradient(
-    to right bottom,
-    var(--color-primary-light),
-    var(--color-secondary-light)
-  );
   --color-white: #fff;
   --color-black: #000;
+  --color-black-2: #111;
   --color-gray-dark-1: #333;
   --color-gray-dark-2: #777;
   --color-gray-dark-3: #999;
@@ -66,7 +52,7 @@ html {
 }
 
 body {
-  background-image: linear-gradient(to right bottom, var(--color-primary-dark), var(--color-gray-dark-1));
+  background-color: var(--color-black);
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -76,18 +62,18 @@ body {
   font-family: "Lato", "sans-serif";
   font-weight: 400;
   line-height: 1.7;
-  color: var(--color-gray-light-1);
+  color: var(--color-gray-dark-3);
 }
 
 .heading-primary {
-  font-size: 6.4rem;
+  font-size: 4.8rem;
   font-weight: 600;
   letter-spacing: 0.2rem;
   text-transform: uppercase;
 }
 
 .paragraph {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 .u-hidden {
@@ -107,8 +93,8 @@ body {
 
 .header {
   width: 100vw;
-  background-color: var(--color-gray-dark-1);
-  box-shadow: var(--box-shadow-small);
+  background-color: var(--color-black-2);
+  box-shadow: var(--box-shadow-dark);
 }
 .header-container {
   display: flex;
@@ -122,6 +108,7 @@ body {
 
 .logo {
   width: 12rem;
+  filter: brightness(80%);
 }
 .logo__link:link, .logo__link:visited {
   display: flex;
@@ -136,7 +123,7 @@ body {
 }
 
 .search {
-  background-color: var(--color-gray-light-3);
+  background-color: var(--color-gray-dark-1);
   border-radius: var(--border-radius-small);
   box-shadow: var(--box-shadow-small);
   display: flex;
@@ -155,17 +142,21 @@ body {
   padding: 0 2rem;
   background-color: transparent;
   border: none;
-  color: var(--color-gray-dark-1);
+  color: var(--color-gray-light-3);
   font-family: inherit;
   font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.09rem;
 }
 .search__input::-moz-placeholder {
   font-family: inherit;
   color: var(--color-gray-dark-3);
+  font-weight: 600;
 }
 .search__input::placeholder {
   font-family: inherit;
   color: var(--color-gray-dark-3);
+  font-weight: 600;
 }
 .search__input:focus-visible {
   outline: none;
@@ -182,7 +173,7 @@ body {
   outline: none;
 }
 .search__button:focus-visible .search__icon {
-  fill: var(--color-gray-dark-1);
+  fill: var(--color-gray-light-1);
 }
 .search__icon {
   width: 2.4rem;
@@ -191,7 +182,7 @@ body {
   transition: all 0.3s;
 }
 .search__button:hover .search__icon {
-  fill: var(--color-gray-dark-1);
+  fill: var(--color-gray-light-1);
   transform: translateY(-0.1rem);
 }
 
@@ -208,8 +199,12 @@ body {
 }
 .nav__link:link, .nav__link:visited {
   display: flex;
+  align-items: center;
   text-decoration: none;
   transition: all 0.3s;
+  color: inherit;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 .nav__link:active, .nav__link:focus {
   outline: none;
@@ -224,8 +219,12 @@ body {
   fill: var(--color-gray-dark-3);
   transition: all 0.3s;
 }
-.nav__link:hover .nav__icon {
+.nav__name {
+  transition: all 0.3s;
+}
+.nav__link:hover .nav__icon, .nav__link:hover .nav__name {
   fill: var(--color-gray-light-3);
+  color: var(--color-gray-light-3);
 }
 
 .hero {
@@ -234,7 +233,6 @@ body {
   position: relative;
   overflow: hidden;
   display: flex;
-  align-items: flex-end;
 }
 .hero .image-box {
   position: absolute;
@@ -248,21 +246,15 @@ body {
   width: 100%;
 }
 .hero .poster-box {
+  display: flex;
+  flex-basis: 30rem;
   box-shadow: var(--box-shadow-dark);
   overflow: hidden;
-  margin: 5rem;
+  margin: 10rem 0 5rem 2rem;
+  border-radius: var(--border-radius-small);
 }
 .hero .poster-box__img {
   width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-.hero .info-box {
-  width: 100%;
-  padding: 0 10rem 5rem 0;
-  background-color: rgba(0, 0, 0, 0.2);
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
-  -webkit-mask: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgb(0, 0, 0) 5%);
-          mask: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgb(0, 0, 0) 5%);
+  -o-object-fit: cover;
+     object-fit: cover;
 }/*# sourceMappingURL=main.css.map */

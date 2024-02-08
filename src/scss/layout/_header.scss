@@ -1,8 +1,7 @@
 .header {
   width: 100vw;
-  background-color: var(--color-gray-dark-1);
-  // border-bottom: 1px solid var(--color-gray-dark-2);
-  box-shadow: var(--box-shadow-small);
+  background-color: var(--color-black-2);
+  box-shadow: var(--box-shadow-dark);
 
   &-container {
     display: flex;
@@ -17,6 +16,7 @@
 
 .logo {
   width: 12rem;
+  filter: brightness(80%);
 
   &__link:link,
   &__link:visited {
@@ -36,7 +36,7 @@
 }
 
 .search {
-  background-color: var(--color-gray-light-3);
+  background-color: var(--color-gray-dark-1);
   border-radius: var(--border-radius-small);
   box-shadow: var(--box-shadow-small);
 
@@ -58,13 +58,17 @@
     padding: 0 2rem;
     background-color: transparent;
     border: none;
-    color: var(--color-gray-dark-1);
+
+    color: var(--color-gray-light-3);
     font-family: inherit;
     font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.09rem;
 
     &::placeholder {
       font-family: inherit;
       color: var(--color-gray-dark-3);
+      font-weight: 600;
     }
 
     &:focus-visible {
@@ -84,7 +88,7 @@
       outline: none;
 
       .search__icon {
-        fill: var(--color-gray-dark-1);
+        fill: var(--color-gray-light-1);
       }
     }
   }
@@ -97,7 +101,7 @@
   }
 
   &__button:hover &__icon {
-    fill: var(--color-gray-dark-1);
+    fill: var(--color-gray-light-1);
     transform: translateY(-0.1rem);
   }
 }
@@ -117,8 +121,12 @@
   &__link:link,
   &__link:visited {
     display: flex;
+    align-items: center;
     text-decoration: none;
     transition: all 0.3s;
+    color: inherit;
+    font-size: 1.6rem;
+    font-weight: 600;
   }
 
   &__link:active,
@@ -138,7 +146,13 @@
     transition: all 0.3s;
   }
 
-  &__link:hover &__icon {
+  &__name {
+    transition: all 0.3s;
+  }
+
+  &__link:hover &__icon,
+  &__link:hover &__name {
     fill: var(--color-gray-light-3);
+    color: var(--color-gray-light-3);
   }
 }

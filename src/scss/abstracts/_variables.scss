@@ -8,26 +8,10 @@
   --color-secondary-dark: #7a3d10;
   --color-secondary-light: #f8af79;
 
-  --gradient-primary: linear-gradient(
-    to right bottom,
-    var(--color-primary),
-    var(--color-secondary)
-  );
-
-  --gradient-primary-switched: linear-gradient(
-    to left bottom,
-    var(--color-primary),
-    var(--color-secondary)
-  );
-
-  --gradient-primary-light: linear-gradient(
-    to right bottom,
-    var(--color-primary-light),
-    var(--color-secondary-light)
-  );
-
   --color-white: #fff;
+
   --color-black: #000;
+  --color-black-2: #111;
 
   --color-gray-dark-1: #333;
   --color-gray-dark-2: #777;

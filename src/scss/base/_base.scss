@@ -12,11 +12,7 @@ html {
 }
 
 body {
-  background-image: linear-gradient(
-    to right bottom,
-    var(--color-primary-dark),
-    var(--color-gray-dark-1)
-  );
+  background-color: var(--color-black);
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
