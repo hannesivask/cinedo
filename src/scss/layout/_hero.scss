@@ -2,7 +2,7 @@
   &__image {
     max-width: 170rem;
     margin: 0 auto;
-    height: 60rem;
+    max-height: 55rem;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -27,10 +27,10 @@
 
     &--poster {
       display: flex;
-      flex-basis: 30rem;
+      flex-basis: 28rem;
       box-shadow: var(--box-shadow-dark);
       overflow: hidden;
-      margin: 10rem 0 5rem 10rem;
+      margin: 10rem 0 5rem 15rem;
       border-radius: var(--border-radius-small);
       object-fit: cover;
     }
