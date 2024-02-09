@@ -13,10 +13,10 @@ $breakpoint argument choices:
 
 */
 :root {
-  --color-primary: #659999;
+  --color-primary: #f4791f;
   --color-primary-dark: #334d4d;
   --color-primary-light: #a3c2c2;
-  --color-secondary: #f4791f;
+  --color-secondary: #659999;
   --color-secondary-dark: #7a3d10;
   --color-secondary-light: #f8af79;
   --color-white: #fff;
@@ -33,6 +33,7 @@ $breakpoint argument choices:
   --font-size-default: 1.6rem;
   --border-radius-circle: 50%;
   --border-radius-small: 0.3rem;
+  --border-radius-medium: 0.5rem;
   --border-radius-huge: 50rem;
   --box-shadow-small: 0 1rem 3rem rgba(0, 0, 0, 0.15);
   --box-shadow-medium: 0 1.5rem 4rem rgba(0, 0, 0, 0.12);
@@ -75,10 +76,14 @@ body {
   font-weight: 600;
   letter-spacing: 0.2rem;
 }
-.heading-tertiary {
-  font-size: 2.4rem;
+.heading-secondary {
+  font-size: 3.2rem;
   font-weight: 400;
-  letter-spacing: 0.1rem;
+}
+.heading-tertiary {
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.02rem;
 }
 
 .paragraph {
@@ -90,6 +95,14 @@ body {
   display: none !important;
 }
 
+.u-margin-bottom-big {
+  margin-bottom: 10rem !important;
+}
+
+.u-margin-bottom-small {
+  margin-bottom: 2rem !important;
+}
+
 .btn, .btn:link, .btn:visited {
   display: inline-block;
   padding: 1rem 2rem;
@@ -98,22 +111,23 @@ body {
   font-size: 1.2rem;
   font-family: inherit;
   font-weight: 600;
+  letter-spacing: 0.15rem;
   color: inherit;
   cursor: pointer;
   background-color: var(--color-gray-black-3);
   border: 1px solid var(--color-gray-dark-3);
-  border-radius: var(--border-radius-huge);
+  border-radius: var(--border-radius-small);
   transition: all 0.2s;
 }
 .btn:active, .btn:focus {
   outline: none;
 }
 .btn:hover {
-  border: 1px solid var(--color-gray-light-1);
+  border: 1px solid var(--color-primary);
   transform: scale(1.02);
 }
 .btn:hover .btn__icon {
-  fill: var(--color-gray-light-1);
+  fill: var(--color-primary);
   transform: scale(1.1);
 }
 .btn__icon {
@@ -122,6 +136,66 @@ body {
   width: 3.2rem;
   height: 3.2rem;
   transition: all 0.2s;
+}
+.btn--filled {
+  background-color: var(--color-gray-light-4);
+  border: none;
+  color: var(--color-black-2);
+}
+.btn--filled:hover {
+  border: none;
+  transform: none;
+  background-color: var(--color-primary);
+}
+
+.grid {
+  display: flex;
+  gap: 3rem;
+}
+
+.card {
+  background-color: var(--color-black-2);
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  border-radius: var(--border-radius-small);
+  overflow: hidden;
+  position: relative;
+}
+.card__img-box {
+  overflow: hidden;
+}
+.card__img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.card__title {
+  margin: 0.5rem 1rem 1rem 1rem;
+  font-size: 1.6rem;
+  text-overflow: "...";
+}
+.card__rating {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.6rem;
+  background-color: black;
+  padding: 0.3rem 1rem 0.3rem 1rem;
+  right: 0;
+  border-bottom-left-radius: 0.2rem;
+  background-color: var(--color-black-2);
+  box-shadow: var(--box-shadow-medium);
+}
+.card__rating-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: var(--color-primary);
+}
+.card__btn {
+  margin: 1.2rem;
+  margin-top: auto;
 }
 
 .header {
@@ -260,6 +334,13 @@ body {
   color: var(--color-gray-light-3);
 }
 
+.footer {
+  max-width: 120rem;
+  margin: 0 auto;
+  height: 20rem;
+  font-size: 1.6rem;
+}
+
 .hero__image {
   max-width: 170rem;
   margin: 0 auto;
@@ -268,6 +349,7 @@ body {
   overflow: hidden;
   display: flex;
   z-index: -1;
+  margin-bottom: 3rem;
   -webkit-mask: linear-gradient(to top, rgba(0, 0, 0, 0), rgb(0, 0, 0) 35%);
           mask: linear-gradient(to top, rgba(0, 0, 0, 0), rgb(0, 0, 0) 35%);
 }
@@ -304,18 +386,19 @@ body {
   align-items: baseline;
   gap: 3rem;
 }
-.hero__title--btns {
-  display: flex;
-  gap: 3rem;
-  margin: auto;
-}
 .hero__title--sub {
   width: 75%;
   color: var(--color-gray-light-4);
   grid-column: 1/-1;
 }
-.hero__buttons {
-  margin-top: 2rem;
+.hero__btn-container {
   display: flex;
   gap: 3rem;
+  margin: auto;
+}
+
+.selection {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 5rem;
 }/*# sourceMappingURL=main.css.map */

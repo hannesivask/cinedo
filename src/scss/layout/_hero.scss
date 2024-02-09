@@ -7,6 +7,7 @@
     overflow: hidden;
     display: flex;
     z-index: -1;
+    margin-bottom: 3rem;
 
     mask: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 35%);
 
@@ -38,7 +39,6 @@
 
   &__title {
     max-width: 120rem;
-    // align-self: center;
     margin: 0 auto;
     padding: 0 5rem;
     display: grid;
@@ -52,12 +52,6 @@
       gap: 3rem;
     }
 
-    &--btns {
-      display: flex;
-      gap: 3rem;
-      margin: auto;
-    }
-
     &--sub {
       width: 75%;
       color: var(--color-gray-light-4);
@@ -65,9 +59,9 @@
     }
   }
 
-  &__buttons {
-    margin-top: 2rem;
+  &__btn-container {
     display: flex;
     gap: 3rem;
+    margin: auto;
   }
 }

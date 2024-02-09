@@ -50,7 +50,6 @@
                 <svg class="nav__icon">
                   <use href="/src/img/sprite.svg#icon-shuffle"></use>
                 </svg>
-                <!-- <span class="nav__name">Random</span> -->
               </a>
             </li>
             <li class="nav__item">
@@ -58,7 +57,6 @@
                 <svg class="nav__icon">
                   <use href="/src/img/sprite.svg#icon-bookmark"></use>
                 </svg>
-                <!-- <span class="nav__name">Watchlist</span> -->
               </a>
             </li>
           </ul>
@@ -67,12 +65,12 @@
     </header>
 
     <main>
-      <section class="hero">
+      <section class="hero u-margin-bottom-big">
         <div class="hero__image">
           <img
             class="hero__image--movie"
             src="https://sm.ign.com/ign_nordic/review/t/the-beekee/the-beekeeper-review_h8a6.jpg"
-            alt="Movie image"
+            alt="Backdrop image"
           />
 
           <img
@@ -87,7 +85,7 @@
             <h1 class="heading-primary">The Beekeeper</h1>
             <h3 class="heading-tertiary">2023</h3>
           </div>
-          <div class="hero__title--btns">
+          <div class="hero__btn-container">
             <a href="#" class="btn">
               <svg class="btn__icon">
                 <use href="/src/img/sprite.svg#icon-controller-play"></use></svg
@@ -107,9 +105,103 @@
         </div>
       </section>
 
-      <section class="movies">.movie</section>
+      <section class="selection u-margin-bottom-big">
+        <h1 class="heading-secondary u-margin-bottom-small">Now popular</h1>
+
+        <div class="grid">
+          <div class="card">
+            <span class="card__rating"
+              ><svg class="card__rating-icon">
+                <use href="/src/img/sprite.svg#icon-star-full"></use></svg
+              >3.8</span
+            >
+            <div class="card__img-box">
+              <img
+                src="https://www.movieposters.com/cdn/shop/files/beekeeper_480x.progressive.jpg?v=1697562723"
+                alt="Poster image"
+                class="card__img"
+              />
+            </div>
+            <span class="card__title">The Beekeeper</span>
+
+            <button class="btn btn--filled card__btn">&plus; watchlist</button>
+          </div>
+
+          <div class="card">
+            <span class="card__rating"
+              ><svg class="card__rating-icon">
+                <use href="/src/img/sprite.svg#icon-star-full"></use></svg
+              >3.8</span
+            >
+            <div class="card__img-box">
+              <img
+                src="https://www.vintagemovieposters.co.uk/wp-content/uploads/2023/03/IMG_1887-scaled.jpeg"
+                alt="Poster image"
+                class="card__img"
+              />
+            </div>
+            <span class="card__title">The Avengers</span>
+
+            <button class="btn btn--filled card__btn">&plus; watchlist</button>
+          </div>
+
+          <div class="card">
+            <span class="card__rating"
+              ><svg class="card__rating-icon">
+                <use href="/src/img/sprite.svg#icon-star-full"></use></svg
+              >3.8</span
+            >
+            <div class="card__img-box">
+              <img
+                src="https://www.coffeeandcigarettes.co.uk/wp-content/uploads/2022/09/MLATBM_1-Sht_Art_Final_v5_LO.jpg"
+                alt="Poster image"
+                class="card__img"
+              />
+            </div>
+            <span class="card__title"> Mona Lisa and the Blood Moon </span>
+
+            <button class="btn btn--filled card__btn">&plus; watchlist</button>
+          </div>
+          <div class="card">
+            <span class="card__rating"
+              ><svg class="card__rating-icon">
+                <use href="/src/img/sprite.svg#icon-star-full"></use></svg
+              >3.8</span
+            >
+            <div class="card__img-box">
+              <img
+                src="https://images.english.elpais.com/resizer/SJcC_wP0VXNcCcwJwHOLThym-uI=/414x0/cloudfront-eu-central-1.images.arcpublishing.com/prisa/5XMXTR36RRDZHJY7VKLKKEMDQA.jpg"
+                alt="Poster image"
+                class="card__img"
+              />
+            </div>
+            <span class="card__title">Interstellar</span>
+
+            <button class="btn btn--filled card__btn">&plus; watchlist</button>
+          </div>
+          <div class="card">
+            <span class="card__rating"
+              ><svg class="card__rating-icon">
+                <use href="/src/img/sprite.svg#icon-star-full"></use></svg
+              >3.8</span
+            >
+            <div class="card__img-box">
+              <img
+                src="https://www.bluedogposters.com.au/cdn/shop/products/PP34925_1400x.jpg?v=1674016516"
+                alt="Poster image"
+                class="card__img"
+              />
+            </div>
+            <span class="card__title">
+              Harry Potter and the Philosopher's Stone
+            </span>
+
+            <button class="btn btn--filled card__btn">&plus; watchlist</button>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="footer"></footer>
+    <footer class="footer">Footer</footer>
   </body>
 </html>
