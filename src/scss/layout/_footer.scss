@@ -1,6 +1,10 @@
 .footer {
-  max-width: 120rem;
-  margin: 0 auto;
   height: 20rem;
   font-size: 1.6rem;
+  background-color: var(--color-black-2);
+
+  &__container {
+    max-width: 120rem;
+    margin: 0 auto;
+  }
 }

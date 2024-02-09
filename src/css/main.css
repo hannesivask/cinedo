@@ -335,12 +335,18 @@ body {
 }
 
 .footer {
-  max-width: 120rem;
-  margin: 0 auto;
   height: 20rem;
   font-size: 1.6rem;
+  background-color: var(--color-black-2);
+}
+.footer__container {
+  max-width: 120rem;
+  margin: 0 auto;
 }
 
+.hero {
+  height: 100vh;
+}
 .hero__image {
   max-width: 170rem;
   margin: 0 auto;
