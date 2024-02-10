@@ -49,6 +49,10 @@
 #
 # -----------------------------------------------------------------
 
+
+
+src/js/config_temp.js
+
 # Ignore package files
 package-lock.json
 
@@ -113,6 +117,8 @@ Thumbs.db
 *.der
 *.key
 *.pem
+*.env
+*.netlify
 
 # --------------------------------------------------------
 # BEGIN Explictly Allowed Files (i.e. do NOT ignore these)
