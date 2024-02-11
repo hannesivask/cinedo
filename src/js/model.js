@@ -4,6 +4,12 @@ const newMovies = document.querySelector(".new-movies");
 const topMovies = document.querySelector(".top-movies");
 const hero = document.querySelector(".section-hero");
 
+const heroBackdropImg = document.querySelector(".image-box__img--movie");
+const heroPosterImg = document.querySelector(".image-box__img--poster");
+const heroTitle = document.querySelector(".hero-title");
+const heroYear = document.querySelector(".hero-year");
+const heroSummary = document.querySelector(".hero-summary");
+
 const carouselRight = document.querySelector(".carousel__right");
 
 const options = {
@@ -21,7 +27,6 @@ const AJAX = async function (type) {
       options
     );
     const data = await response.json();
-    // console.log(data);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -30,30 +35,26 @@ const AJAX = async function (type) {
   } catch (err) {}
 };
 
-const getTrailer = async function (movie) {
+/* const getTrailer = async function (movie) {
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${movie.id}/videos?language=en-US`,
       options
     );
     const data = await response.json();
-    // console.log(data.results);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-
-    // return data.results;
   } catch (err) {}
-};
+}; */
 
-// window.onload = function () {
-//   console.log("now");
-//   setInterval(setHero, 5000);
-// };
+window.onload = function () {
+  setInterval(setHero, 5000);
+};
 
 const setHero = async function () {
   const newMovies = await AJAX("popular");
-  updateHero(newMovies);
+  loadHero(newMovies);
 };
 
 const loadHero = async function (movies) {
@@ -63,46 +64,11 @@ const loadHero = async function (movies) {
 
   const movie = movies[random];
 
-  const markup = generateHeroMarkup(movie, year);
-  // console.log(movie);
-  // const trailer = await getTrailer(movie);
-  // debugger;
-  hero.insertAdjacentHTML("afterbegin", markup);
-  // updateMarkup(markup);
-};
-
-const generateHeroMarkup = function (movie, year) {
-  return `
-        <a href="movie.html?${movie.id}">
-        <div class="image-box">
-          <img class="image-box__img--movie" src="https://image.tmdb.org/t/p/original${movie.backdrop_path}" alt="${movie.title} Backdrop" />
-          <img class="image-box__img--poster" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title} Poster" />
-        </div>
-        </a>
-        <div class="info-box">
-          <div class="button-box">
-            <button class="btn">
-              <svg class="btn__icon">
-                <use href="/src/img/sprite.svg#icon-play"></use>
-              </svg>
-            </button>
-
-            <button class="btn">
-              <svg class="btn__icon">
-                <use href="/src/img/sprite.svg#icon-bookmark-outline"></use>
-              </svg>
-            </button>
-          </div>
-          <div class="info-box__title">
-            <h1 class="hero-title heading-primary">${movie.title}</h1>
-            <span class="hero-year heading-tertiary">${year}</span>
-          </div>
-
-          <div class="info-box__paragraph">
-            <p class="hero-summary paragraph">${movie.overview}</p>
-          </div>
-        </div>
-        `;
+  heroBackdropImg.src = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
+  heroPosterImg.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  heroTitle.textContent = `${movie.title}`;
+  heroYear.textContent = `${year}`;
+  heroSummary.textContent = `${movie.overview}`;
 };
 
 const loadNewMovies = function (movies) {
@@ -127,17 +93,6 @@ const loadTopMovies = function (movies) {
   }
 };
 
-const init = async function () {
-  const newMovies = await AJAX("popular");
-  const topMovies = await AJAX("top_rated");
-
-  loadHero(newMovies);
-  loadNewMovies(newMovies);
-  loadTopMovies(topMovies);
-};
-
-init();
-
 const generateMarkup = function (rating, poster, title, id) {
   return `
   <div class="card">
@@ -159,33 +114,13 @@ const generateMarkup = function (rating, poster, title, id) {
   </div>`;
 };
 
-const updateMarkup = function (markup) {
-  const newMarkup = markup;
+const init = async function () {
+  const newMovies = await AJAX("popular");
+  const topMovies = await AJAX("top_rated");
 
-  const newDOM = document.createRange().createContextualFragment(newMarkup);
-  // console.log(newDOM);
-  const newElements = Array.from(newDOM.querySelectorAll("*"));
-  // console.log(newElements);
-  const curElements = Array.from(hero.querySelectorAll("*"));
-  // console.log(curElements);
-
-  newElements.forEach((newEl, i) => {
-    const curEl = curElements[i];
-    console.log(curEl, newEl.isEqualNode(curEl));
-
-    // Updates changed TEXT
-    if (
-      !newEl.isEqualNode(curEl) &&
-      newEl.firstChild?.nodeValue.trim() !== ""
-    ) {
-      console.log("💥", newEl.firstChild.nodeValue.trim());
-      curEl.textContent = newEl.textContent;
-    }
-
-    // Updates changed ATTRIBUES
-    if (!newEl.isEqualNode(curEl))
-      Array.from(newEl.attributes).forEach((attr) =>
-        curEl.setAttribute(attr.name, attr.value)
-      );
-  });
+  loadHero(newMovies);
+  loadNewMovies(newMovies);
+  loadTopMovies(topMovies);
 };
+
+init();
