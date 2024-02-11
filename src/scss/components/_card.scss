@@ -1,54 +1,58 @@
 .card {
-  background-color: var(--color-black-2);
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
-  width: 25rem;
+  max-width: 25rem;
+
+  background-color: var(--color-black-2);
   border-radius: var(--border-radius-small);
+
   overflow: hidden;
+  margin: 0 auto;
 
   position: relative;
 
+  transition: all 0.3s;
+
+  &:hover {
+    transform: translateY(-0.7rem);
+  }
+
+  &__link:focus-within {
+    outline: none;
+  }
+
   &__img-box {
-    // height: 37rem;
     overflow: hidden;
   }
 
   &__img {
     width: 100%;
-    object-fit: contain;
   }
 
   &__title {
-    // display: flex;
-
     margin: 0.5rem 1rem 1rem 1rem;
     font-size: 1.6rem;
-    text-overflow: "...";
-
-    // text-transform: uppercase;
-    // text-align: center;
   }
 
   &__rating {
     position: absolute;
-
+    right: 0;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 1.6rem;
-    background-color: black;
-    padding: 0.3rem 1rem 0.3rem 1rem;
-    right: 0;
-    border-bottom-left-radius: 0.2rem;
-    background-color: var(--color-black-2);
 
+    gap: 0.5rem;
+    padding: 0.3rem 1rem;
+
+    font-size: 1.6rem;
+    background-color: var(--color-black-2);
+    border-bottom-left-radius: 0.2rem;
     box-shadow: var(--box-shadow-medium);
 
     &-icon {
       width: 1.6rem;
       height: 1.6rem;
       fill: var(--color-primary);
+      z-index: 100;
     }
   }
 
