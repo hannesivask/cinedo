@@ -2,7 +2,7 @@
 
 Movie database app with a randomizer
 
-![Sample App Image]()
+![Sample App Image](./src/img/screenshot.png)
 
 ## Requirement
 
