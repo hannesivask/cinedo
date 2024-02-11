@@ -8,6 +8,8 @@ const heroTitle = document.querySelector(".hero-title");
 const heroYear = document.querySelector(".hero-year");
 const heroSummary = document.querySelector(".hero-summary");
 
+const carouselRight = document.querySelector(".carousel__right");
+
 const options = {
   method: "GET",
   headers: {
@@ -16,43 +18,61 @@ const options = {
   },
 };
 
-const getMovie = async function () {
+const AJAX = async function () {
   try {
     const data = await fetch(
       `${API_URL}/movie/popular?language=en-US&page=1`,
       options
     );
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
+    const movies = json.results;
+    // console.log(movies);
+    return movies;
+  } catch (err) {}
+};
 
-    const date = new Date(json.results[2].release_date);
-    const year = date.getFullYear();
+const loadHero = function (movies) {
+  const random = Math.floor(Math.random() * 20);
+  const date = new Date(movies[random].release_date);
+  const year = date.getFullYear();
 
-    const random = Math.floor(Math.random() * 20);
+  console.log(random);
+  heroBackdrop.src = `https://image.tmdb.org/t/p/original${movies[random].backdrop_path}`;
+  heroBackdrop.alt = `${movies[random].title} Backdrop`;
+  heroPoster.src = `https://image.tmdb.org/t/p/w500${movies[random].poster_path}`;
+  heroPoster.alt = `${movies[random].title} Poster`;
 
-    console.log(random);
-    heroBackdrop.src = `https://image.tmdb.org/t/p/original${json.results[random].backdrop_path}`;
-    heroPoster.src = `https://image.tmdb.org/t/p/w500${json.results[random].poster_path}`;
+  heroTitle.textContent = movies[random].title;
+  heroYear.textContent = year;
+  heroSummary.textContent = movies[random].overview;
+};
 
-    heroTitle.textContent = json.results[random].title;
-    heroYear.textContent = year;
-    heroSummary.textContent = json.results[random].overview;
+const loadNewMovies = function (movies) {
+  for (let i = 5; i < 10; i++) {
+    const poster = movies[i].poster_path;
+    const title = movies[i].title;
+    const rating = movies[i].vote_average;
+    const id = movies[i].id;
+    const markup = generateMarkup(rating, poster, title, id);
+    newMovies.insertAdjacentHTML("afterbegin", markup);
+    topMovies.insertAdjacentHTML("afterbegin", markup);
+  }
+};
 
-    for (let i = 5; i < 10; i++) {
-      const poster = json.results[i].poster_path;
-      const title = json.results[i].title;
-      const rating = json.results[i].vote_average;
-      const id = json.results[i].id;
-      const markup = generateMarkup(rating, poster, title, id);
-      newMovies.insertAdjacentHTML("afterbegin", markup);
-      topMovies.insertAdjacentHTML("afterbegin", markup);
-    }
-  } catch (err) {
+const loadMovies = async function () {
+  try {
+    const movies = await AJAX();
+    console.log(movies);
+    loadHero(movies);
+
+    loadNewMovies(movies);
+  } catch (error) {
     console.log(err);
   }
 };
 
-getMovie();
+loadMovies();
 
 const generateMarkup = function (rating, poster, title, id) {
   return `
@@ -62,15 +82,34 @@ const generateMarkup = function (rating, poster, title, id) {
       <use href="/src/img/sprite.svg#icon-star-full"></use>
     </svg>${rating.toFixed(1)}</span>
     <div class="card__img-box">
-      <a href="src/html/movie.html?id=${id}" class="card__link">  
-        <img  
+      <a href="src/html/movie.html?id=${id}" class="card__link">
+        <img
           src="https://image.tmdb.org/t/p/w500${poster}"
           alt="Poster image"
           class="card__img"
         />
-      </a>  
+      </a>
     </div>
     <span class="card__title">${title}</span>
     <button class="btn btn--filled card__btn">&plus; watchlist</button>
   </div>`;
+};
+
+// carouselRight.addEventListener("click", loadNext);
+
+function loadNext(e) {
+  e.preventDefault();
+  loadMov();
+}
+
+const loadMov = async function () {
+  try {
+    const movies = await AJAX();
+    console.log(movies);
+    // loadHero(movies);
+
+    loadNewMovies(movies);
+  } catch (error) {
+    console.log(err);
+  }
 };
