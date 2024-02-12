@@ -4,7 +4,7 @@
   max-width: 25rem;
 
   background-color: var(--color-black-2);
-  border-radius: var(--border-radius-small);
+  border-radius: var(--border-radius-medium);
 
   overflow: hidden;
   margin: 0 auto;
@@ -32,9 +32,11 @@
   &__title {
     text-align: center;
     margin: 0.5rem 1.5rem 4rem 1.5rem;
-    font-size: 1.8rem;
+    font-size: 2rem;
+    text-transform: uppercase;
     letter-spacing: 1px;
-    font-weight: 600;
+    font-weight: 700;
+    // color: var(--color-);
   }
 
   &__rating {
@@ -62,7 +64,8 @@
   }
 
   &__btn {
-    margin: 1.2rem;
+    margin: 2rem;
     margin-top: auto;
+    border-radius: var(--border-radius-small);
   }
 }

@@ -26,10 +26,12 @@ const AJAX = async function (type) {
       `${API_URL}/movie/${type}?language=en-US&page=1`,
       options
     );
-    const data = await response.json();
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
+
+    const data = await response.json();
 
     return data.results;
   } catch (err) {}
@@ -47,10 +49,6 @@ const AJAX = async function (type) {
     }
   } catch (err) {}
 }; */
-
-window.onload = function () {
-  setInterval(setHero, 5000);
-};
 
 const setHero = async function () {
   const newMovies = await AJAX("popular");
@@ -121,6 +119,7 @@ const init = async function () {
   loadHero(newMovies);
   loadNewMovies(newMovies);
   loadTopMovies(topMovies);
+  setInterval(setHero, 5000);
 };
 
 init();

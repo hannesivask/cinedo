@@ -121,7 +121,7 @@ body {
   transition: all 0.3s;
 }
 .btn:hover {
-  border: 1px solid var(--color-primary);
+  border: 2px solid var(--color-primary);
   transform: translateY(-0.2rem);
   box-shadow: var(--box-shadow-big);
 }
@@ -195,7 +195,7 @@ body {
   flex-direction: column;
   max-width: 25rem;
   background-color: var(--color-black-2);
-  border-radius: var(--border-radius-small);
+  border-radius: var(--border-radius-medium);
   overflow: hidden;
   margin: 0 auto;
   position: relative;
@@ -216,9 +216,10 @@ body {
 .card__title {
   text-align: center;
   margin: 0.5rem 1.5rem 4rem 1.5rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
+  text-transform: uppercase;
   letter-spacing: 1px;
-  font-weight: 600;
+  font-weight: 700;
 }
 .card__rating {
   position: absolute;
@@ -240,8 +241,9 @@ body {
   z-index: 100;
 }
 .card__btn {
-  margin: 1.2rem;
+  margin: 2rem;
   margin-top: auto;
+  border-radius: var(--border-radius-small);
 }
 
 .header {
@@ -347,7 +349,7 @@ body {
 .nav__list {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 4rem;
 }
 .nav__link:link, .nav__link:visited {
   display: flex;
@@ -476,19 +478,19 @@ body {
 }
 
 .section-hero {
-  height: 95vh;
+  margin-bottom: 20rem;
 }
 
 .section-new {
   max-width: 150rem;
   margin: 0 auto;
   padding: 0 5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 10rem;
 }
 
 .section-top {
   max-width: 150rem;
   margin: 0 auto;
   padding: 0 5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 10rem;
 }/*# sourceMappingURL=main.css.map */
