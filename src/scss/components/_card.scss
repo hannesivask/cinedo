@@ -1,15 +1,13 @@
 .card {
   display: flex;
   flex-direction: column;
-  max-width: 22rem;
+  flex: 1 0 22rem;
 
   background-color: var(--color-black-2);
   border-radius: var(--border-radius-medium);
 
-  overflow: hidden;
-  margin: 0 auto;
-
   position: relative;
+  scroll-snap-align: center;
 
   transition: all 0.3s;
 

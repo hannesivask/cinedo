@@ -106,6 +106,10 @@ body {
   margin-bottom: 2rem !important;
 }
 
+.u-opacity-none {
+  opacity: 0 !important;
+}
+
 .btn {
   display: flex;
   align-items: center;
@@ -156,35 +160,13 @@ body {
   display: flex;
   gap: 2rem;
   position: relative;
-}
-.carousel__left, .carousel__right {
-  position: absolute;
-  top: 50%;
-}
-.carousel__left:focus, .carousel__right:focus {
-  outline: none;
-}
-.carousel__left:focus .carousel__icon, .carousel__right:focus .carousel__icon {
-  fill: var(--color-gray-light-3);
-}
-.carousel__left {
-  left: 0%;
-  transform: translateX(-100%);
-}
-.carousel__right {
-  right: 0%;
-  transform: translateX(100%);
-}
-.carousel__icon {
-  cursor: pointer;
-  height: 4.8rem;
-  width: 4.8rem;
-  fill: var(--color-gray-dark-2);
-  transition: all 0.2s;
-  stroke-width: 0.3;
-}
-.carousel__icon:hover {
-  fill: var(--color-gray-light-3);
+  overflow-x: scroll;
+  padding: 0 5rem;
+  mask: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(0, 0, 0) 10% 90%, rgba(0, 0, 0, 0));
+  scrollbar-color: var(--color-secondary-dark) transparent;
+  scrollbar-width: thin;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 }
 .carousel:hover .card:not(:hover) {
   filter: blur(1px) brightness(80%);
@@ -196,12 +178,11 @@ body {
 .card {
   display: flex;
   flex-direction: column;
-  max-width: 22rem;
+  flex: 1 0 22rem;
   background-color: var(--color-black-2);
   border-radius: var(--border-radius-medium);
-  overflow: hidden;
-  margin: 0 auto;
   position: relative;
+  scroll-snap-align: center;
   transition: all 0.3s;
 }
 .card:hover {
@@ -436,6 +417,7 @@ body {
   width: 100%;
   z-index: -1;
   mask: linear-gradient(to right, rgba(0, 0, 0, 0) 1%, rgb(0, 0, 0) 35% 65%, rgba(0, 0, 0, 0) 100%);
+  transition: opacity 0.3s;
 }
 .hero__image-box--poster {
   display: flex;
@@ -445,6 +427,7 @@ body {
   overflow: hidden;
   border-radius: var(--border-radius-small);
   box-shadow: var(--box-shadow-dark);
+  transition: opacity 0.3s;
 }
 .hero__info-box {
   max-width: 120rem;
@@ -464,6 +447,7 @@ body {
 
 .section-hero {
   margin-bottom: 20rem;
+  transition: opacity 0.3s;
 }
 
 .section-new {

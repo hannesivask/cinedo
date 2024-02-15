@@ -1,87 +1,52 @@
 import { AJAX, randomNumber } from "./helpers.js";
+import heroView from "./views/heroView.js";
+import cardView from "./views/cardView.js";
 
 const newMovies = document.querySelector(".new-movies");
 const topMovies = document.querySelector(".top-movies");
-const heroImageBox = document.querySelector(".hero__image-box");
-const heroInfoBox = document.querySelector(".hero__info-box");
-
-const loadHeroImages = function (movie) {
-  const heroImages = Array.from(heroImageBox.children);
-  heroImages.forEach((el) => {
-    el.className === "hero__image-box--movie"
-      ? (el.src = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`)
-      : (el.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`);
-  });
-};
-
-const loadHeroTitle = function (movie) {
-  const heroTitles = Array.from(heroInfoBox.children);
-
-  const date = new Date(movie.release_date);
-  const year = date.getFullYear();
-
-  heroTitles.forEach((titleEl) => {
-    if (titleEl.classList.contains("hero-title")) {
-      titleEl.textContent = movie.title;
-    }
-    if (titleEl.classList.contains("hero-year")) {
-      titleEl.textContent = year;
-    }
-    if (titleEl.classList.contains("hero-summary")) {
-      titleEl.textContent = movie.overview;
-    }
-  });
-};
+const sectionHero = document.querySelector(".section-hero");
 
 const loadHeroContent = function (movies) {
-  const randomNum = randomNumber(20);
+  const randomNum = randomNumber(movies.length);
   const movie = movies[randomNum];
+  const date = new Date(movie.release_date);
+  const year = date.getFullYear();
+  movie.year = year;
 
-  loadHeroImages(movie);
-  loadHeroTitle(movie);
+  const markup = heroView.generateMarkup(movie);
+  sectionHero.innerHTML = markup;
 };
 
 const loadNewMovies = function (movies) {
-  for (let i = 5; i < 10; i++) {
-    const poster = movies[i].poster_path;
-    const title = movies[i].title;
-    const rating = movies[i].vote_average;
-    const id = movies[i].id;
-    const markup = generatCardMarkup(rating, poster, title, id);
+  for (let i = 0; i < movies.length; i++) {
+    const markup = cardView.generateMarkup(movies[i]);
     newMovies.insertAdjacentHTML("afterbegin", markup);
   }
 };
 
 const loadTopMovies = function (movies) {
-  for (let i = 5; i < 10; i++) {
-    const poster = movies[i].poster_path;
-    const title = movies[i].title;
-    const rating = movies[i].vote_average;
-    const id = movies[i].id;
-    const markup = generatCardMarkup(rating, poster, title, id);
+  for (let i = 0; i < movies.length; i++) {
+    const markup = cardView.generateMarkup(movies[i]);
     topMovies.insertAdjacentHTML("afterbegin", markup);
   }
 };
 
-const generatCardMarkup = function (rating, poster, title, id) {
-  return `
-  <div class="card">
-    <span class="card__rating">
-    <svg class="card__rating-icon">
-      <use href="/src/img/sprite.svg#icon-star-full"></use>
-    </svg>${rating.toFixed(1)}</span>
-    <div class="card__img-box">
-      <a href="movie.html?id=${id}" class="card__link">
-        <img
-          src="https://image.tmdb.org/t/p/w500${poster}"
-          alt="Poster image"
-          class="card__img"
-        />
-      </a>
-    </div>
-    <span class="card__title">${title}</span>
-    <button class="btn btn--filled card__btn">&plus; watchlist</button>
-  </div>`;
+const cycleHeroContent = async function (movies) {
+  const randomNum = randomNumber(movies.length);
+  const movie = movies[randomNum];
+  const date = new Date(movie.release_date);
+  const year = date.getFullYear();
+  movie.year = year;
+
+  const markup = heroView.generateMarkup(movie);
+
+  sectionHero.classList.toggle("u-opacity-none");
+  setTimeout(() => {
+    sectionHero.innerHTML = markup;
+    setTimeout(() => {
+      sectionHero.classList.toggle("u-opacity-none");
+    }, 100);
+  }, 500);
 };
 
 const init = async function () {
@@ -90,6 +55,9 @@ const init = async function () {
   loadHeroContent(newMovies);
   loadNewMovies(newMovies);
   loadTopMovies(topMovies);
+  setInterval(() => {
+    cycleHeroContent(newMovies);
+  }, 6000);
 };
 
 init();

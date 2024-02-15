@@ -1,45 +1,61 @@
 .carousel {
   display: flex;
+  // align-items: baseline;
   gap: 2rem;
   position: relative;
+  overflow-x: scroll;
+  padding: 0 5rem;
+  // height: 50rem;
 
-  &__left,
-  &__right {
-    position: absolute;
-    top: 50%;
+  mask: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 10% 90%,
+    rgba(0, 0, 0, 0)
+  );
 
-    &:focus {
-      outline: none;
+  scrollbar-color: var(--color-secondary-dark) transparent;
+  scrollbar-width: thin;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 
-      .carousel__icon {
-        fill: var(--color-gray-light-3);
-      }
-    }
-  }
+  // &__left,
+  // &__right {
+  //   position: absolute;
+  //   top: 50%;
 
-  &__left {
-    left: 0%;
-    transform: translateX(-100%);
-  }
+  //   &:focus {
+  //     outline: none;
 
-  &__right {
-    right: 0%;
-    transform: translateX(100%);
-  }
+  //     .carousel__icon {
+  //       fill: var(--color-gray-light-3);
+  //     }
+  //   }
+  // }
 
-  &__icon {
-    cursor: pointer;
-    height: 4.8rem;
-    width: 4.8rem;
-    fill: var(--color-gray-dark-2);
+  // &__left {
+  //   left: 0%;
+  //   transform: translateX(-100%);
+  // }
 
-    transition: all 0.2s;
-    stroke-width: 0.3;
+  // &__right {
+  //   right: 0%;
+  //   transform: translateX(100%);
+  // }
 
-    &:hover {
-      fill: var(--color-gray-light-3);
-    }
-  }
+  // &__icon {
+  //   cursor: pointer;
+  //   height: 4.8rem;
+  //   width: 4.8rem;
+  //   fill: var(--color-gray-dark-2);
+
+  //   transition: all 0.2s;
+  //   stroke-width: 0.3;
+
+  //   &:hover {
+  //     fill: var(--color-gray-light-3);
+  //   }
+  // }
 
   &:hover .card:not(:hover) {
     filter: blur(1px) brightness(80%);
