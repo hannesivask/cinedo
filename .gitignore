@@ -119,6 +119,7 @@ Thumbs.db
 *.pem
 *.env
 *.netlify
+.netlify
 
 # --------------------------------------------------------
 # BEGIN Explictly Allowed Files (i.e. do NOT ignore these)

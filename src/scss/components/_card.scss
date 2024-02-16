@@ -3,8 +3,11 @@
   flex-direction: column;
   flex: 1 0 22rem;
 
+  margin: 1rem 0;
+
   background-color: var(--color-black-2);
   border-radius: var(--border-radius-medium);
+  overflow: hidden;
 
   position: relative;
   scroll-snap-align: center;

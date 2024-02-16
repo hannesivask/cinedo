@@ -11,19 +11,23 @@ class HeroView {
         <div class="hero__button-box">
           <button class="btn">
             <svg class="btn__icon">
-              <use href="/src/img/sprite.svg#icon-play"></use>
+              <symbol id="icon-play" viewBox="0 0 20 20">
+                <path d="M4 4l12 6-12 6z"></path>
+              </symbol>
+              <use href="#icon-play" />
             </svg>
           </button>
 
           <button class="btn">
             <svg class="btn__icon">
-              <use href="/src/img/sprite.svg#icon-bookmark-outline"></use>
+              <symbol id="icon-bookmark-outline" viewBox="0 0 20 20">
+                <path d="M2 2c0-1.1 0.9-2 2-2h12c1.105 0 2 0.895 2 2v0 18l-8-4-8 4v-18zM4 2v15l6-3 6 3v-15h-12z"></path>
+              </symbol>
+              <use href="#icon-bookmark-outline" />
             </svg>
           </button>
-        </div>
-        
-        <h1 class="hero-title heading-primary">${movie.title}</h1>
-        <span class="hero-year heading-tertiary">${movie.year}</span>
+        </div>     
+        <h1 class="hero-title heading-primary">${movie.title}  <span class="hero-year heading-tertiary">${movie.year}</span></h1>     
         <p class="hero-summary paragraph">${movie.overview}</p>
       </div>`;
   }

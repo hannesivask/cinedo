@@ -4,7 +4,10 @@ class CardView {
     <div class="card">
       <span class="card__rating">
       <svg class="card__rating-icon">
-        <use href="/src/img/sprite.svg#icon-star-full"></use>
+        <symbol id="icon-star-full" viewBox="0 0 20 20">
+          <path d="M10 15l-5.878 3.090 1.123-6.545-4.756-4.635 6.572-0.955 2.939-5.955 2.939 5.955 6.572 0.955-4.756 4.635 1.123 6.545z"></path>  
+        </symbol>
+        <use href="#icon-star-full"></use>
       </svg>${movie.vote_average.toFixed(1)}</span>
       <div class="card__img-box">
         <a href="movie.html?id=${movie.id}" class="card__link">

@@ -1,12 +1,17 @@
 :root {
   // COLORS
   --color-primary: #f4791f;
-  --color-primary-dark: #334d4d;
-  --color-primary-light: #a3c2c2;
+  --color-primary-dark-medium: #ab5516;
+  --color-primary-dark: #7a3d10;
+  --color-primary-light: #f8af79;
+
+  --color-primary-scrollbar: rgba(244, 121, 31, 0.4);
+  --color-primary-scrollbar-hover: rgba(244, 121, 31, 0.4);
+  --color-primary-scrollbar-active: rgba(244, 121, 31, 0.4);
 
   --color-secondary: #659999;
-  --color-secondary-dark: #7a3d10;
-  --color-secondary-light: #f8af79;
+  --color-secondary-dark: #334d4d;
+  --color-secondary-light: #a3c2c2;
 
   --color-white: #fff;
 

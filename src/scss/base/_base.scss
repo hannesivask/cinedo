@@ -17,3 +17,24 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
 }
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(244, 121, 31, 0.4);
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(244, 121, 31, 0.7);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: rgba(244, 121, 31, 0.5);
+}

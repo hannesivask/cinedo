@@ -1,11 +1,9 @@
 .carousel {
   display: flex;
-  // align-items: baseline;
   gap: 2rem;
   position: relative;
   overflow-x: scroll;
   padding: 0 5rem;
-  // height: 50rem;
 
   mask: linear-gradient(
     to right,
@@ -14,54 +12,20 @@
     rgba(0, 0, 0, 0)
   );
 
-  scrollbar-color: var(--color-secondary-dark) transparent;
-  scrollbar-width: thin;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 
-  // &__left,
-  // &__right {
-  //   position: absolute;
-  //   top: 50%;
-
-  //   &:focus {
-  //     outline: none;
-
-  //     .carousel__icon {
-  //       fill: var(--color-gray-light-3);
-  //     }
-  //   }
-  // }
-
-  // &__left {
-  //   left: 0%;
-  //   transform: translateX(-100%);
-  // }
-
-  // &__right {
-  //   right: 0%;
-  //   transform: translateX(100%);
-  // }
-
-  // &__icon {
-  //   cursor: pointer;
-  //   height: 4.8rem;
-  //   width: 4.8rem;
-  //   fill: var(--color-gray-dark-2);
-
-  //   transition: all 0.2s;
-  //   stroke-width: 0.3;
-
-  //   &:hover {
-  //     fill: var(--color-gray-light-3);
-  //   }
-  // }
+  .carousel::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background: #8070d4;
+    border: 6px solid rgba(0, 0, 0, 0.2);
+  }
 
   &:hover .card:not(:hover) {
     filter: blur(1px) brightness(80%);
   }
 
-  &:focus-within .card:not(:focus-within) {
+  &:focus-visible .card:not(:focus-visible) {
     filter: blur(1px) brightness(80%);
   }
 }

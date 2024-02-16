@@ -45,21 +45,20 @@
   }
 
   &__info-box {
+    display: flex;
+    flex-direction: column;
     max-width: 120rem;
     margin: 0 auto;
     padding: 0 3rem;
   }
 
-  &-title {
-    margin-right: 3rem;
+  &-year {
+    margin-left: 1rem;
   }
 
   &__button-box {
     display: flex;
-    align-self: center;
-
     gap: 3rem;
-    margin-left: auto;
     margin-bottom: 0.8rem;
   }
 }
