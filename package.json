@@ -5,7 +5,9 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "description": "",
   "scripts": {
-    "netlify-dev": "netlify dev"
+    "sass": "sass --no-source-map --style=compressed src/scss:src/css",
+    "netlify-dev": "netlify dev",
+    "build": "npm run-script"
   },
   "author": "",
   "license": "ISC",
