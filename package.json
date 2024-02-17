@@ -7,7 +7,9 @@
   "scripts": {
     "sass": "sass --no-source-map --style=compressed src/scss:src/css",
     "netlify-dev": "netlify dev",
-    "build": "npm run-script"
+    "build": "concurrently \"npm run sass\" \"npm run netlify-dev\"",
+    "netlify-build": "netlify build",
+    "build2": "concurrently \"npm run sass\" \"npm run netlify-build\""
   },
   "author": "",
   "license": "ISC",
