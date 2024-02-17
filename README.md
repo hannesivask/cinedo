@@ -2,6 +2,8 @@
 
 Movie database web application using the TMDb API.
 
+https://cinedo.netlify.app/
+
 ![Sample App Image](./src/img/screenshot.png)
 
 ## Dependencies
@@ -50,6 +52,8 @@ npm run dev
 - Add movies page content and styling for separate movie pages
 - Add search functionality
 - Refine styiling and design
+- Add spinners for loading content
+- Add error handling and error messages
 
 ## Contributors
 
