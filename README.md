@@ -54,6 +54,7 @@ npm run dev
 - Refine styiling and design
 - Add spinners for loading content
 - Add error handling and error messages
+- Add responsive design
 
 ## Contributors
 
