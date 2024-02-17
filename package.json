@@ -5,11 +5,12 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "description": "",
   "scripts": {
-    "sass": "sass --no-source-map --style=compressed src/scss:src/css",
-    "netlify-dev": "netlify dev",
-    "build": "concurrently \"npm run sass\" \"npm run netlify-dev\"",
-    "netlify-build": "netlify build",
-    "build2": "concurrently \"npm run sass\" \"npm run netlify-build\""
+    "sass-dev": "sass --watch --update --style=expanded src/scss:src/css",
+    "sass-prod": "sass --no-source-map --style=compressed src/scss:src/css",
+    "parcel-start": "parcel ./*.html",
+    "parcel-build": "parcel build *.html --no-source-maps",
+    "dev": "concurrently \"npm run sass-dev\" \"netlify dev\"",
+    "build": "concurrently \"npm run sass-prod\" \"npm run parcel-build\""
   },
   "author": "",
   "license": "ISC",
