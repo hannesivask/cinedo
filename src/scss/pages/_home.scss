@@ -1,6 +1,10 @@
 .section-hero {
   margin-bottom: 15rem;
   transition: opacity 0.3s;
+
+  @include respond(tab-port) {
+    margin-bottom: 5rem;
+  }
 }
 
 .section-new {

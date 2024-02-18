@@ -9,6 +9,13 @@
 html {
   font-size: 62.5%;
   box-sizing: border-box;
+
+  @include respond(tab-port) {
+    font-size: 50%;
+  }
+  @include respond(phone) {
+    font-size: 40%;
+  }
 }
 
 body {

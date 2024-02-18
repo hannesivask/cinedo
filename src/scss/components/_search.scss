@@ -16,6 +16,10 @@
   &:focus-within {
     max-width: 50rem;
     box-shadow: var(--box-shadow-medium);
+
+    @include respond(tab-port-min) {
+      max-width: 70rem;
+    }
   }
 
   &__input {

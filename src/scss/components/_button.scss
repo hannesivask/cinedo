@@ -19,6 +19,10 @@
 
   transition: all 0.3s;
 
+  @include respond(phone) {
+    padding: 0.5rem 1rem;
+  }
+
   &:hover,
   &:focus-visible {
     border: 2px solid var(--color-primary);
@@ -41,6 +45,11 @@
     fill: var(--color-gray-dark-3);
 
     transition: all 0.3s;
+
+    @include respond(phone) {
+      height: 2rem;
+      width: 2rem;
+    }
   }
 
   &--filled {

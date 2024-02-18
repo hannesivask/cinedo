@@ -2,6 +2,11 @@
   width: 100%;
   background-color: var(--color-black-2);
   box-shadow: var(--box-shadow-dark);
+  z-index: 10000;
+
+  @include respond(tab-port-min) {
+    padding: 2rem 0;
+  }
 
   &-container {
     display: flex;
@@ -11,11 +16,20 @@
     max-width: 170rem;
     padding: 0 3rem;
     height: 7rem;
+
+    @include respond(tab-port-min) {
+      flex-direction: column;
+      height: auto;
+      gap: 1rem;
+    }
   }
 
   &__logo-box {
-    width: 12rem;
-    filter: brightness(80%);
+    width: 15rem;
+    // filter: brightness(80%);
+    @include respond(tab-port-min) {
+      order: -1;
+    }
   }
 
   &__logo-link:link,
@@ -39,7 +53,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 12rem;
+  width: 15rem;
 
   &__list {
     display: flex;
@@ -73,6 +87,11 @@
     height: 3.2rem;
     fill: var(--color-gray-dark-3);
     transition: all 0.3s;
+
+    @include respond(tab-port-min) {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 
   &__name {
@@ -83,5 +102,9 @@
   &__link:hover &__name {
     fill: var(--color-primary);
     color: var(--color-gray-light-3);
+  }
+
+  @include respond(tab-port-min) {
+    order: -1;
   }
 }
