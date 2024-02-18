@@ -14,7 +14,7 @@
       rel="stylesheet"
     />
 
-    <script defer src="src/js/controller.js" type="module"></script>
+    <script defer src="src/js/indexController.js" type="module"></script>
     <link rel="stylesheet" href="src/css/main.css" />
 
     <title>Cinedo</title>
@@ -33,33 +33,28 @@
           </a>
         </div>
 
-        <form action="#" class="search">
+        <form action="/results.html" class="search" method="GET">
           <input
+            name="search"
             type="text"
             class="search__input"
             placeholder="Search movies"
           />
-          <button class="search__button">
+          <button type="submit" class="search__button">
             <svg class="search__icon">
               <use href="/src/img/sprite.svg#icon-search"></use>
             </svg>
           </button>
 
-          <!-- <ul class="search__results">
-            <li class="search__result">
-              <div class="search__result--img">
-                <img
-                  class="img"
-                  src="https://image.tmdb.org/t/p/w500/nQ1BQg4yMdlYSHvHZgwladzy7EF.jpg"
-                  alt=""
-                />
-              </div>
-              <div class="search__result--text">
+          <ul class="search__results">
+            <!-- GETS POPULATED VIA JS -->
+            <!-- <li class="search__result">
+              <a href="#" class="search__link">
                 <span class="title">The Family plan</span>
                 <span class="year">2013</span>
-              </div>
-            </li>
-          </ul> -->
+              </a>
+            </li> -->
+          </ul>
         </form>
 
         <nav class="nav">
@@ -85,6 +80,7 @@
 
     <main>
       <section class="section-hero">
+        <!-- GETS POPULATED VIA JS -->
         <!-- <a href="#">
           <div class="hero__image-box">
             <img class="hero__image-box--movie" src="#" alt="Backdrop" />
@@ -115,6 +111,7 @@
         <h1 class="heading-secondary u-margin-bottom-small">Now popular</h1>
 
         <div class="new-movies carousel">
+          <!-- GETS POPULATED VIA JS -->
           <!-- <div class="card">
             <span class="card__rating"
               ><svg class="card__rating-icon">
@@ -141,6 +138,7 @@
         <h1 class="heading-secondary u-margin-bottom-small">Top rated</h1>
 
         <div class="top-movies carousel">
+          <!-- GETS POPULATED VIA JS -->
           <!-- <div class="card">
             <span class="card__rating"
               ><svg class="card__rating-icon">

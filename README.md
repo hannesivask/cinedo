@@ -30,7 +30,7 @@ Create a .env file for the API key:
 
 ```
 TMDB_API_KEY=yourApiKey
-TMDB_API_LINK=https://api.themoviedb.org/3/movie
+TMDB_API_LINK=https://api.themoviedb.org/3
 ```
 
 Install npm dependencies
@@ -47,14 +47,18 @@ npm run dev
 
 ## TO-DO
 
-- Add randomizer button functionality
 - Add bookmarks/watchlist functionality with local storage
+- Add randomizer button functionality
 - Add movies page content and styling for separate movie pages
-- Add search functionality
-- Refine styiling and design
 - Add spinners for loading content
 - Add error handling and error messages
 - Add responsive design
+- Add trailer watching ability to hero section
+- Refine styiling and design
+
+## DONE
+
+- Add search functionality
 
 ## Contributors
 
