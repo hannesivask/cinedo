@@ -7,7 +7,8 @@ class SearchView {
 
   addHandlerSearch() {
     this._input.addEventListener("input", async () => {
-      if (!this._input.value || this._input.value === " ") return;
+      if (!this._input.value || this._input.value === " ")
+        this._parentElement.innerHTML = "";
       this._parentElement.innerHTML = "";
 
       // every input triggers new api call - DONE

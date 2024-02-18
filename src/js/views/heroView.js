@@ -1,7 +1,7 @@
 class HeroView {
   generateMarkup(movie) {
     return `
-      <a href="movie.html?id=${movie.id}">
+      <a href="movie.html?id=${movie.id}" class="hero__link">
         <div class="hero__image-box">
           <img class="hero__image-box--movie" src="https://image.tmdb.org/t/p/original${movie.backdrop_path}" alt="${movie.title} Backdrop" />
           <img class="hero__image-box--poster" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title} Poster" />

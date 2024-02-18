@@ -1,4 +1,14 @@
 .hero {
+  &__link:link,
+  &__link:visited {
+    display: block;
+  }
+
+  &__link:active,
+  &__link:focus {
+    outline: 2px solid var(--color-primary-scrollbar);
+  }
+
   &__image-box {
     position: relative;
     display: flex;
@@ -60,5 +70,9 @@
     display: flex;
     gap: 3rem;
     margin-bottom: 0.8rem;
+
+    .btn:focus {
+      outline: none;
+    }
   }
 }

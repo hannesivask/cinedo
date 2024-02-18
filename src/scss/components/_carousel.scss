@@ -25,7 +25,7 @@
     filter: blur(1px) brightness(80%);
   }
 
-  &:focus-visible .card:not(:focus-visible) {
+  &:focus-within .card:not(:focus-within) {
     filter: blur(1px) brightness(80%);
   }
 }

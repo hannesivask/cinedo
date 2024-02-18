@@ -17,6 +17,20 @@
     margin-bottom: 4rem;
   }
 
+  &__logo-link {
+    transition: all 0.3s;
+    &:link,
+    &:visited {
+      display: flex;
+    }
+
+    &:active,
+    &:focus {
+      outline: none;
+      transform: scale(1.05);
+    }
+  }
+
   &__logo {
     width: 100%;
   }
@@ -26,7 +40,17 @@
     gap: 3rem;
     margin-bottom: 4rem;
 
+    &-link:active,
+    &-link:focus-visible {
+      outline: none;
+
+      .footer__navigation-icon {
+        fill: var(--color-primary);
+      }
+    }
+
     &-icon {
+      display: flex;
       width: 3.2rem;
       height: 3.2rem;
       fill: var(--color-gray-dark-3);

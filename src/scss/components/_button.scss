@@ -19,7 +19,8 @@
 
   transition: all 0.3s;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     border: 2px solid var(--color-primary);
     transform: translateY(-0.2rem);
     box-shadow: var(--box-shadow-big);
@@ -49,6 +50,7 @@
 
     &:hover,
     &:focus-visible {
+      outline: none;
       border: none;
       transform: none;
       background-color: var(--color-primary);

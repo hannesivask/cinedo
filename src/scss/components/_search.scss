@@ -70,7 +70,16 @@
     transform: translateY(-0.1rem);
   }
 
+  &:focus-within {
+    .search__results {
+      display: block;
+    }
+  }
+
   &__results {
+    display: none;
+
+    visibility: 0%;
     position: absolute;
     top: 4.6rem;
     left: 0;
@@ -91,12 +100,14 @@
       border-bottom: 1px solid var(--color-gray-dark-2);
     }
 
-    &:has(.search__link:hover) {
+    &:has(.search__link:hover),
+    &:has(.search__link:focus-within) {
       background-color: var(--color-gray-dark-2);
     }
   }
 
-  &__link {
+  &__link:link,
+  &__link:visited {
     display: flex;
     flex: 1 1 100%;
     align-items: baseline;
@@ -123,5 +134,11 @@
       margin-left: auto;
       font-size: 1.4rem;
     }
+  }
+
+  &__link:active,
+  &__link:focus {
+    outline: none;
+    color: var(--color-gray-light-1);
   }
 }
