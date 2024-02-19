@@ -1,4 +1,4 @@
-import { randomNumber, getYear, getMovies, searchMovies } from "../helpers.js";
+import { getYear, searchMovies } from "../helpers.js";
 
 class SearchView {
   _parentElement = document.querySelector(".search__results");

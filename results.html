@@ -22,7 +22,7 @@
 
   <body>
     <header class="header">
-      <div class="header-container">
+      <div class="header__container">
         <div class="header__logo-box">
           <a href="index.html" class="header__logo-link">
             <img
@@ -33,17 +33,28 @@
           </a>
         </div>
 
-        <form action="#" class="search">
+        <form action="/results.html" class="search" method="GET">
           <input
+            name="search"
             type="text"
             class="search__input"
             placeholder="Search movies"
           />
-          <button class="search__button">
+          <button type="submit" class="search__button">
             <svg class="search__icon">
-              <use href="src/img/sprite.svg#icon-search"></use>
+              <use href="/src/img/sprite.svg#icon-search"></use>
             </svg>
           </button>
+
+          <ul class="search__results">
+            <!-- GETS POPULATED VIA JS -->
+            <!-- <li class="search__result">
+              <a href="#" class="search__link">
+                <span class="title">The Family plan</span>
+                <span class="year">2013</span>
+              </a>
+            </li> -->
+          </ul>
         </form>
 
         <nav class="nav">
@@ -68,7 +79,9 @@
     </header>
 
     <main>
-      <section class="section-results"></section>
+      <section class="section-results">
+        <div class="results__grid grid"></div>
+      </section>
     </main>
 
     <footer class="footer">

@@ -1,0 +1,26 @@
+.grid {
+  display: grid;
+  padding: 5rem;
+  width: 100%;
+
+  grid-template-columns: repeat(5, 1fr);
+  // grid-auto-flow: column;
+  grid-template-rows: auto;
+  gap: 3rem;
+
+  // .card {
+  //   width: 20rem;
+  // }
+
+  &:hover .card:not(:hover) {
+    filter: blur(1px) brightness(80%);
+  }
+
+  &:focus-within .card:not(:focus-within) {
+    filter: blur(1px) brightness(80%);
+  }
+}
+
+// .grid:hover {
+//   background-color: white;
+// }
