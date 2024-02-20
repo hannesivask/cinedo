@@ -13,7 +13,6 @@ class SearchView {
 
       // every input triggers new api call - DONE
       const searchResults = await searchMovies(this._input.value);
-      // console.log(searchResults);
 
       searchResults.results.forEach((movie) => {
         movie.year = getYear(movie.release_date);

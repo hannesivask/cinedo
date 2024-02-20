@@ -22,7 +22,6 @@ const init = async function () {
   const searchParams = new URLSearchParams(window.location.search);
   const movieID = searchParams.get("id");
   const movie = await getMovies(movieID);
-  console.log(movie);
 
   loadHeroContent(movie);
   searchView.addHandlerSearch();

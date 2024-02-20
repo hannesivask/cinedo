@@ -46,14 +46,31 @@ const cycleHeroContent = function (movies) {
   }, 500);
 };
 
+const fetchMovies = async function (type) {
+  const newMovies = await getMovies(type);
+  const movieMap = newMovies.results.map((movie) => {
+    return {
+      id: movie.id,
+      title: movie.title,
+      release_date: movie.release_date,
+      overview: movie.overview,
+      vote_average: movie.vote_average,
+      backdrop_path: movie.backdrop_path,
+      poster_path: movie.poster_path,
+    };
+  });
+  return movieMap;
+};
+
 const init = async function () {
-  const newMovies = await getMovies("popular");
-  const topMovies = await getMovies("top_rated");
-  loadHeroContent(newMovies.results);
-  loadNewMovies(newMovies.results);
-  loadTopMovies(topMovies.results);
+  const newMovies = await fetchMovies("popular");
+  const topMovies = await fetchMovies("top_rated");
+
+  loadHeroContent(newMovies);
+  loadNewMovies(newMovies);
+  loadTopMovies(topMovies);
   setInterval(() => {
-    cycleHeroContent(newMovies.results);
+    cycleHeroContent(newMovies);
   }, 6000);
 
   searchView.addHandlerSearch();
