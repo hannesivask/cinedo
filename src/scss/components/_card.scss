@@ -18,8 +18,15 @@
     transform: translateY(-0.7rem);
   }
 
-  &__link:focus-within {
-    outline: none;
+  &__link {
+    &:link,
+    &:visited {
+      display: flex;
+    }
+
+    &:focus-within {
+      outline: none;
+    }
   }
 
   &__img-box {

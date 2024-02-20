@@ -355,6 +355,9 @@ body {
 .card:hover {
   transform: translateY(-0.7rem);
 }
+.card__link:link, .card__link:visited {
+  display: flex;
+}
 .card__link:focus-within {
   outline: none;
 }
@@ -707,9 +710,10 @@ body {
   display: grid;
   padding: 5rem;
   width: 100%;
-  grid-template-columns: repeat(5, 1fr);
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 20rem);
   grid-template-rows: auto;
-  gap: 3rem;
+  gap: 2rem;
 }
 .grid:hover .card:not(:hover) {
   filter: blur(1px) brightness(80%);
