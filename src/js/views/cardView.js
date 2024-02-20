@@ -1,5 +1,26 @@
 class CardView {
-  generateMarkup(movie) {
+  // This needs refactoring TODO
+
+  loadNewMovies(movies) {
+    const newMovies = document.querySelector(".new-movies");
+    for (let i = 0; i < movies.length; i++) {
+      const markup = this._generateMarkup(movies[i]);
+      newMovies.insertAdjacentHTML("afterbegin", markup);
+    }
+  }
+
+  // This needs refactoring with last function TODO
+  // Also need to create a general render function for this TODO
+
+  loadTopMovies(movies) {
+    const topMovies = document.querySelector(".top-movies");
+    for (let i = 0; i < movies.length; i++) {
+      const markup = this._generateMarkup(movies[i]);
+      topMovies.insertAdjacentHTML("afterbegin", markup);
+    }
+  }
+
+  _generateMarkup(movie) {
     return `
     <div class="card">
       <span class="card__rating">

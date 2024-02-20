@@ -1,5 +1,43 @@
+import { randomNumber, getYear } from "../helpers.js";
+
 class HeroView {
-  generateMarkup(movie) {
+  _parentElement = document.querySelector(".section-hero");
+
+  // This needs refactoring TODO
+
+  loadHeroContent(movies) {
+    const randomNum = randomNumber(movies.length);
+    const movie = movies[randomNum];
+
+    const markup = this._generateMarkup(movie);
+    this._parentElement.innerHTML = markup;
+  }
+
+  // This needs refactoring TODO
+
+  loadMovieHeroContent(movie) {
+    const markup = this._generateMarkup(movie);
+    this._parentElement.innerHTML = markup;
+  }
+
+  cycleHeroContent(movies) {
+    setInterval(() => {
+      const randomNum = randomNumber(movies.length);
+      const movie = movies[randomNum];
+
+      const markup = this._generateMarkup(movie);
+
+      this._parentElement.classList.toggle("u-opacity-none");
+      setTimeout(() => {
+        this._parentElement.innerHTML = markup;
+        setTimeout(() => {
+          this._parentElement.classList.toggle("u-opacity-none");
+        }, 100);
+      }, 500);
+    }, 6000);
+  }
+
+  _generateMarkup(movie) {
     return `
       <a href="movie.html?id=${movie.id}" class="hero__link">
         <div class="hero__image-box">

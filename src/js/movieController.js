@@ -1,29 +1,19 @@
-import { randomNumber, getYear, getMovies, searchMovies } from "./helpers.js";
+import * as model from "./model.js";
+
+// import { randomNumber, getYear, getMovies, searchMovies } from "./helpers.js";
 import heroView from "./views/heroView.js";
 import cardView from "./views/cardView.js";
 import searchView from "./views/searchView.js";
 
-const sectionHero = document.querySelector(".section-hero");
-
-const loadHeroContent = function (movie) {
-  movie.year = getYear(movie.release_date);
-  const markup = heroView.generateMarkup(movie);
-  sectionHero.innerHTML = markup;
-};
-
-// const loadNewMovies = function (movies) {
-//   for (let i = 0; i < movies.length; i++) {
-//     const markup = cardView.generateMarkup(movies[i]);
-//     newMovies.insertAdjacentHTML("afterbegin", markup);
-//   }
-// };
+// This needs refactoring and sorting to model or view files TODO
 
 const init = async function () {
   const searchParams = new URLSearchParams(window.location.search);
   const movieID = searchParams.get("id");
-  const movie = await getMovies(movieID);
 
-  loadHeroContent(movie);
+  await model.loadSingleMovie(movieID);
+
+  heroView.loadMovieHeroContent(model.state.movie);
   searchView.addHandlerSearch();
 };
 

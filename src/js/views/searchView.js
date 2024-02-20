@@ -1,9 +1,12 @@
-import { getYear, searchMovies } from "../helpers.js";
+import { getYear } from "../helpers.js";
+import * as model from "../model.js";
 
 class SearchView {
   _parentElement = document.querySelector(".search__results");
 
   _input = document.querySelector(".search__input");
+
+  // This needs refactoring and sorting to model or controller files TODO
 
   addHandlerSearch() {
     this._input.addEventListener("input", async () => {
@@ -12,12 +15,10 @@ class SearchView {
       this._parentElement.innerHTML = "";
 
       // every input triggers new api call - DONE
-      const searchResults = await searchMovies(this._input.value);
+      await model.loadSearchResults(this._input.value);
 
-      searchResults.results.forEach((movie) => {
-        movie.year = getYear(movie.release_date);
-
-        const markup = this.generateMarkup(movie);
+      model.state.search.forEach((movie) => {
+        const markup = this._generateMarkup(movie);
 
         // after api data has been collected then generate markup with results - DONE
         this._parentElement.insertAdjacentHTML("beforeend", markup);
@@ -33,7 +34,7 @@ class SearchView {
     });
   }
 
-  generateMarkup(movie) {
+  _generateMarkup(movie) {
     return `
     <li class="search__result">
       <a href="movie.html?id=${movie.id}" class="search__link">

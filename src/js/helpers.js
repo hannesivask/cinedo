@@ -7,35 +7,18 @@ export const getYear = function (movieDate) {
   return fullDate.getFullYear();
 };
 
-export const getMovies = async function (type) {
+export const AJAX = async function (url) {
   try {
-    const query = `/movie/${type}?language=en-US&page=1`;
-    const result = await fetch(`/.netlify/functions/AJAX?query=${query}`);
-    const resultJSON = await result.json();
-    return resultJSON;
-  } catch (err) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        message: `Failed to fetch. ${err}`,
-      }),
-    };
-  }
-};
+    const fetchPro = await fetch(`/.netlify/functions/AJAX?query=${url}`);
 
-export const searchMovies = async function (searchInput) {
-  try {
-    const query = `/search/movie?query=${searchInput}&include_adult=false&language=en-US&page=1`;
+    // Need to add a timeout function for API calls TODO
 
-    const result = await fetch(`/.netlify/functions/AJAX?query=${query}`);
-    const resultJSON = await result.json();
-    return resultJSON;
+    // const res = await Promise.race([fetch, timeout(10)])
+    const data = fetchPro.json();
+
+    // if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+    return data;
   } catch (err) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        message: `Failed to fetch. ${err}`,
-      }),
-    };
+    throw err;
   }
 };
