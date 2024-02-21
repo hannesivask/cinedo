@@ -27,9 +27,14 @@ export const loadMovies = async function (query) {
       return createMovieObject(movie);
     });
 
+    results.forEach(async (res) => {
+      res.trailer = await loadMovieTrailer(res.id);
+    });
+
     query === "popular"
       ? (state.newMovies = results)
       : (state.topMovies = results);
+
     return results;
   } catch (err) {
     console.error(`${err}: Movies did not load`);
@@ -44,6 +49,7 @@ export const loadSingleMovie = async function (query) {
     const data = await AJAX(`/movie/${query}?language=en-US&page=1`);
     state.movie = createMovieObject(data);
 
+    state.movie.trailer = await loadMovieTrailer(state.movie.id);
     return data;
   } catch (err) {
     console.error(`${err}: Movies did not load`);
@@ -64,6 +70,20 @@ export const loadSearchResults = async function (searchInput) {
     return results;
   } catch (err) {
     console.error(`${err}: Search results did not load`);
+    throw err;
+  }
+};
+
+export const loadMovieTrailer = async function (id) {
+  try {
+    const data = await AJAX(`/movie/${id}/videos?language=en-US`);
+    const result = data.results.find((movie) => {
+      return movie.type === "Trailer";
+    });
+
+    return `https://www.youtube.com/watch?v=` + result.key;
+  } catch (err) {
+    console.error(`${err}: Movie trailer did not load`);
     throw err;
   }
 };

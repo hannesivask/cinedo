@@ -47,14 +47,14 @@ class HeroView {
       </a>
       <div class="hero__info-box">
         <div class="hero__button-box">
-          <button class="btn">
+          <a href="${movie.trailer}" target="_blank" class="btn" aria-label="Open youtube link for trailer">
             <svg class="btn__icon">
               <symbol id="icon-play" viewBox="0 0 20 20">
                 <path d="M4 4l12 6-12 6z"></path>
               </symbol>
               <use href="#icon-play" />
             </svg>
-          </button>
+          </a>
 
           <button class="btn">
             <svg class="btn__icon">

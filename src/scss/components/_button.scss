@@ -65,4 +65,32 @@
       background-color: var(--color-primary);
     }
   }
+
+  &--nav {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s;
+    color: inherit;
+    font-size: 1.6rem;
+    font-weight: 600;
+    background-color: transparent;
+    border: none;
+
+    .nav__icon {
+      fill: var(--color-gray-dark-3);
+      transform: translateY(-0.1rem);
+    }
+
+    &:hover,
+    &:focus-visible {
+      outline: none;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(1);
+    }
+  }
 }

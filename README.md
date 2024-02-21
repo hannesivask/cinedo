@@ -55,6 +55,7 @@ npm run dev
 - Add responsive design
 - Add trailer watching ability to hero section
 - Refine styiling and design
+- If selected search item is not a movie, then change API call for movie.html
 
 ## DONE
 

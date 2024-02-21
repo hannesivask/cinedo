@@ -55,31 +55,14 @@
   justify-content: center;
   width: 15rem;
 
+  &__item {
+    position: relative;
+  }
+
   &__list {
     display: flex;
     list-style: none;
     gap: 4rem;
-  }
-
-  &__link:link,
-  &__link:visited {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    transition: all 0.3s;
-    color: inherit;
-    font-size: 1.6rem;
-    font-weight: 600;
-  }
-
-  &__link:active,
-  &__link:focus {
-    outline: none;
-
-    .nav__icon {
-      fill: var(--color-gray-light-3);
-      transform: translateY(-0.1rem);
-    }
   }
 
   &__icon {
@@ -98,8 +81,9 @@
     transition: all 0.3s;
   }
 
-  &__link:hover &__icon,
-  &__link:hover &__name {
+  .btn--nav:hover &__icon,
+  .btn--nav:focus-visible &__icon,
+  .btn--nav:hover &__name {
     fill: var(--color-primary);
     color: var(--color-gray-light-3);
   }

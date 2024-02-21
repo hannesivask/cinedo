@@ -60,18 +60,44 @@
         <nav class="nav">
           <ul class="nav__list">
             <li class="nav__item">
-              <a href="#" class="nav__link">
+              <button class="btn--nav btn--random">
                 <svg class="nav__icon">
                   <use href="/src/img/sprite.svg#icon-shuffle"></use>
                 </svg>
-              </a>
+              </button>
+
+              <div class="filter u-hidden">
+                <form action="" class="filter__form">
+                  <!-- <label for="#year" class="filter__label">Year</label> -->
+                  <input
+                    name="year"
+                    id="year"
+                    type="text"
+                    class="filter__input"
+                    placeholder="Year"
+                  />
+                  <!-- <label for="#Genre" class="filter__label">Genre</label> -->
+                  <select id="Genre" class="filter__input">
+                    <option value="select">Select a genre</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Action">Action</option>
+                  </select>
+                  <!-- <input id="year" type="" /> <label for="#year">Year</label> -->
+                  <button type="submit" class="filter__button btn--randomize">
+                    <svg class="filter__icon">
+                      <use href="/src/img/sprite.svg#icon-shuffle"></use>
+                    </svg>
+                  </button>
+                </form>
+              </div>
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link">
+              <button class="btn--nav">
                 <svg class="nav__icon">
                   <use href="/src/img/sprite.svg#icon-bookmark"></use>
                 </svg>
-              </a>
+              </button>
             </li>
           </ul>
         </nav>
