@@ -21,6 +21,7 @@ const init = async function () {
 
   // Testing functionality
   randomButton();
+  random();
 };
 
 init();
@@ -32,6 +33,26 @@ const randomButton = function () {
 
   btn.addEventListener("click", function () {
     filter.classList.toggle("u-hidden");
-    console.log(filter.classList);
+  });
+};
+
+const randomizer = document.querySelector(".btn--randomize");
+const formInputs = document.querySelectorAll(".filter__input");
+
+const random = function () {
+  randomizer.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const formData = {};
+    Array.from(formInputs).forEach((el) => {
+      el.id === "year"
+        ? (formData.year = el.value)
+        : (formData.genreName = el.value);
+    });
+
+    await model.loadMovieGenreID(formData);
+    console.log(formData);
+    await model.loadRandomMovie(formData);
+
+    console.log(state);
   });
 };

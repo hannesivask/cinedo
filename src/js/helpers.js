@@ -14,7 +14,7 @@ export const AJAX = async function (url) {
     // Need to add a timeout function for API calls TODO
 
     // const res = await Promise.race([fetch, timeout(10)])
-    const data = fetchPro.json();
+    const data = await fetchPro.json();
 
     // if (!res.ok) throw new Error(`${data.message} (${res.status})`);
     return data;
