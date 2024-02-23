@@ -42,17 +42,13 @@ const formInputs = document.querySelectorAll(".filter__input");
 const random = function () {
   randomizer.addEventListener("click", async (e) => {
     e.preventDefault();
-    const formData = {};
-    Array.from(formInputs).forEach((el) => {
-      el.id === "year"
-        ? (formData.year = el.value)
-        : (formData.genreName = el.value);
-    });
+    const data = Array.from(formInputs).map((el) => el.value);
+
+    const formData = { year: data[0], genreName: data[1] };
 
     await model.loadMovieGenreID(formData);
-    console.log(formData);
-    await model.loadRandomMovie(formData);
 
-    console.log(state);
+    await model.loadRandomMovie(formData);
+    window.location.href = `../../movie.html?id=${model.state.movie.id}`;
   });
 };

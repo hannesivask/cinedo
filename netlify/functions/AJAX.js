@@ -13,7 +13,6 @@ const options = {
 exports.handler = async function (event, context) {
   try {
     const query = event.queryStringParameters.query;
-
     const response = await fetch(
       `${process.env.TMDB_API_LINK}${query}`,
       options

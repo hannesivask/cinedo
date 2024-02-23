@@ -47,9 +47,17 @@ export const loadMovies = async function (query) {
 export const loadSingleMovie = async function (query) {
   try {
     const data = await AJAX(`/movie/${query}?language=en-US&page=1`);
+    console.log(data);
     state.movie = createMovieObject(data);
+    console.log(state.movie);
 
-    state.movie.trailer = await loadMovieTrailer(state.movie.id);
+    try {
+      state.movie.trailer = await loadMovieTrailer(state.movie.id);
+    } catch (error) {
+      state.movie.trailer = "none";
+    }
+
+    console.log(state.movie.trailer);
     return data;
   } catch (err) {
     console.error(`${err}: Movies did not load`);
@@ -62,9 +70,9 @@ export const loadSearchResults = async function (searchInput) {
     const data = await AJAX(
       `/search/movie?query=${searchInput}&include_adult=false&language=en-US&page=1`
     );
-    const results = data.results.map((result) => {
-      return createMovieObject(result);
-    });
+
+    console.log(data);
+    const results = data.results.map((result) => createMovieObject(result));
 
     state.search = results;
     return results;
@@ -90,17 +98,17 @@ export const loadMovieTrailer = async function (id) {
 
 export const loadRandomMovie = async function (query) {
   try {
-    const page = randomNumber(32);
+    const page = randomNumber(1000);
+    // For some reason API call returns popular movies not discover
     const data = await AJAX(
-      `/discover/movie?include_adult=false&include_video=false&language=en-US&page=2&primary_release_year=${query.year}&sort_by=popularity.desc&with_genres=${query.genreID}`
+      `/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&primary_release_year=${query.year}&with_genres=${query.genreID}`
     );
 
+    // console.log(data);
     const select = randomNumber(data.results.length);
-
     state.movie = createMovieObject(data.results[select]);
 
     state.movie.trailer = await loadMovieTrailer(state.movie.id);
-
     return data;
   } catch (err) {
     console.error(`${err}: Movies did not load`);

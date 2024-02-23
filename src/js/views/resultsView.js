@@ -13,6 +13,8 @@ class ResultsView {
 
     model.state.search.forEach((movie) => {
       if (!movie.poster_path) return;
+      // if (movie.)
+      console.log(movie);
       const markup = cardView._generateMarkup(movie);
       this._parentElement.insertAdjacentHTML("beforeend", markup);
     });
