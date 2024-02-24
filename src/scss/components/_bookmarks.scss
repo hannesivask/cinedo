@@ -1,0 +1,56 @@
+.bookmarks {
+  &__list {
+    list-style: none;
+    position: absolute;
+    top: 5rem;
+    right: 0;
+    background-color: var(--color-black-2);
+    width: 40rem;
+    border: 1px solid var(--color-gray-dark-1);
+    max-height: 50rem;
+    overflow-y: scroll;
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+    }
+
+    display: flex;
+    padding: 1rem;
+    width: 100%;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--color-gray-dark-2);
+    }
+
+    &:hover {
+      background-color: var(--color-gray-dark-1);
+    }
+  }
+
+  &__img {
+    width: 10%;
+    object-fit: cover;
+  }
+
+  &__text {
+    margin-left: 1rem;
+    max-width: 90%;
+  }
+
+  &__title {
+    width: 100%;
+    font-size: 1.6rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__year {
+    font-size: 1.6rem;
+  }
+}
