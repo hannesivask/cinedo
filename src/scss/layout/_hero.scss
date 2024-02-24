@@ -132,16 +132,22 @@
     @include respond(phone) {
       display: inline-block;
       font-size: 4rem;
+      transition: opacity 0.3s;
     }
   }
 
   &-year {
     margin-left: 1rem;
+    transition: opacity 0.3s;
 
     @include respond(phone) {
       font-size: 2rem;
       display: none;
     }
+  }
+
+  &-summary {
+    transition: opacity 0.3s;
   }
 
   &__button-box {

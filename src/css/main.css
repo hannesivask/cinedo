@@ -756,16 +756,21 @@ body {
   .hero-title {
     display: inline-block;
     font-size: 4rem;
+    transition: opacity 0.3s;
   }
 }
 .hero-year {
   margin-left: 1rem;
+  transition: opacity 0.3s;
 }
 @media only screen and (max-width: 43.75em) {
   .hero-year {
     font-size: 2rem;
     display: none;
   }
+}
+.hero-summary {
+  transition: opacity 0.3s;
 }
 .hero__button-box {
   display: flex;

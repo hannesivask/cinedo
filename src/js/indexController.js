@@ -26,13 +26,22 @@ const init = async function () {
 
 init();
 
-// Testing functionality
+/// Randomizer - need to refactor to heroView.js TODO
+
 const randomButton = function () {
   const btn = document.querySelector(".btn--random");
   const filter = document.querySelector(".filter");
 
   btn.addEventListener("click", function () {
     filter.classList.toggle("u-hidden");
+
+    window.addEventListener("click", ({ target }) => {
+      const randomizerFilter = document.querySelector(".filter");
+      const isBtnRandom = target.closest(".btn--random");
+      const isRandomizerFilter = target.closest(".filter");
+      if (!isRandomizerFilter && target !== randomizerFilter && !isBtnRandom)
+        randomizerFilter.classList.add("u-hidden");
+    });
   });
 };
 
@@ -52,3 +61,27 @@ const random = function () {
     window.location.href = `../../movie.html?id=${model.state.movie.id}`;
   });
 };
+
+/// Bookmark button for HERO - need to refactor to heroView.js TODO
+
+const btnBookmarkEl = document.querySelector(".btn-bookmark");
+const bookmarkIconEl = document.querySelector(".bookmark-icon");
+
+btnBookmarkEl.addEventListener("click", () => {
+  if (bookmarkIconEl.href.baseVal.slice(-8) === "-outline") {
+    const iconFilled = bookmarkIconEl.href.baseVal.substring(0, 34);
+    bookmarkIconEl.setAttribute("href", iconFilled);
+
+    if (!model.state.bookmarks.includes(btnBookmarkEl.dataset.id))
+      model.state.bookmarks.push(btnBookmarkEl.dataset.id);
+  } else {
+    const iconOutline = bookmarkIconEl.href.baseVal + "-outline";
+    bookmarkIconEl.setAttribute("href", iconOutline);
+
+    if (model.state.bookmarks.includes(btnBookmarkEl.dataset.id)) {
+      model.state.bookmarks = model.state.bookmarks.filter(
+        (el) => el !== btnBookmarkEl.dataset.id
+      );
+    }
+  }
+});

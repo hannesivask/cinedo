@@ -60,7 +60,7 @@
         <nav class="nav">
           <ul class="nav__list">
             <li class="nav__item">
-              <button class="btn--nav btn--random">
+              <button class="nav__btn btn--nav btn--random">
                 <svg class="nav__icon">
                   <use href="/src/img/sprite.svg#icon-shuffle"></use>
                 </svg>
@@ -98,7 +98,7 @@
               </div>
             </li>
             <li class="nav__item">
-              <button class="btn--nav">
+              <button class="nav__btn btn--nav btn-bookmark-list">
                 <svg class="nav__icon">
                   <use href="/src/img/sprite.svg#icon-bookmark"></use>
                 </svg>
@@ -126,21 +126,16 @@
               aria-label="Open youtube link for trailer"
             >
               <svg class="btn__icon">
-                <symbol id="icon-play" viewBox="0 0 20 20">
-                  <path d="M4 4l12 6-12 6z"></path>
-                </symbol>
-                <use href="#icon-play" />
+                <use href="/src/img/sprite.svg#icon-play"></use>
               </svg>
             </a>
 
-            <button class="btn">
+            <button data-id="#" class="btn btn-bookmark">
               <svg class="btn__icon">
-                <symbol id="icon-bookmark-outline" viewBox="0 0 20 20">
-                  <path
-                    d="M2 2c0-1.1 0.9-2 2-2h12c1.105 0 2 0.895 2 2v0 18l-8-4-8 4v-18zM4 2v15l6-3 6 3v-15h-12z"
-                  ></path>
-                </symbol>
-                <use href="#icon-bookmark-outline" />
+                <use
+                  class="bookmark-icon"
+                  href="/src/img/sprite.svg#icon-bookmark-outline"
+                ></use>
               </svg>
             </button>
           </div>

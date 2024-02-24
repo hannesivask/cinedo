@@ -5,6 +5,7 @@ export const state = {
   newMovies: {},
   topMovies: {},
   search: {},
+  bookmarks: [],
 };
 
 const createMovieObject = function (movie) {
