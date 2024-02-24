@@ -1,12 +1,47 @@
+import * as model from "../model";
+
 class CardView {
   // This needs refactoring TODO
 
   loadNewMovies(movies) {
     const newMovies = document.querySelector(".new-movies");
-    for (let i = 0; i < movies.length; i++) {
-      const markup = this._generateMarkup(movies[i]);
-      newMovies.insertAdjacentHTML("afterbegin", markup);
-    }
+    this._loadCardContent(movies, newMovies);
+  }
+
+  _loadCardContent(movies, elHTML) {
+    movies.forEach((movie) => {
+      const markup = this._generateMarkup(movie);
+      elHTML.insertAdjacentHTML("afterbegin", markup);
+
+      const btnBookmarkCardEl = document.querySelector(".card__btn");
+
+      if (model.state.bookmarks.includes(`${movie.id}`)) {
+        btnBookmarkCardEl.textContent = "✓ watchlist";
+        btnBookmarkCardEl.classList.toggle("u-bookmarked");
+      }
+
+      // WATCHLIST BUTTON FUNCTIONALITY NEEDS REFACTORING - TODO
+
+      btnBookmarkCardEl.addEventListener("click", () => {
+        // console.log(btnBookmarkCardEl.dataset.id);
+
+        if (!model.state.bookmarks.includes(btnBookmarkCardEl.dataset.id)) {
+          btnBookmarkCardEl.textContent = "✓ watchlist";
+          btnBookmarkCardEl.classList.toggle("u-bookmarked");
+
+          model.state.bookmarks.push(btnBookmarkCardEl.dataset.id);
+          model.persistBookmarks();
+        } else {
+          btnBookmarkCardEl.textContent = "+ watchlist";
+          btnBookmarkCardEl.classList.toggle("u-bookmarked");
+
+          model.state.bookmarks = model.state.bookmarks.filter(
+            (el) => el !== btnBookmarkCardEl.dataset.id
+          );
+          model.persistBookmarks();
+        }
+      });
+    });
   }
 
   // This needs refactoring with last function TODO
@@ -14,10 +49,7 @@ class CardView {
 
   loadTopMovies(movies) {
     const topMovies = document.querySelector(".top-movies");
-    for (let i = 0; i < movies.length; i++) {
-      const markup = this._generateMarkup(movies[i]);
-      topMovies.insertAdjacentHTML("afterbegin", markup);
-    }
+    this._loadCardContent(movies, topMovies); // This does not work for these cards for some reason TODO
   }
 
   _generateMarkup(movie) {
@@ -40,7 +72,9 @@ class CardView {
         </a>
       </div>
       <span class="card__title">${movie.title}</span>
-      <button class="btn btn--filled card__btn">&plus; watchlist</button>
+      <button data-id="${
+        movie.id
+      }" class="btn btn--filled card__btn">&plus; watchlist</button>
     </div>`;
   }
 }

@@ -98,14 +98,14 @@
               </div>
             </li>
             <li class="nav__item">
-              <button class="nav__btn btn--nav btn-bookmark-list">
+              <button class="nav__btn btn--nav btn-bookmarks">
                 <svg class="nav__icon">
                   <use href="/src/img/sprite.svg#icon-bookmark"></use>
                 </svg>
               </button>
 
               <ul class="bookmarks__list u-hidden">
-                <li class="bookmarks__item">
+                <!-- <li class="bookmarks__item">
                   <a href="#" class="bookmarks__link">
                     <img
                       src="https://image.tmdb.org/t/p/w200/46sp1Z9b2PPTgCMyA87g9aTLUXi.jpg"
@@ -119,22 +119,28 @@
                       <p class="bookmarks__year">2023</p>
                     </div>
                   </a>
-                </li>
-                <li class="bookmarks__item">
-                  <a href="#" class="bookmarks__link">
+                  <button data-id="#" class="bookmarks__btn-remove">
+                    <svg class="bookmarks__icon">
+                      <use href="/src/img/sprite.svg#icon-close-outline"></use>
+                    </svg>
+                  </button>
+                </li> -->
+
+                <!-- <li class="bookmarks__item">
+                  <a href="movie.html?id=${movie.id}" class="bookmarks__link">
                     <img
-                      src="https://image.tmdb.org/t/p/w200/46sp1Z9b2PPTgCMyA87g9aTLUXi.jpg"
-                      alt="Image"
+                      src="https://image.tmdb.org/t/p/w200/${movie.poster_path}"
+                      alt="${movie.title} Poster"
                       class="bookmarks__img"
                     />
                     <div class="bookmarks__text">
                       <h3 class="bookmarks__title">
-                        The Hunger Games: The Ballad of Songbirds & Snakes
+                       ${movie.title}
                       </h3>
-                      <p class="bookmarks__year">2023</p>
+                      <p class="bookmarks__year">${movie.release_date}</p>
                     </div>
                   </a>
-                </li>
+                </li> -->
               </ul>
             </li>
           </ul>

@@ -48,9 +48,9 @@ export const loadMovies = async function (query) {
 export const loadSingleMovie = async function (query) {
   try {
     const data = await AJAX(`/movie/${query}?language=en-US&page=1`);
-    console.log(data);
+    // console.log(data);
     state.movie = createMovieObject(data);
-    console.log(state.movie);
+    // console.log(state.movie);
 
     try {
       state.movie.trailer = await loadMovieTrailer(state.movie.id);
@@ -58,7 +58,7 @@ export const loadSingleMovie = async function (query) {
       state.movie.trailer = "none";
     }
 
-    console.log(state.movie.trailer);
+    // console.log(state.movie.trailer);
     return data;
   } catch (err) {
     console.error(`${err}: Movies did not load`);
@@ -132,3 +132,19 @@ export const loadMovieGenreID = async function (formData) {
     throw err;
   }
 };
+
+export const persistBookmarks = function () {
+  localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
+};
+
+const init = function () {
+  const storage = localStorage.getItem("bookmarks");
+  if (storage) state.bookmarks = JSON.parse(storage);
+};
+init();
+
+const clearBookmarks = function () {
+  localStorage.clear("bookmarks");
+};
+
+// clearBookmarks();
