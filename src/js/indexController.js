@@ -5,64 +5,59 @@ import heroView from "./views/heroView.js";
 import cardView from "./views/cardView.js";
 import searchView from "./views/searchView.js";
 import bookmarkView from "./views/bookmarkView.js";
+import randomizerView from "./views/randomizerView.js";
 
 // This needs refactoring and sorting to model or view files TODO
 
-const init = async function () {
+const controlHeroContent = async function () {
   await model.loadMovies("popular");
-  await model.loadMovies("top_rated");
-  // console.log(model.state);
 
   heroView.loadHeroContent(model.state.newMovies);
   heroView.cycleHeroContent(model.state.newMovies);
+};
+
+const controlCards = async function () {
+  await model.loadMovies("popular");
+  await model.loadMovies("top_rated");
+
   cardView.loadNewMovies(model.state.newMovies);
   cardView.loadTopMovies(model.state.topMovies);
+};
 
-  searchView.addHandlerSearch();
+const controlSearchResults = async function () {
+  const query = searchView.getQuery();
+  if (!query) return;
 
-  // Testing functionality
-  randomButton();
-  random();
-  bookmarkButton();
+  await model.loadSearchResults(query);
+
+  searchView.renderSearchResults(model.state.search);
+};
+
+const init = function () {
+  heroView.addHandlerRender(controlHeroContent);
+  cardView.addHandlerRender(controlCards);
+  searchView.addHandlerSearch(controlSearchResults);
+
+  //
+
+  // window.addEventListener("click", ({ target }) => {
+  //   const isBtnRandom = target.closest(".btn--random");
+  //   const isRandomizerFilter = target.closest(".filter");
+  //   if (
+  //     !isRandomizerFilter &&
+  //     target !== randomizerView._parentElement &&
+  //     !isBtnRandom
+  //   ) {
+  //     randomizerView._parentElement.classList.add("u-hidden");
+  //   } else {
+  //     randomizerView._parentElement.classList.toggle("u-hidden");
+  //   }
+  // });
+
+  // bookmarkView.bookmarkButton();
 };
 
 init();
-
-/// Randomizer - need to refactor to heroView.js TODO
-
-const randomButton = function () {
-  const btn = document.querySelector(".btn--random");
-  const filter = document.querySelector(".filter");
-
-  btn.addEventListener("click", function () {
-    filter.classList.toggle("u-hidden");
-
-    window.addEventListener("click", ({ target }) => {
-      const randomizerFilter = document.querySelector(".filter");
-      const isBtnRandom = target.closest(".btn--random");
-      const isRandomizerFilter = target.closest(".filter");
-      if (!isRandomizerFilter && target !== randomizerFilter && !isBtnRandom)
-        randomizerFilter.classList.add("u-hidden");
-    });
-  });
-};
-
-const randomizer = document.querySelector(".btn--randomize");
-const formInputs = document.querySelectorAll(".filter__input");
-
-const random = function () {
-  randomizer.addEventListener("click", async (e) => {
-    e.preventDefault();
-    const data = Array.from(formInputs).map((el) => el.value);
-
-    const formData = { year: data[0], genreName: data[1] };
-
-    await model.loadMovieGenreID(formData);
-
-    await model.loadRandomMovie(formData);
-    window.location.href = `../../movie.html?id=${model.state.movie.id}`;
-  });
-};
 
 /// Bookmark button for HERO - need to refactor to bookmarkView.js TODO
 
@@ -90,37 +85,3 @@ btnBookmarkEl.addEventListener("click", () => {
     }
   }
 });
-
-/// Bookmark list - need to refactor to bookmarkView.js TODO
-
-const bookmarkButton = function () {
-  const btn = document.querySelector(".btn-bookmarks");
-  const bookmarksListEl = document.querySelector(".bookmarks__list");
-
-  btn.addEventListener("click", function () {
-    bookmarksListEl.classList.toggle("u-hidden");
-    if (bookmarksListEl.classList.contains("u-hidden")) return;
-
-    bookmarkView.loadBookmarks();
-
-    window.addEventListener("click", ({ target }) => {
-      const bookmarksList = document.querySelector(".bookmarks__list");
-      const isBtnBookmarks = target.closest(".btn-bookmarks");
-      const isBookmarksList = target.closest(".bookmarks__list");
-      if (!isBookmarksList && target !== bookmarksList && !isBtnBookmarks)
-        bookmarksList.classList.add("u-hidden");
-    });
-  });
-};
-
-window.addEventListener("click", ({ target }) => {
-  const randomizerFilter = document.querySelector(".filter");
-  const isBtnRandom = target.closest(".btn--random");
-  const isRandomizerFilter = target.closest(".filter");
-  if (!isRandomizerFilter && target !== randomizerFilter && !isBtnRandom)
-    randomizerFilter.classList.add("u-hidden");
-});
-
-// window.addEventListener("click", ({ target }) => {
-//   console.log(target);
-// });

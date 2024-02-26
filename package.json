@@ -17,7 +17,7 @@
   "devDependencies": {
     "concurrently": "^8.2.2",
     "dotenv": "^16.4.4",
-    "netlify-cli": "^17.16.2",
+    "netlify-cli": "^17.17.0",
     "netlify-lambda": "^2.0.16",
     "parcel": "^2.11.0",
     "sass": "^1.71.0",

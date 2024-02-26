@@ -3,6 +3,10 @@ import * as model from "../model";
 class CardView {
   // This needs refactoring TODO
 
+  addHandlerRender(handler) {
+    window.addEventListener("load", handler);
+  }
+
   loadNewMovies(movies) {
     const newMovies = document.querySelector(".new-movies");
     this._loadCardContent(movies, newMovies);

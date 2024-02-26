@@ -15,6 +15,10 @@ class HeroView {
   _summaryEl = document.querySelector(".hero-summary");
   _btnBookmarkEl = document.querySelector(".btn-bookmark");
 
+  addHandlerRender(handler) {
+    window.addEventListener("load", handler);
+  }
+
   loadHeroContent(movies) {
     const randomNum = randomNumber(movies.length);
     const movie = movies[randomNum];

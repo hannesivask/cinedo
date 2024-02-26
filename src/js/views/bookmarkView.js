@@ -4,6 +4,26 @@ class BookmarkView {
   _parentElement = document.querySelector(".bookmarks__list");
   // This needs refactoring TODO
 
+  bookmarkButton() {
+    const btn = document.querySelector(".btn-bookmarks");
+    const bookmarksListEl = document.querySelector(".bookmarks__list");
+
+    btn.addEventListener("click", function () {
+      bookmarksListEl.classList.toggle("u-hidden");
+      if (bookmarksListEl.classList.contains("u-hidden")) return;
+
+      this.loadBookmarks;
+
+      window.addEventListener("click", ({ target }) => {
+        const bookmarksList = document.querySelector(".bookmarks__list");
+        const isBtnBookmarks = target.closest(".btn-bookmarks");
+        const isBookmarksList = target.closest(".bookmarks__list");
+        if (!isBookmarksList && target !== bookmarksList && !isBtnBookmarks)
+          bookmarksList.classList.add("u-hidden");
+      });
+    });
+  }
+
   loadBookmarks() {
     const bookmarks = model.state.bookmarks;
     // this.removeBookmark();

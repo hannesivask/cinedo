@@ -1,37 +1,38 @@
-import { getYear } from "../helpers.js";
-import * as model from "../model.js";
-
 class SearchView {
-  _parentElement = document.querySelector(".search__results");
+  _parentElement = document.querySelector(".search");
 
-  _input = document.querySelector(".search__input");
-
-  // This needs refactoring and sorting to model or controller files TODO
-
-  addHandlerSearch() {
-    this._input.addEventListener("input", async () => {
-      if (!this._input.value || this._input.value === " ")
-        this._parentElement.innerHTML = "";
-      this._parentElement.innerHTML = "";
-
-      // every input triggers new api call - DONE
-      await model.loadSearchResults(this._input.value);
-
-      model.state.search.forEach((movie) => {
-        const markup = this._generateMarkup(movie);
-
-        // after api data has been collected then generate markup with results - DONE
-        this._parentElement.insertAdjacentHTML("beforeend", markup);
-      });
-
-      // if new event happens then last api call is cancelled - TODO
-
-      // Add error handling - TODO
-
-      // Add render error - TODO
-
-      // Render spinner while api call not resolved - TODO
+  addHandlerSearch(handler) {
+    this._parentElement.addEventListener("input", (e) => {
+      e.preventDefault();
+      handler();
     });
+  }
+
+  getQuery() {
+    const query = this._parentElement.querySelector(".search__input").value;
+    this._clearList();
+    return query;
+  }
+
+  _clearList() {
+    this._parentElement.querySelector(".search__results").innerHTML = "";
+  }
+
+  render(movie) {
+    const markup = this._generateMarkup(movie);
+    this._parentElement
+      .querySelector(".search__results")
+      .insertAdjacentHTML("beforeend", markup);
+  }
+
+  renderSearchResults(results) {
+    results.forEach((result) => {
+      this.render(result);
+    });
+    // if new event happens then last api call is cancelled - TODO
+    // Add error handling - TODO
+    // Add render error - TODO
+    // Render spinner while api call not resolved - TODO
   }
 
   _generateMarkup(movie) {
