@@ -3,10 +3,11 @@ import * as model from "./model.js";
 import { randomNumber } from "./helpers.js";
 // import { getMovies } from "./helpers.js";
 import heroView from "./views/heroView.js";
-import cardView from "./views/cardView.js";
+// import cardView from "./views/scrollerView.js";
 import searchView from "./views/searchView.js";
 import bookmarkView from "./views/bookmarkView.js";
 import randomizerView from "./views/randomizerView.js";
+import scrollerView from "./views/scrollerView.js";
 
 // This needs refactoring and sorting to model or view files TODO
 
@@ -33,12 +34,12 @@ const cycleHeroContent = async function () {
   }, CYCLE_TIME);
 };
 
-const controlCards = async function () {
+const controlScroller = async function () {
   await model.loadMovies("popular");
-  await model.loadMovies("top_rated");
+  scrollerView.loadScroller(model.state.newMovies, "popular");
 
-  cardView.loadNewMovies(model.state.newMovies);
-  cardView.loadTopMovies(model.state.topMovies);
+  await model.loadMovies("top_rated");
+  scrollerView.loadScroller(model.state.topMovies, "top");
 };
 
 const controlSearchResults = async function () {
@@ -53,7 +54,7 @@ const controlSearchResults = async function () {
 const init = function () {
   heroView.addHandlerRender(controlHeroContent);
   heroView.addHandlerCycle(cycleHeroContent);
-  cardView.addHandlerRender(controlCards);
+  scrollerView.addHandlerRender(controlScroller);
   searchView.addHandlerSearch(controlSearchResults);
 
   //

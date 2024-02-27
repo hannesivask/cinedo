@@ -1,6 +1,6 @@
 import * as model from "../model.js";
 
-import cardView from "./cardView.js";
+import scrollerView from "./scrollerView.js";
 
 class ResultsView {
   _parentElement = document.querySelector(".results__grid");
@@ -15,7 +15,7 @@ class ResultsView {
       if (!movie.poster_path) return;
       // if (movie.)
       console.log(movie);
-      const markup = cardView._generateMarkup(movie);
+      const markup = scrollerView._generateMarkup(movie);
       this._parentElement.insertAdjacentHTML("beforeend", markup);
     });
   }

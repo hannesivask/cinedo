@@ -345,7 +345,7 @@ body {
   color: var(--color-gray-light-1);
 }
 
-.carousel {
+.scroller {
   display: flex;
   gap: 2rem;
   position: relative;
@@ -355,15 +355,15 @@ body {
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 }
-.carousel .carousel::-webkit-scrollbar-thumb {
+.scroller .scroller::-webkit-scrollbar-thumb {
   border-radius: 100px;
   background: #8070d4;
   border: 6px solid rgba(0, 0, 0, 0.2);
 }
-.carousel:hover .card:not(:hover) {
+.scroller:hover .card:not(:hover) {
   filter: blur(1px) brightness(80%);
 }
-.carousel:focus-within .card:not(:focus-within) {
+.scroller:focus-within .card:not(:focus-within) {
   filter: blur(1px) brightness(80%);
 }
 

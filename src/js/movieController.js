@@ -2,7 +2,7 @@ import * as model from "./model.js";
 
 // import { randomNumber, getYear, getMovies, searchMovies } from "./helpers.js";
 import heroView from "./views/heroView.js";
-import cardView from "./views/cardView.js";
+// import cardView from "./views/cardView.js";
 import searchView from "./views/searchView.js";
 
 // This needs refactoring and sorting to model or view files TODO

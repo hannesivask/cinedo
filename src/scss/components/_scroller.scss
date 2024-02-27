@@ -1,4 +1,4 @@
-.carousel {
+.scroller {
   display: flex;
   gap: 2rem;
   position: relative;
@@ -15,7 +15,7 @@
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 
-  .carousel::-webkit-scrollbar-thumb {
+  .scroller::-webkit-scrollbar-thumb {
     border-radius: 100px;
     background: #8070d4;
     border: 6px solid rgba(0, 0, 0, 0.2);

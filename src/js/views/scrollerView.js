@@ -1,21 +1,22 @@
 import * as model from "../model";
 
-class CardView {
-  // This needs refactoring TODO
+class ScrollerView {
+  _parentElement = document.querySelector(".main");
 
   addHandlerRender(handler) {
     window.addEventListener("load", handler);
   }
 
-  loadNewMovies(movies) {
-    const newMovies = document.querySelector(".new-movies");
-    this._loadCardContent(movies, newMovies);
+  loadScroller(data, type) {
+    const parentElement = document.querySelector(`.scroller__${type}`);
+    this._loadCardContent(data, parentElement);
   }
 
-  _loadCardContent(movies, elHTML) {
+  // This needs refactoring TODO
+  _loadCardContent(movies, el) {
     movies.forEach((movie) => {
       const markup = this._generateMarkup(movie);
-      elHTML.insertAdjacentHTML("afterbegin", markup);
+      el.insertAdjacentHTML("afterbegin", markup);
 
       const btnBookmarkCardEl = document.querySelector(".card__btn");
 
@@ -48,14 +49,6 @@ class CardView {
     });
   }
 
-  // This needs refactoring with last function TODO
-  // Also need to create a general render function for this TODO
-
-  loadTopMovies(movies) {
-    const topMovies = document.querySelector(".top-movies");
-    this._loadCardContent(movies, topMovies); // This does not work for these cards for some reason TODO
-  }
-
   _generateMarkup(movie) {
     return `
     <div class="card">
@@ -69,6 +62,7 @@ class CardView {
       <div class="card__img-box">
         <a href="movie.html?id=${movie.id}" class="card__link">
           <img
+            loading="lazy"
             src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
             alt="${movie.title} Poster image"
             class="card__img"
@@ -83,4 +77,4 @@ class CardView {
   }
 }
 
-export default new CardView();
+export default new ScrollerView();
