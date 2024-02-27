@@ -1,56 +1,50 @@
 import { randomNumber } from "../helpers.js";
-import { CYCLE_TIME } from "../config.js";
 
 import * as model from "../model.js";
 
 class HeroView {
   _parentElement = document.querySelector(".section-hero");
 
-  _movieImgEl = document.querySelector(".hero__image-box--movie");
-  _posterImgEl = document.querySelector(".hero__image-box--poster");
-  _imageLinkEl = document.querySelector(".hero__link");
-  _btnTrailerEl = document.querySelector(".btn-trailer");
-  _titleEl = document.querySelector(".hero-title");
-  _yearEl = document.querySelector(".hero-year");
-  _summaryEl = document.querySelector(".hero-summary");
-  _btnBookmarkEl = document.querySelector(".btn-bookmark");
+  _movieImgEl = this._parentElement.querySelector(".hero__image-box--movie");
+  _posterImgEl = this._parentElement.querySelector(".hero__image-box--poster");
+  _imageLinkEl = this._parentElement.querySelector(".hero__link");
+  _btnTrailerEl = this._parentElement.querySelector(".btn-trailer");
+  _titleEl = this._parentElement.querySelector(".hero-title");
+  _yearEl = this._parentElement.querySelector(".hero-year");
+  _summaryEl = this._parentElement.querySelector(".hero-summary");
+  _btnBookmarkEl = this._parentElement.querySelector(".btn-bookmark");
 
   addHandlerRender(handler) {
     window.addEventListener("load", handler);
   }
 
-  loadHeroContent(movies) {
-    const randomNum = randomNumber(movies.length);
-    const movie = movies[randomNum];
-    this._setHeroContent(movie);
+  addHandlerCycle(handler) {
+    window.addEventListener("load", handler);
   }
 
-  loadMovieHeroContent(movie) {
-    this._setHeroContent(movie);
+  loadHeroContent(data) {
+    this._setHeroContent(data);
   }
 
-  cycleHeroContent(movies) {
-    setInterval(() => {
-      const randomNum = randomNumber(movies.length);
-      const movie = movies[randomNum];
+  cycleHeroContent(movie) {
+    this._setHeroContent(movie);
+    this._toggleTextVisibility();
+  }
 
-      this._movieImgEl.classList.add("u-opacity-none");
-      this._posterImgEl.classList.add("u-opacity-none");
-      this._toggleTextVisibility();
+  hideHeroContent() {
+    this._movieImgEl.classList.add("u-opacity-none");
+    this._posterImgEl.classList.add("u-opacity-none");
+    this._toggleTextVisibility();
+  }
 
-      setTimeout(() => {
-        this._setHeroContent(movie);
-        this._toggleTextVisibility();
-      }, 300);
+  showHeroImages() {
+    this._movieImgEl.onload = () => {
+      this._movieImgEl.classList.remove("u-opacity-none");
+    };
 
-      this._movieImgEl.addEventListener("load", () => {
-        this._movieImgEl.classList.remove("u-opacity-none");
-      });
-
-      this._posterImgEl.addEventListener("load", () => {
-        this._posterImgEl.classList.remove("u-opacity-none");
-      });
-    }, CYCLE_TIME);
+    this._posterImgEl.onload = () => {
+      this._posterImgEl.classList.remove("u-opacity-none");
+    };
   }
 
   _setHeroContent(movie) {

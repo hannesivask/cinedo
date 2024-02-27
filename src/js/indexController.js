@@ -1,5 +1,6 @@
+import { CYCLE_TIME } from "./config.js";
 import * as model from "./model.js";
-
+import { randomNumber } from "./helpers.js";
 // import { getMovies } from "./helpers.js";
 import heroView from "./views/heroView.js";
 import cardView from "./views/cardView.js";
@@ -12,8 +13,24 @@ import randomizerView from "./views/randomizerView.js";
 const controlHeroContent = async function () {
   await model.loadMovies("popular");
 
-  heroView.loadHeroContent(model.state.newMovies);
-  heroView.cycleHeroContent(model.state.newMovies);
+  const randomNum = randomNumber(model.state.newMovies.length);
+
+  heroView.loadHeroContent(model.state.newMovies[randomNum]);
+};
+
+const cycleHeroContent = async function () {
+  await model.loadMovies("popular");
+
+  setInterval(() => {
+    const randomNum = randomNumber(model.state.newMovies.length);
+    heroView.hideHeroContent();
+
+    setTimeout(() => {
+      heroView.cycleHeroContent(model.state.newMovies[randomNum]);
+    }, 500);
+
+    heroView.showHeroImages();
+  }, CYCLE_TIME);
 };
 
 const controlCards = async function () {
@@ -35,6 +52,7 @@ const controlSearchResults = async function () {
 
 const init = function () {
   heroView.addHandlerRender(controlHeroContent);
+  heroView.addHandlerCycle(cycleHeroContent);
   cardView.addHandlerRender(controlCards);
   searchView.addHandlerSearch(controlSearchResults);
 
