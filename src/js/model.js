@@ -1,4 +1,4 @@
-import { AJAX, getYear, randomNumber } from './helpers.js';
+import { AJAX, getYear, randomNumber } from "./helpers.js";
 
 export const state = {
   movie: {},
@@ -32,7 +32,7 @@ export const loadMovies = async function (query) {
       res.trailer = await loadMovieTrailer(res.id);
     });
 
-    query === 'popular'
+    query === "popular"
       ? (state.newMovies = results)
       : (state.topMovies = results);
 
@@ -53,7 +53,7 @@ export const loadSingleMovie = async function (query) {
     try {
       state.movie.trailer = await loadMovieTrailer(state.movie.id);
     } catch (error) {
-      state.movie.trailer = 'none';
+      state.movie.trailer = "none";
     }
 
     // console.log(state.movie.trailer);
@@ -78,7 +78,7 @@ export const loadMovieForBookmark = async function (query) {
 export const loadSearchResults = async function (searchInput) {
   try {
     const data = await AJAX(
-      `/search/movie?query=${searchInput}&include_adult=false&language=en-US&page=1`,
+      `/search/movie?query=${searchInput}&include_adult=false&language=en-US&page=1`
     );
 
     console.log(data);
@@ -96,7 +96,7 @@ export const loadMovieTrailer = async function (id) {
   try {
     const data = await AJAX(`/movie/${id}/videos?language=en-US`);
     const result = data.results.find((movie) => {
-      return movie.type === 'Trailer';
+      return movie.type === "Trailer";
     });
 
     return `https://www.youtube.com/watch?v=` + result.key;
@@ -111,7 +111,7 @@ export const loadRandomMovie = async function (query) {
     const page = randomNumber(1000);
     // For some reason API call returns popular movies not discover
     const data = await AJAX(
-      `/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&primary_release_year=${query.year}&with_genres=${query.genreID}`,
+      `/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&primary_release_year=${query.year}&with_genres=${query.genreID}`
     );
 
     // console.log(data);
@@ -143,17 +143,17 @@ export const loadMovieGenreID = async function (formData) {
 };
 
 export const persistBookmarks = function () {
-  localStorage.setItem('bookmarks', JSON.stringify(state.bookmarks));
+  localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
 };
 
 const init = function () {
-  const storage = localStorage.getItem('bookmarks');
+  const storage = localStorage.getItem("bookmarks");
   if (storage) state.bookmarks = JSON.parse(storage);
 };
 init();
 
 const clearBookmarks = function () {
-  localStorage.clear('bookmarks');
+  localStorage.clear("bookmarks");
 };
 
 // clearBookmarks();

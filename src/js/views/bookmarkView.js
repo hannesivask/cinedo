@@ -1,12 +1,18 @@
-import * as model from '../model';
-
 class BookmarkView {
-  _parentElement = document.querySelector('.bookmarks__list');
-  // This needs refactoring TODO
+  _parentElement = document.querySelector(".bookmarks__list");
 
   addHandlerRender(handler) {
-    window.addEventListener('load', () => {
+    window.addEventListener("load", () => {
       handler();
+    });
+  }
+
+  addHandlerRemoveBookmarks(handler) {
+    window.addEventListener("click", (e) => {
+      const btn = e.target.closest(".bookmarks__btn-remove");
+      if (!btn.classList.contains("bookmarks__btn-remove")) return;
+      const id = btn.dataset.id;
+      handler(id, btn);
     });
   }
 
@@ -16,50 +22,10 @@ class BookmarkView {
   }
 
   renderBookmarks(bookmarks) {
-    this._parentElement.innerHTML = '';
+    this._parentElement.innerHTML = "";
     bookmarks.forEach((el) => {
       const markup = this._generateMarkup(el);
-      this._parentElement.insertAdjacentHTML('afterbegin', markup);
-    });
-    // this._parentElement.innerHTML = '';
-
-    // const btn = document.querySelector(".bookmarks__btn-remove");
-    // this.removeBookmark(btn);
-  }
-
-  // bookmarkButton() {
-  //   const btn = document.querySelector(".btn-bookmarks");
-  //   const bookmarksListEl = document.querySelector(".bookmarks__list");
-
-  //   btn.addEventListener("click", function () {
-  //     bookmarksListEl.classList.toggle("u-hidden");
-  //     if (bookmarksListEl.classList.contains("u-hidden")) return;
-
-  //     this.loadBookmarks;
-
-  //     window.addEventListener("click", ({ target }) => {
-  //       const bookmarksList = document.querySelector(".bookmarks__list");
-  //       const isBtnBookmarks = target.closest(".btn-bookmarks");
-  //       const isBookmarksList = target.closest(".bookmarks__list");
-  //       if (!isBookmarksList && target !== bookmarksList && !isBtnBookmarks)
-  //         bookmarksList.classList.add("u-hidden");
-  //     });
-  //   });
-  // }
-
-  // Need to add button that removes bookmark and refreshes the list TODO
-
-  removeBookmark(btn) {
-    btn.addEventListener('click', (el) => {
-      const index = model.state.bookmarks.indexOf(btn.dataset.id);
-
-      model.state.bookmarks = model.state.bookmarks.splice(index, 1);
-      if (model.state.bookmarks.length === 1) {
-        model.state.bookmarks = [];
-      }
-
-      model.persistBookmarks();
-      // this.loadBookmarks();
+      this._parentElement.insertAdjacentHTML("afterbegin", markup);
     });
   }
 
@@ -67,7 +33,6 @@ class BookmarkView {
     return `<span class="bookmarks__empty">No Bookmarks found</span>`;
   }
 
-  // REMOVE THE u-hidden CLASS from the button to use it TODO
   _generateMarkup(movie) {
     return `
       <li class="bookmarks__item">
@@ -84,7 +49,7 @@ class BookmarkView {
             <p class="bookmarks__year">${movie.year}</p>
           </div>
         </a>
-        <button data-id="${movie.id}" class="bookmarks__btn-remove u-hidden"> 
+        <button data-id="${movie.id}" class="bookmarks__btn-remove"> 
             <svg class="bookmarks__icon">
               <symbol id="icon-close-outline" viewBox="0 0 20 20">
                 <path d="M2.93 17.070c-1.884-1.821-3.053-4.37-3.053-7.193 0-5.523 4.477-10 10-10 2.823 0 5.372 1.169 7.19 3.050l0.003 0.003c1.737 1.796 2.807 4.247 2.807 6.947 0 5.523-4.477 10-10 10-2.7 0-5.151-1.070-6.95-2.81l0.003 0.003zM4.34 15.66c1.449 1.449 3.45 2.344 5.66 2.344 4.421 0 8.004-3.584 8.004-8.004 0-2.21-0.896-4.211-2.344-5.66v0c-1.449-1.449-3.45-2.344-5.66-2.344-4.421 0-8.004 3.584-8.004 8.004 0 2.21 0.896 4.211 2.344 5.66v0zM14.24 7.17l-2.83 2.83 2.83 2.83-1.41 1.41-2.83-2.83-2.83 2.83-1.41-1.41 2.83-2.83-2.83-2.83 1.41-1.41 2.83 2.83 2.83-2.83 1.41 1.41z">

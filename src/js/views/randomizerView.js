@@ -8,6 +8,8 @@ class RandomizerView {
   _randomizerButtonEl = document.querySelector(".btn--randomize");
   _randomizerFormInputsEl = document.querySelectorAll(".filter__input");
 
+  addHandlerRandomize(handler) {}
+
   randomize() {
     this._randomizerButtonEl.addEventListener("click", async (e) => {
       e.preventDefault();
