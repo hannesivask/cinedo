@@ -1,23 +1,20 @@
-import { CYCLE_TIME } from "./config.js";
-import { randomNumber } from "./helpers.js";
+import { CYCLE_TIME } from './config.js';
+import { randomNumber } from './helpers.js';
 
-import * as model from "./model.js";
+import * as model from './model.js';
 
-import heroView from "./views/heroView.js";
-import searchView from "./views/searchView.js";
-import scrollerView from "./views/scrollerView.js";
-import bookmarkView from "./views/bookmarkView.js";
-import randomizerView from "./views/randomizerView.js";
-
-// This needs refactoring and sorting to model or view files TODO
+import heroView from './views/heroView.js';
+import searchView from './views/searchView.js';
+import scrollerView from './views/scrollerView.js';
+import bookmarkView from './views/bookmarkView.js';
+import randomizerView from './views/randomizerView.js';
 
 const controlHeroContent = async function () {
-  await model.loadMovies("popular");
+  await model.loadMovies('popular');
 
   const id = model.state.newMovies[0].id;
-  
 
-  if (model.state.bookmarks.includes(id.toString())) {
+  if (model.state.bookmarks.some((bookmark) => id === bookmark.id)) {
     heroView.loadHeroContent(model.state.newMovies[0], true);
   } else {
     heroView.loadHeroContent(model.state.newMovies[0]);
@@ -25,21 +22,18 @@ const controlHeroContent = async function () {
 };
 
 const cycleHeroContent = async function () {
-  await model.loadMovies("popular");
+  await model.loadMovies('popular');
 
   setInterval(() => {
     const randomNum = randomNumber(model.state.newMovies.length);
     heroView.hideHeroContent();
 
     setTimeout(() => {
-      if (
-        model.state.bookmarks.includes(
-          model.state.newMovies[randomNum].id.toString()
-        )
-      ) {
-        heroView.cycleHeroContent(model.state.newMovies[randomNum], true);
+      const movie = model.state.newMovies[randomNum];
+      if (model.state.bookmarks.find((bookmark) => movie.id === bookmark.id)) {
+        heroView.cycleHeroContent(movie, true);
       } else {
-        heroView.cycleHeroContent(model.state.newMovies[randomNum]);
+        heroView.cycleHeroContent(movie);
       }
     }, 500);
 
@@ -48,22 +42,23 @@ const cycleHeroContent = async function () {
 };
 
 const controlScroller = async function () {
-  await model.loadMovies("popular");
+  await model.loadMovies('popular');
 
   model.state.newMovies.forEach((el) => {
-    if (model.state.bookmarks.includes(el.id.toString())) {
-      scrollerView.renderScrollerCards(el, "popular", true);
+    if (model.state.bookmarks.some((bookmark) => el.id === bookmark.id)) {
+      scrollerView.renderScrollerCards(el, 'popular', true);
     } else {
-      scrollerView.renderScrollerCards(el, "popular");
+      scrollerView.renderScrollerCards(el, 'popular');
     }
   });
 
-  await model.loadMovies("top_rated");
+  await model.loadMovies('top_rated');
+
   model.state.topMovies.forEach((el) => {
-    if (model.state.bookmarks.includes(el.id.toString())) {
-      scrollerView.renderScrollerCards(el, "top", true);
+    if (model.state.bookmarks.some((bookmark) => el.id === bookmark.id)) {
+      scrollerView.renderScrollerCards(el, 'top', true);
     } else {
-      scrollerView.renderScrollerCards(el, "top");
+      scrollerView.renderScrollerCards(el, 'top');
     }
   });
 };
@@ -71,15 +66,22 @@ const controlScroller = async function () {
 const controlAddBookmark = async function (id, target) {
   const movie = await model.loadMovieForBookmark(id);
 
-  if (model.state.bookmarks.includes(movie)) {
+  if (
+    model.state.bookmarks.some((bookmark) => {
+      return movie.id === bookmark.id;
+    })
+  ) {
     scrollerView.toggleBookmarksButton(target);
-    model.state.bookmarks = model.state.bookmarks.filter((el) => el !== movie);
+    model.state.bookmarks = model.state.bookmarks.filter(
+      (el) => el.id !== movie.id,
+    );
   } else {
     scrollerView.toggleBookmarksButton(target, false);
     model.state.bookmarks.push(movie);
   }
 
   model.persistBookmarks();
+  controlViewBookmarks();
 };
 
 const controlSearchResults = async function () {
@@ -91,20 +93,14 @@ const controlSearchResults = async function () {
   searchView.renderSearchResults(model.state.search);
 };
 
-// Need to change bookmarks logic so whole movie object is added to array TODO
+const controlViewBookmarks = function () {
+  const bookmarks = model.state.bookmarks;
 
-const controlViewBookmarks = async function () {
-  // const bookmarks = model.state.bookmarks;
-  // if (bookmarks.length === 0) {
-  //   bookmarkView.renderEmptyBookmarks();
-  // } else {
-  //   bookmarks.forEach(async (el) => {
-  //     console.log(el);
-  //     const movie = await model.loadMovieForBookmark(el);
-  //     console.log(movie);
-  //     bookmarkView.renderBookmarks(movie);
-  //   });
-  // }
+  if (bookmarks.length === 0) {
+    bookmarkView.renderEmptyBookmarks();
+  } else {
+    bookmarkView.renderBookmarks(bookmarks);
+  }
 };
 
 const init = function () {

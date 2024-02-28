@@ -1,25 +1,28 @@
-import * as model from "../model";
+import * as model from '../model';
 
 class BookmarkView {
-  _parentElement = document.querySelector(".bookmarks__list");
+  _parentElement = document.querySelector('.bookmarks__list');
   // This needs refactoring TODO
 
   addHandlerRender(handler) {
-    window.addEventListener("load", () => {
+    window.addEventListener('load', () => {
       handler();
     });
   }
 
   renderEmptyBookmarks() {
-    this._parentElement.innerHTML = "";
     const markup = this._generateError();
     this._parentElement.innerHTML = markup;
   }
 
-  renderBookmarks(movie) {
-    this._parentElement.innerHTML = "";
-    const markup = this._generateMarkup(movie);
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  renderBookmarks(bookmarks) {
+    this._parentElement.innerHTML = '';
+    bookmarks.forEach((el) => {
+      const markup = this._generateMarkup(el);
+      this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    });
+    // this._parentElement.innerHTML = '';
+
     // const btn = document.querySelector(".bookmarks__btn-remove");
     // this.removeBookmark(btn);
   }
@@ -47,7 +50,7 @@ class BookmarkView {
   // Need to add button that removes bookmark and refreshes the list TODO
 
   removeBookmark(btn) {
-    btn.addEventListener("click", (el) => {
+    btn.addEventListener('click', (el) => {
       const index = model.state.bookmarks.indexOf(btn.dataset.id);
 
       model.state.bookmarks = model.state.bookmarks.splice(index, 1);
