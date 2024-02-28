@@ -504,12 +504,6 @@ body {
   border: 1px solid var(--color-gray-dark-1);
   max-height: 50rem;
   overflow-y: scroll;
-  opacity: 0;
-  visibility: none;
-}
-.bookmarks__list:hover, .btn-bookmarks:hover + .bookmarks__list {
-  visibility: visible;
-  opacity: 1;
 }
 .bookmarks__item {
   display: flex;

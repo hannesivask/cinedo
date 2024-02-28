@@ -9,15 +9,6 @@
     border: 1px solid var(--color-gray-dark-1);
     max-height: 50rem;
     overflow-y: scroll;
-
-    opacity: 0;
-    visibility: none;
-
-    &:hover,
-    .btn-bookmarks:hover + & {
-      visibility: visible;
-      opacity: 1;
-    }
   }
 
   &__item {

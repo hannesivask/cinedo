@@ -1,36 +1,28 @@
-import * as model from "../model";
-
-// This needs refactoring TODO
 class RandomizerView {
-  _parentElement = document.querySelector(".filter");
+  _parentElement = document.querySelector('.filter');
 
-  _openRandomizerButtonEl = document.querySelector(".btn--random");
-  _randomizerButtonEl = document.querySelector(".btn--randomize");
-  _randomizerFormInputsEl = document.querySelectorAll(".filter__input");
+  _formInputs = this._parentElement.querySelectorAll('.filter__input');
 
-  addHandlerRandomize(handler) {}
-
-  randomize() {
-    this._randomizerButtonEl.addEventListener("click", async (e) => {
+  addHandlerRandomize(handler) {
+    this._parentElement.addEventListener('click', (e) => {
       e.preventDefault();
-      const data = Array.from(formInputs).map((el) => el.value);
-
+      if (!e.target.classList.contains('btn--randomize')) return;
+      const data = Array.from(this._formInputs).map((el) => el.value);
       const formData = { year: data[0], genreName: data[1] };
-
-      await model.loadMovieGenreID(formData);
-
-      await model.loadRandomMovie(formData);
-      window.location.href = `../../movie.html?id=${model.state.movie.id}`;
+      handler(formData);
     });
   }
 
-  _generateError() {
-    return `<span class="bookmarks__empty">No Bookmarks found</span>`;
+  addHandlerShowRandomizer() {
+    window.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn--random');
+      if (!btn || !btn.classList.contains('btn--random')) return;
+      this._parentElement.closest('.filter').classList.toggle('u-hidden');
+    });
   }
 
-  // REMOVE THE u-hidden CLASS from the button to use it TODO
-  _generateMarkup(movie) {
-    return ``;
+  setLocation(id) {
+    window.location.href = `../../movie.html?id=${id}`;
   }
 }
 

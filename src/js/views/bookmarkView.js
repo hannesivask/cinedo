@@ -1,18 +1,26 @@
 class BookmarkView {
-  _parentElement = document.querySelector(".bookmarks__list");
+  _parentElement = document.querySelector('.bookmarks__list');
 
   addHandlerRender(handler) {
-    window.addEventListener("load", () => {
+    window.addEventListener('load', () => {
       handler();
     });
   }
 
   addHandlerRemoveBookmarks(handler) {
-    window.addEventListener("click", (e) => {
-      const btn = e.target.closest(".bookmarks__btn-remove");
-      if (!btn.classList.contains("bookmarks__btn-remove")) return;
+    this._parentElement.addEventListener('click', (e) => {
+      const btn = e.target.closest('.bookmarks__btn-remove');
+      if (!btn.classList.contains('bookmarks__btn-remove')) return;
       const id = btn.dataset.id;
-      handler(id, btn);
+      handler(id);
+    });
+  }
+
+  addHandlerShowBookmarkList() {
+    window.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn-bookmarks');
+      if (!btn || !btn.classList.contains('btn-bookmarks')) return;
+      this._parentElement.classList.toggle('u-hidden');
     });
   }
 
@@ -22,10 +30,10 @@ class BookmarkView {
   }
 
   renderBookmarks(bookmarks) {
-    this._parentElement.innerHTML = "";
+    this._parentElement.innerHTML = '';
     bookmarks.forEach((el) => {
       const markup = this._generateMarkup(el);
-      this._parentElement.insertAdjacentHTML("afterbegin", markup);
+      this._parentElement.insertAdjacentHTML('afterbegin', markup);
     });
   }
 

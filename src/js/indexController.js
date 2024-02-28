@@ -1,28 +1,27 @@
-import { CYCLE_TIME } from "./config.js";
-import { randomNumber } from "./helpers.js";
+import { CYCLE_TIME } from './config.js';
+import { randomNumber } from './helpers.js';
 
-import * as model from "./model.js";
+import * as model from './model.js';
 
-import heroView from "./views/heroView.js";
-import searchView from "./views/searchView.js";
-import scrollerView from "./views/scrollerView.js";
-import bookmarkView from "./views/bookmarkView.js";
-import randomizerView from "./views/randomizerView.js";
+import heroView from './views/heroView.js';
+import searchView from './views/searchView.js';
+import scrollerView from './views/scrollerView.js';
+import bookmarkView from './views/bookmarkView.js';
+import randomizerView from './views/randomizerView.js';
 
 const controlHeroContent = async function () {
-  await model.loadMovies("popular");
-
-  const id = model.state.newMovies[0].id;
-
+  await model.loadMovies('popular');
+  const random = randomNumber(model.state.newMovies.length);
+  const id = model.state.newMovies[random].id;
   if (model.state.bookmarks.some((bookmark) => id === bookmark.id)) {
-    heroView.loadHeroContent(model.state.newMovies[0], true);
+    heroView.loadHeroContent(model.state.newMovies[random], true);
   } else {
-    heroView.loadHeroContent(model.state.newMovies[0]);
+    heroView.loadHeroContent(model.state.newMovies[random]);
   }
 };
 
 const cycleHeroContent = async function () {
-  await model.loadMovies("popular");
+  await model.loadMovies('popular');
 
   setInterval(() => {
     const randomNum = randomNumber(model.state.newMovies.length);
@@ -41,24 +40,45 @@ const cycleHeroContent = async function () {
   }, CYCLE_TIME);
 };
 
+const controlAddHeroBookmark = async function (id) {
+  const movie = await model.loadMovieForBookmark(id);
+
+  if (
+    model.state.bookmarks.some((bookmark) => {
+      return movie.id === bookmark.id;
+    })
+  ) {
+    heroView.toggleBookmarksButton(true);
+    model.state.bookmarks = model.state.bookmarks.filter(
+      (el) => el.id !== movie.id,
+    );
+  } else {
+    heroView.toggleBookmarksButton();
+    model.state.bookmarks.push(movie);
+  }
+
+  model.persistBookmarks();
+  controlViewBookmarks();
+};
+
 const controlScroller = async function () {
-  await model.loadMovies("popular");
+  await model.loadMovies('popular');
 
   model.state.newMovies.forEach((el) => {
     if (model.state.bookmarks.some((bookmark) => el.id === bookmark.id)) {
-      scrollerView.renderScrollerCards(el, "popular", true);
+      scrollerView.renderScrollerCards(el, 'popular', true);
     } else {
-      scrollerView.renderScrollerCards(el, "popular");
+      scrollerView.renderScrollerCards(el, 'popular');
     }
   });
 
-  await model.loadMovies("top_rated");
+  await model.loadMovies('top_rated');
 
   model.state.topMovies.forEach((el) => {
     if (model.state.bookmarks.some((bookmark) => el.id === bookmark.id)) {
-      scrollerView.renderScrollerCards(el, "top", true);
+      scrollerView.renderScrollerCards(el, 'top', true);
     } else {
-      scrollerView.renderScrollerCards(el, "top");
+      scrollerView.renderScrollerCards(el, 'top');
     }
   });
 };
@@ -73,7 +93,7 @@ const controlAddBookmark = async function (id, target) {
   ) {
     scrollerView.toggleBookmarksButton(target);
     model.state.bookmarks = model.state.bookmarks.filter(
-      (el) => el.id !== movie.id
+      (el) => el.id !== movie.id,
     );
   } else {
     scrollerView.toggleBookmarksButton(target, false);
@@ -111,35 +131,28 @@ const controlRemoveBookmark = function (id) {
   controlViewBookmarks();
 };
 
-const controlRandomizeMovie = function () {};
+const controlRandomizeMovie = async function (data) {
+  const formData = await model.loadMovieGenreID(data);
+  const randomMovieID = await model.loadRandomMovie(formData);
+  randomizerView.setLocation(randomMovieID);
+};
 
 const init = function () {
   heroView.addHandlerRender(controlHeroContent);
   heroView.addHandlerCycle(cycleHeroContent);
+  heroView.addHandlerAddBookmark(controlAddHeroBookmark);
+
   scrollerView.addHandlerRender(controlScroller);
   scrollerView.addHandlerAddBookmarks(controlAddBookmark);
+
   bookmarkView.addHandlerRemoveBookmarks(controlRemoveBookmark);
-  searchView.addHandlerSearch(controlSearchResults);
   bookmarkView.addHandlerRender(controlViewBookmarks);
+  bookmarkView.addHandlerShowBookmarkList();
+
+  searchView.addHandlerSearch(controlSearchResults);
+
+  randomizerView.addHandlerShowRandomizer();
   randomizerView.addHandlerRandomize(controlRandomizeMovie);
-
-  //
-
-  // window.addEventListener("click", ({ target }) => {
-  //   const isBtnRandom = target.closest(".btn--random");
-  //   const isRandomizerFilter = target.closest(".filter");
-  //   if (
-  //     !isRandomizerFilter &&
-  //     target !== randomizerView._parentElement &&
-  //     !isBtnRandom
-  //   ) {
-  //     randomizerView._parentElement.classList.add("u-hidden");
-  //   } else {
-  //     randomizerView._parentElement.classList.toggle("u-hidden");
-  //   }
-  // });
-
-  // bookmarkView.bookmarkButton();
 };
 
 init();
