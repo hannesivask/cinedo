@@ -1,22 +1,27 @@
 import { CYCLE_TIME } from "./config.js";
-import * as model from "./model.js";
 import { randomNumber } from "./helpers.js";
-// import { getMovies } from "./helpers.js";
+
+import * as model from "./model.js";
+
 import heroView from "./views/heroView.js";
-// import cardView from "./views/scrollerView.js";
 import searchView from "./views/searchView.js";
+import scrollerView from "./views/scrollerView.js";
 import bookmarkView from "./views/bookmarkView.js";
 import randomizerView from "./views/randomizerView.js";
-import scrollerView from "./views/scrollerView.js";
 
 // This needs refactoring and sorting to model or view files TODO
 
 const controlHeroContent = async function () {
   await model.loadMovies("popular");
 
-  const randomNum = randomNumber(model.state.newMovies.length);
+  const id = model.state.newMovies[0].id;
+  
 
-  heroView.loadHeroContent(model.state.newMovies[randomNum]);
+  if (model.state.bookmarks.includes(id.toString())) {
+    heroView.loadHeroContent(model.state.newMovies[0], true);
+  } else {
+    heroView.loadHeroContent(model.state.newMovies[0]);
+  }
 };
 
 const cycleHeroContent = async function () {
@@ -27,7 +32,15 @@ const cycleHeroContent = async function () {
     heroView.hideHeroContent();
 
     setTimeout(() => {
-      heroView.cycleHeroContent(model.state.newMovies[randomNum]);
+      if (
+        model.state.bookmarks.includes(
+          model.state.newMovies[randomNum].id.toString()
+        )
+      ) {
+        heroView.cycleHeroContent(model.state.newMovies[randomNum], true);
+      } else {
+        heroView.cycleHeroContent(model.state.newMovies[randomNum]);
+      }
     }, 500);
 
     heroView.showHeroImages();
@@ -36,10 +49,37 @@ const cycleHeroContent = async function () {
 
 const controlScroller = async function () {
   await model.loadMovies("popular");
-  scrollerView.loadScroller(model.state.newMovies, "popular");
+
+  model.state.newMovies.forEach((el) => {
+    if (model.state.bookmarks.includes(el.id.toString())) {
+      scrollerView.renderScrollerCards(el, "popular", true);
+    } else {
+      scrollerView.renderScrollerCards(el, "popular");
+    }
+  });
 
   await model.loadMovies("top_rated");
-  scrollerView.loadScroller(model.state.topMovies, "top");
+  model.state.topMovies.forEach((el) => {
+    if (model.state.bookmarks.includes(el.id.toString())) {
+      scrollerView.renderScrollerCards(el, "top", true);
+    } else {
+      scrollerView.renderScrollerCards(el, "top");
+    }
+  });
+};
+
+const controlAddBookmark = async function (id, target) {
+  const movie = await model.loadMovieForBookmark(id);
+
+  if (model.state.bookmarks.includes(movie)) {
+    scrollerView.toggleBookmarksButton(target);
+    model.state.bookmarks = model.state.bookmarks.filter((el) => el !== movie);
+  } else {
+    scrollerView.toggleBookmarksButton(target, false);
+    model.state.bookmarks.push(movie);
+  }
+
+  model.persistBookmarks();
 };
 
 const controlSearchResults = async function () {
@@ -51,11 +91,29 @@ const controlSearchResults = async function () {
   searchView.renderSearchResults(model.state.search);
 };
 
+// Need to change bookmarks logic so whole movie object is added to array TODO
+
+const controlViewBookmarks = async function () {
+  // const bookmarks = model.state.bookmarks;
+  // if (bookmarks.length === 0) {
+  //   bookmarkView.renderEmptyBookmarks();
+  // } else {
+  //   bookmarks.forEach(async (el) => {
+  //     console.log(el);
+  //     const movie = await model.loadMovieForBookmark(el);
+  //     console.log(movie);
+  //     bookmarkView.renderBookmarks(movie);
+  //   });
+  // }
+};
+
 const init = function () {
   heroView.addHandlerRender(controlHeroContent);
   heroView.addHandlerCycle(cycleHeroContent);
   scrollerView.addHandlerRender(controlScroller);
+  scrollerView.addHandlerAddBookmarks(controlAddBookmark);
   searchView.addHandlerSearch(controlSearchResults);
+  bookmarkView.addHandlerRender(controlViewBookmarks);
 
   //
 
@@ -77,30 +135,3 @@ const init = function () {
 };
 
 init();
-
-/// Bookmark button for HERO - need to refactor to bookmarkView.js TODO
-
-const btnBookmarkEl = document.querySelector(".btn-bookmark");
-const bookmarkIconEl = document.querySelector(".bookmark-icon");
-
-btnBookmarkEl.addEventListener("click", () => {
-  if (bookmarkIconEl.href.baseVal.slice(-8) === "-outline") {
-    const iconFilled = bookmarkIconEl.href.baseVal.substring(0, 34);
-    bookmarkIconEl.setAttribute("href", iconFilled);
-
-    if (!model.state.bookmarks.includes(btnBookmarkEl.dataset.id))
-      model.state.bookmarks.push(btnBookmarkEl.dataset.id);
-
-    model.persistBookmarks();
-  } else {
-    const iconOutline = bookmarkIconEl.href.baseVal + "-outline";
-    bookmarkIconEl.setAttribute("href", iconOutline);
-
-    if (model.state.bookmarks.includes(btnBookmarkEl.dataset.id)) {
-      model.state.bookmarks = model.state.bookmarks.filter(
-        (el) => el !== btnBookmarkEl.dataset.id
-      );
-      model.persistBookmarks();
-    }
-  }
-});

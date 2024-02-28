@@ -48,9 +48,7 @@ export const loadMovies = async function (query) {
 export const loadSingleMovie = async function (query) {
   try {
     const data = await AJAX(`/movie/${query}?language=en-US&page=1`);
-    // console.log(data);
     state.movie = createMovieObject(data);
-    // console.log(state.movie);
 
     try {
       state.movie.trailer = await loadMovieTrailer(state.movie.id);
@@ -60,6 +58,23 @@ export const loadSingleMovie = async function (query) {
 
     // console.log(state.movie.trailer);
     return data;
+  } catch (err) {
+    console.error(`${err}: Movies did not load`);
+    throw err;
+  }
+};
+
+export const loadMovieForBookmark = async function (query) {
+  try {
+    const data = await AJAX(`/movie/${query}?language=en-US&page=1`);
+    movie = createMovieObject(data);
+
+    try {
+      state.movie.trailer = await loadMovieTrailer(state.movie.id);
+    } catch (error) {
+      state.movie.trailer = "none";
+    }
+    return movie;
   } catch (err) {
     console.error(`${err}: Movies did not load`);
     throw err;

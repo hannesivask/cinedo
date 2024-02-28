@@ -1,55 +1,35 @@
-import * as model from "../model";
-
 class ScrollerView {
-  _parentElement = document.querySelector(".main");
-
   addHandlerRender(handler) {
     window.addEventListener("load", handler);
   }
 
-  loadScroller(data, type) {
-    const parentElement = document.querySelector(`.scroller__${type}`);
-    this._loadCardContent(data, parentElement);
-  }
-
-  // This needs refactoring TODO
-  _loadCardContent(movies, el) {
-    movies.forEach((movie) => {
-      const markup = this._generateMarkup(movie);
-      el.insertAdjacentHTML("afterbegin", markup);
-
-      const btnBookmarkCardEl = document.querySelector(".card__btn");
-
-      if (model.state.bookmarks.includes(`${movie.id}`)) {
-        btnBookmarkCardEl.textContent = "✓ watchlist";
-        btnBookmarkCardEl.classList.toggle("u-bookmarked");
-      }
-
-      // WATCHLIST BUTTON FUNCTIONALITY NEEDS REFACTORING - TODO
-
-      btnBookmarkCardEl.addEventListener("click", () => {
-        // console.log(btnBookmarkCardEl.dataset.id);
-
-        if (!model.state.bookmarks.includes(btnBookmarkCardEl.dataset.id)) {
-          btnBookmarkCardEl.textContent = "✓ watchlist";
-          btnBookmarkCardEl.classList.toggle("u-bookmarked");
-
-          model.state.bookmarks.push(btnBookmarkCardEl.dataset.id);
-          model.persistBookmarks();
-        } else {
-          btnBookmarkCardEl.textContent = "+ watchlist";
-          btnBookmarkCardEl.classList.toggle("u-bookmarked");
-
-          model.state.bookmarks = model.state.bookmarks.filter(
-            (el) => el !== btnBookmarkCardEl.dataset.id
-          );
-          model.persistBookmarks();
-        }
-      });
+  addHandlerAddBookmarks(handler) {
+    document.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("card__btn")) return;
+      const id = e.target.dataset.id;
+      handler(id, e.target);
     });
   }
 
-  _generateMarkup(movie) {
+  renderScrollerCards(entry, type, bookmarked = false) {
+    const parentElement = document.querySelector(`.scroller__${type}`);
+
+    const markup = this._generateMarkup(entry, bookmarked);
+    parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  toggleBookmarksButton(target, bookmarked = true) {
+    if (bookmarked) {
+      target.textContent = "+ watchlist";
+      target.classList.remove("u-bookmarked");
+    }
+    if (!bookmarked) {
+      target.textContent = "✓ watchlist";
+      target.classList.add("u-bookmarked");
+    }
+  }
+
+  _generateMarkup(movie, bookmarked) {
     return `
     <div class="card">
       <span class="card__rating">
@@ -70,9 +50,9 @@ class ScrollerView {
         </a>
       </div>
       <span class="card__title">${movie.title}</span>
-      <button data-id="${
-        movie.id
-      }" class="btn btn--filled card__btn">&plus; watchlist</button>
+      <button data-id="${movie.id}" class="btn btn--filled card__btn ${
+      bookmarked ? "u-bookmarked" : ""
+    }">${bookmarked ? "✓" : "+"} watchlist</button>
     </div>`;
   }
 }

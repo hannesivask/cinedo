@@ -4,46 +4,45 @@ class BookmarkView {
   _parentElement = document.querySelector(".bookmarks__list");
   // This needs refactoring TODO
 
-  bookmarkButton() {
-    const btn = document.querySelector(".btn-bookmarks");
-    const bookmarksListEl = document.querySelector(".bookmarks__list");
-
-    btn.addEventListener("click", function () {
-      bookmarksListEl.classList.toggle("u-hidden");
-      if (bookmarksListEl.classList.contains("u-hidden")) return;
-
-      this.loadBookmarks;
-
-      window.addEventListener("click", ({ target }) => {
-        const bookmarksList = document.querySelector(".bookmarks__list");
-        const isBtnBookmarks = target.closest(".btn-bookmarks");
-        const isBookmarksList = target.closest(".bookmarks__list");
-        if (!isBookmarksList && target !== bookmarksList && !isBtnBookmarks)
-          bookmarksList.classList.add("u-hidden");
-      });
+  addHandlerRender(handler) {
+    window.addEventListener("load", () => {
+      handler();
     });
   }
 
-  loadBookmarks() {
-    const bookmarks = model.state.bookmarks;
-    // this.removeBookmark();
-
-    console.log(bookmarks);
-
-    if (bookmarks.length < 1) {
-      const markup = this._generateError();
-      this._parentElement.innerHTML = markup;
-    } else {
-      bookmarks.forEach(async (el) => {
-        this._parentElement.innerHTML = "";
-        const movie = await model.loadSingleMovie(el);
-        const markup = this._generateMarkup(movie);
-        this._parentElement.insertAdjacentHTML("afterbegin", markup);
-        const btn = document.querySelector(".bookmarks__btn-remove");
-        this.removeBookmark(btn);
-      });
-    }
+  renderEmptyBookmarks() {
+    this._parentElement.innerHTML = "";
+    const markup = this._generateError();
+    this._parentElement.innerHTML = markup;
   }
+
+  renderBookmarks(movie) {
+    this._parentElement.innerHTML = "";
+    const markup = this._generateMarkup(movie);
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    // const btn = document.querySelector(".bookmarks__btn-remove");
+    // this.removeBookmark(btn);
+  }
+
+  // bookmarkButton() {
+  //   const btn = document.querySelector(".btn-bookmarks");
+  //   const bookmarksListEl = document.querySelector(".bookmarks__list");
+
+  //   btn.addEventListener("click", function () {
+  //     bookmarksListEl.classList.toggle("u-hidden");
+  //     if (bookmarksListEl.classList.contains("u-hidden")) return;
+
+  //     this.loadBookmarks;
+
+  //     window.addEventListener("click", ({ target }) => {
+  //       const bookmarksList = document.querySelector(".bookmarks__list");
+  //       const isBtnBookmarks = target.closest(".btn-bookmarks");
+  //       const isBookmarksList = target.closest(".bookmarks__list");
+  //       if (!isBookmarksList && target !== bookmarksList && !isBtnBookmarks)
+  //         bookmarksList.classList.add("u-hidden");
+  //     });
+  //   });
+  // }
 
   // Need to add button that removes bookmark and refreshes the list TODO
 
@@ -79,7 +78,7 @@ class BookmarkView {
             <h3 class="bookmarks__title">
              ${movie.title}
             </h3>
-            <p class="bookmarks__year">${movie.release_date}</p>
+            <p class="bookmarks__year">${movie.year}</p>
           </div>
         </a>
         <button data-id="${movie.id}" class="bookmarks__btn-remove u-hidden"> 

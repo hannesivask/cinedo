@@ -1,7 +1,3 @@
-import { randomNumber } from "../helpers.js";
-
-import * as model from "../model.js";
-
 class HeroView {
   _parentElement = document.querySelector(".section-hero");
 
@@ -13,6 +9,7 @@ class HeroView {
   _yearEl = this._parentElement.querySelector(".hero-year");
   _summaryEl = this._parentElement.querySelector(".hero-summary");
   _btnBookmarkEl = this._parentElement.querySelector(".btn-bookmark");
+  _bookmarkIconEl = this._parentElement.querySelector(".bookmark-icon");
 
   addHandlerRender(handler) {
     window.addEventListener("load", handler);
@@ -22,13 +19,15 @@ class HeroView {
     window.addEventListener("load", handler);
   }
 
-  loadHeroContent(data) {
+  loadHeroContent(data, bookmarked = false) {
     this._setHeroContent(data);
+    this._setBookmarkIcon(bookmarked);
   }
 
-  cycleHeroContent(movie) {
+  cycleHeroContent(movie, bookmarked = false) {
     this._setHeroContent(movie);
     this._toggleTextVisibility();
+    this._setBookmarkIcon(bookmarked);
   }
 
   hideHeroContent() {
@@ -60,26 +59,22 @@ class HeroView {
     this._yearEl.textContent = movie.year;
     this._summaryEl.textContent = movie.overview;
     this._btnBookmarkEl.dataset.id = movie.id;
-    this._setBookmarkIcon(movie);
+  }
+
+  _setBookmarkIcon(bookmarked) {
+    if (bookmarked) {
+      const iconFilled = this._bookmarkIconEl.href.baseVal.substring(0, 34);
+      this._bookmarkIconEl.setAttribute("href", iconFilled);
+    } else {
+      const iconOutline = this._bookmarkIconEl.href.baseVal + "-outline";
+      this._bookmarkIconEl.setAttribute("href", iconOutline);
+    }
   }
 
   _toggleTextVisibility() {
     this._titleEl.classList.toggle("u-opacity-none");
     this._yearEl.classList.toggle("u-opacity-none");
     this._summaryEl.classList.toggle("u-opacity-none");
-  }
-
-  _setBookmarkIcon(movie) {
-    const bookmarkIconEl = document.querySelector(".bookmark-icon");
-    if (model.state.bookmarks.includes(`${movie.id}`)) {
-      const iconFilled = bookmarkIconEl.href.baseVal.substring(0, 34);
-      bookmarkIconEl.setAttribute("href", iconFilled);
-    } else {
-      if (bookmarkIconEl.href.baseVal.slice(-8) !== "-outline") {
-        const iconOutline = bookmarkIconEl.href.baseVal + "-outline";
-        bookmarkIconEl.setAttribute("href", iconOutline);
-      }
-    }
   }
 }
 
