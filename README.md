@@ -47,19 +47,23 @@ npm run dev
 
 ## TO-DO
 
-- Add bookmarks/watchlist functionality with local storage
-- Add randomizer button functionality
+- Add more info to the movie page
+- Add more options other than "popular" or "top-rated" to the home page
+- Add "popular" page where all popular tv-shows, actors and movies are avaible
+- Add other pages like last point
 - Add movies page content and styling for separate movie pages
 - Add spinners for loading content
 - Add error handling and error messages
-- Add responsive design
-- Add trailer watching ability to hero section
 - Refine styiling and design
 - If selected search item is not a movie, then change API call for movie.html
 
 ## DONE
 
 - Add search functionality
+- Add bookmarks/watchlist functionality with local storage
+- Add randomizer button functionality
+- Add responsive design
+- Add trailer watching ability to hero section
 
 ## Contributors
 
