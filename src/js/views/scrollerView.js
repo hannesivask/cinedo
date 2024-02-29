@@ -22,8 +22,7 @@ class ScrollerView {
     if (bookmarked) {
       target.textContent = "+ watchlist";
       target.classList.remove("u-bookmarked");
-    }
-    if (!bookmarked) {
+    } else {
       target.textContent = "✓ watchlist";
       target.classList.add("u-bookmarked");
     }

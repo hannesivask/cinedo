@@ -1,26 +1,35 @@
 class BookmarkView {
-  _parentElement = document.querySelector('.bookmarks__list');
+  _parentElement = document.querySelector(".bookmarks__list");
 
   addHandlerRender(handler) {
-    window.addEventListener('load', () => {
+    window.addEventListener("load", () => {
       handler();
     });
   }
 
   addHandlerRemoveBookmarks(handler) {
-    this._parentElement.addEventListener('click', (e) => {
-      const btn = e.target.closest('.bookmarks__btn-remove');
-      if (!btn.classList.contains('bookmarks__btn-remove')) return;
+    this._parentElement.addEventListener("click", (e) => {
+      const btn = e.target.closest(".bookmarks__btn-remove");
+
+      if (!btn.classList.contains("bookmarks__btn-remove")) return;
       const id = btn.dataset.id;
-      handler(id);
+      const cardBtn = document.querySelector(`.card__btn[data-id~="${id}"]`);
+      handler(id, cardBtn);
     });
   }
 
   addHandlerShowBookmarkList() {
-    window.addEventListener('click', (e) => {
-      const btn = e.target.closest('.btn-bookmarks');
-      if (!btn || !btn.classList.contains('btn-bookmarks')) return;
-      this._parentElement.classList.toggle('u-hidden');
+    window.addEventListener("click", (e) => {
+      const btn = e.target.closest(".btn-bookmarks");
+
+      if (
+        (!btn || !btn.classList.contains("btn-bookmarks")) &&
+        !this._parentElement.contains(e.target)
+      ) {
+        this._parentElement.classList.add("u-hidden");
+      } else {
+        this._parentElement.classList.remove("u-hidden");
+      }
     });
   }
 
@@ -29,11 +38,12 @@ class BookmarkView {
     this._parentElement.innerHTML = markup;
   }
 
+  // Add update HTML content function TODO
   renderBookmarks(bookmarks) {
-    this._parentElement.innerHTML = '';
+    this._parentElement.innerHTML = "";
     bookmarks.forEach((el) => {
       const markup = this._generateMarkup(el);
-      this._parentElement.insertAdjacentHTML('afterbegin', markup);
+      this._parentElement.insertAdjacentHTML("afterbegin", markup);
     });
   }
 
