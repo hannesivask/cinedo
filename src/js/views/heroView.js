@@ -1,36 +1,36 @@
 class HeroView {
-  _parentElement = document.querySelector(".section-hero");
+  _parentElement = document.querySelector('.section-hero');
 
-  _movieImgEl = this._parentElement.querySelector(".hero__image-box--movie");
-  _posterImgEl = this._parentElement.querySelector(".hero__image-box--poster");
-  _imageLinkEl = this._parentElement.querySelector(".hero__link");
-  _btnTrailerEl = this._parentElement.querySelector(".btn-trailer");
-  _titleEl = this._parentElement.querySelector(".hero-title");
-  _yearEl = this._parentElement.querySelector(".hero-year");
-  _summaryEl = this._parentElement.querySelector(".hero-summary");
-  _btnBookmarkEl = this._parentElement.querySelector(".btn-bookmark");
-  _bookmarkIconEl = this._parentElement.querySelector(".bookmark-icon");
+  _movieImgEl = this._parentElement.querySelector('.hero__image-box--movie');
+  _posterImgEl = this._parentElement.querySelector('.hero__image-box--poster');
+  _imageLinkEl = this._parentElement.querySelector('.hero__link');
+  _btnTrailerEl = this._parentElement.querySelector('.btn-trailer');
+  _titleEl = this._parentElement.querySelector('.hero-title');
+  _yearEl = this._parentElement.querySelector('.hero-year');
+  _summaryEl = this._parentElement.querySelector('.hero-summary');
+  _btnBookmarkEl = this._parentElement.querySelector('.btn-bookmark');
+  _bookmarkIconEl = this._parentElement.querySelector('.bookmark-icon');
 
   addHandlerRender(handler) {
-    window.addEventListener("load", handler);
+    window.addEventListener('load', handler);
   }
 
   addHandlerRenderMovie(handler) {
     const searchParams = new URLSearchParams(window.location.search);
-    const movieID = searchParams.get("id");
-    window.addEventListener("load", () => {
+    const movieID = searchParams.get('id');
+    window.addEventListener('load', () => {
       handler(movieID);
     });
   }
 
   addHandlerCycle(handler) {
-    window.addEventListener("load", handler);
+    window.addEventListener('load', handler);
   }
 
   addHandlerAddBookmark(handler) {
-    this._parentElement.addEventListener("click", (e) => {
-      if (!e.target.closest(".btn-bookmark")) return;
-      const id = e.target.closest(".btn-bookmark").dataset.id;
+    this._parentElement.addEventListener('click', (e) => {
+      if (!e.target.closest('.btn-bookmark')) return;
+      const id = e.target.closest('.btn-bookmark').dataset.id;
       handler(id);
     });
   }
@@ -51,18 +51,18 @@ class HeroView {
   }
 
   hideHeroContent() {
-    this._movieImgEl.classList.add("u-opacity-none");
-    this._posterImgEl.classList.add("u-opacity-none");
+    this._movieImgEl.classList.add('u-opacity-none');
+    this._posterImgEl.classList.add('u-opacity-none');
     this._toggleTextVisibility();
   }
 
   showHeroImages() {
     this._movieImgEl.onload = () => {
-      this._movieImgEl.classList.remove("u-opacity-none");
+      this._movieImgEl.classList.remove('u-opacity-none');
     };
 
     this._posterImgEl.onload = () => {
-      this._posterImgEl.classList.remove("u-opacity-none");
+      this._posterImgEl.classList.remove('u-opacity-none');
     };
   }
 
@@ -77,8 +77,8 @@ class HeroView {
     this._posterImgEl.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     // this._posterImgEl.src = `https://image.tmdb.org/t/p/w200${movie.poster_path}`;  // - low reso for lazy loading TODO
     this._imageLinkEl.href = `movie.html?id=${movie.id}`;
-    if (movie.trailer === "none")
-      this._btnTrailerEl.classList.toggle("u-hidden");
+    if (movie.trailer === 'none')
+      this._btnTrailerEl.classList.toggle('u-hidden');
     else this._btnTrailerEl.href = movie.trailer;
     this._titleEl.textContent = movie.title;
     this._yearEl.textContent = movie.year;
@@ -87,9 +87,9 @@ class HeroView {
   }
 
   _toggleTextVisibility() {
-    this._titleEl.classList.toggle("u-opacity-none");
-    this._yearEl.classList.toggle("u-opacity-none");
-    this._summaryEl.classList.toggle("u-opacity-none");
+    this._titleEl.classList.toggle('u-opacity-none');
+    this._yearEl.classList.toggle('u-opacity-none');
+    this._summaryEl.classList.toggle('u-opacity-none');
   }
 
   _generateBtnMarkup(bookmarked) {
