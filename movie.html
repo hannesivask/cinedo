@@ -57,21 +57,91 @@
           </ul>
         </form>
 
-        <nav class="nav u-hidden">
+        <nav class="nav">
           <ul class="nav__list">
             <li class="nav__item">
-              <a href="#" class="nav__link">
+              <button class="nav__btn btn--nav btn--random">
                 <svg class="nav__icon">
-                  <use href="src/img/sprite.svg#icon-shuffle"></use>
+                  <use href="/src/img/sprite.svg#icon-shuffle"></use>
                 </svg>
-              </a>
+              </button>
+
+              <div class="filter u-hidden">
+                <form
+                  action=""
+                  method="post"
+                  class="filter__form"
+                  id="randomizerForm"
+                >
+                  <!-- <label for="#year" class="filter__label">Year</label> -->
+                  <input
+                    name="year"
+                    id="year"
+                    type="text"
+                    class="filter__input"
+                    placeholder="Year"
+                  />
+                  <!-- <label for="#Genre" class="filter__label">Genre</label> -->
+                  <select id="Genre" class="filter__input">
+                    <option value="select">Select a genre</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Action">Action</option>
+                  </select>
+                  <!-- <input id="year" type="" /> <label for="#year">Year</label> -->
+                  <button type="submit" class="filter__button btn--randomize">
+                    <svg class="filter__icon">
+                      <use href="/src/img/sprite.svg#icon-shuffle"></use>
+                    </svg>
+                  </button>
+                </form>
+              </div>
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link">
+              <button class="nav__btn btn--nav btn-bookmarks">
                 <svg class="nav__icon">
-                  <use href="src/img/sprite.svg#icon-bookmark"></use>
+                  <use href="/src/img/sprite.svg#icon-bookmark"></use>
                 </svg>
-              </a>
+              </button>
+
+              <ul class="bookmarks__list u-hidden">
+                <!-- <li class="bookmarks__item">
+                  <a href="#" class="bookmarks__link">
+                    <img
+                      src="https://image.tmdb.org/t/p/w200/46sp1Z9b2PPTgCMyA87g9aTLUXi.jpg"
+                      alt="Image"
+                      class="bookmarks__img"
+                    />
+                    <div class="bookmarks__text">
+                      <h3 class="bookmarks__title">
+                        Rebel Moon - Part One: A Child of Fire
+                      </h3>
+                      <p class="bookmarks__year">2023</p>
+                    </div>
+                  </a>
+                  <button data-id="#" class="bookmarks__btn-remove">
+                    <svg class="bookmarks__icon">
+                      <use href="/src/img/sprite.svg#icon-close-outline"></use>
+                    </svg>
+                  </button>
+                </li> -->
+
+                <!-- <li class="bookmarks__item">
+                  <a href="movie.html?id=${movie.id}" class="bookmarks__link">
+                    <img
+                      src="https://image.tmdb.org/t/p/w200/${movie.poster_path}"
+                      alt="${movie.title} Poster"
+                      class="bookmarks__img"
+                    />
+                    <div class="bookmarks__text">
+                      <h3 class="bookmarks__title">
+                       ${movie.title}
+                      </h3>
+                      <p class="bookmarks__year">${movie.release_date}</p>
+                    </div>
+                  </a>
+                </li> -->
+              </ul>
             </li>
           </ul>
         </nav>
@@ -82,8 +152,16 @@
       <section class="section-hero">
         <a href="#" class="hero__link">
           <div class="hero__image-box">
-            <img class="hero__image-box--movie" src="#" alt="#" />
-            <img class="hero__image-box--poster" src="#" alt="#" />
+            <img
+              class="hero__image-box--movie"
+              src="./src/img/background-movie.jpg"
+              alt="#"
+            />
+            <img
+              class="hero__image-box--poster"
+              src="./src/img/background-poster.jpg"
+              alt="#"
+            />
           </div>
         </a>
         <div class="hero__info-box">
@@ -95,29 +173,24 @@
               aria-label="Open youtube link for trailer"
             >
               <svg class="btn__icon">
-                <symbol id="icon-play" viewBox="0 0 20 20">
-                  <path d="M4 4l12 6-12 6z"></path>
-                </symbol>
-                <use href="#icon-play" />
+                <use href="/src/img/sprite.svg#icon-play"></use>
               </svg>
             </a>
 
-            <button class="btn u-hidden">
+            <button data-id="#" class="btn btn-bookmark">
               <svg class="btn__icon">
-                <symbol id="icon-bookmark-outline" viewBox="0 0 20 20">
-                  <path
-                    d="M2 2c0-1.1 0.9-2 2-2h12c1.105 0 2 0.895 2 2v0 18l-8-4-8 4v-18zM4 2v15l6-3 6 3v-15h-12z"
-                  ></path>
-                </symbol>
-                <use href="#icon-bookmark-outline" />
+                <use
+                  class="bookmark-icon"
+                  href="/src/img/sprite.svg#icon-bookmark-outline"
+                ></use>
               </svg>
             </button>
           </div>
           <h1 class="hero-title heading-primary">
-            Title
-            <span class="hero-year heading-tertiary">Year</span>
+            &nbsp;
+            <span class="hero-year heading-tertiary">&nbsp;</span>
           </h1>
-          <p class="hero-summary paragraph">Overview</p>
+          <p class="hero-summary paragraph">&nbsp;</p>
         </div>
       </section>
     </main>

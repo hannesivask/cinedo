@@ -84,7 +84,7 @@ const controlScroller = async function () {
   });
 };
 
-const controlAddBookmark = async function (id, target) {
+const controlAddScrollerBookmark = async function (id, target) {
   const movie = await model.loadMovieForBookmark(id);
 
   if (
@@ -147,7 +147,7 @@ const init = function () {
   heroView.addHandlerAddBookmark(controlAddHeroBookmark);
 
   scrollerView.addHandlerRender(controlScroller);
-  scrollerView.addHandlerAddBookmarks(controlAddBookmark);
+  scrollerView.addHandlerAddBookmarks(controlAddScrollerBookmark);
 
   bookmarkView.addHandlerRemoveBookmarks(controlRemoveBookmark);
   bookmarkView.addHandlerRender(controlViewBookmarks);

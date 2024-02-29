@@ -23,7 +23,7 @@ class ScrollerView {
       target.textContent = "+ watchlist";
       target.classList.remove("u-bookmarked");
     } else {
-      target.textContent = "✓ watchlist";
+      target.textContent = "in watchlist";
       target.classList.add("u-bookmarked");
     }
   }
@@ -51,7 +51,7 @@ class ScrollerView {
       <span class="card__title">${movie.title}</span>
       <button data-id="${movie.id}" class="btn btn--filled card__btn ${
       bookmarked ? "u-bookmarked" : ""
-    }">${bookmarked ? "✓" : "+"} watchlist</button>
+    }">${bookmarked ? "in" : "+"} watchlist</button>
     </div>`;
   }
 }

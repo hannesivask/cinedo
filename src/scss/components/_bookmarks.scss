@@ -9,6 +9,7 @@
     border: 1px solid var(--color-gray-dark-1);
     max-height: 50rem;
     overflow-y: scroll;
+    z-index: 1000;
   }
 
   &__item {
@@ -33,7 +34,7 @@
 
     display: flex;
     padding: 1rem;
-    width: 100%;
+    width: 90%;
   }
 
   &__img {
@@ -43,7 +44,7 @@
 
   &__text {
     margin-left: 1rem;
-    max-width: 90%;
+    max-width: 85%;
   }
 
   &__title {

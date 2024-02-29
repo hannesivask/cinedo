@@ -15,6 +15,14 @@ class HeroView {
     window.addEventListener("load", handler);
   }
 
+  addHandlerRenderMovie(handler) {
+    const searchParams = new URLSearchParams(window.location.search);
+    const movieID = searchParams.get("id");
+    window.addEventListener("load", () => {
+      handler(movieID);
+    });
+  }
+
   addHandlerCycle(handler) {
     window.addEventListener("load", handler);
   }
@@ -42,11 +50,6 @@ class HeroView {
     this._setBookmarkIcon(bookmarked);
   }
 
-  _setBookmarkIcon(bookmarked) {
-    const markup = this._generateBtnMarkup(bookmarked);
-    this._btnBookmarkEl.innerHTML = markup;
-  }
-
   hideHeroContent() {
     this._movieImgEl.classList.add("u-opacity-none");
     this._posterImgEl.classList.add("u-opacity-none");
@@ -61,6 +64,11 @@ class HeroView {
     this._posterImgEl.onload = () => {
       this._posterImgEl.classList.remove("u-opacity-none");
     };
+  }
+
+  _setBookmarkIcon(bookmarked) {
+    const markup = this._generateBtnMarkup(bookmarked);
+    this._btnBookmarkEl.innerHTML = markup;
   }
 
   _setHeroContent(movie) {
