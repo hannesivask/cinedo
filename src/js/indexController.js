@@ -41,21 +41,28 @@ const cycleHeroContent = async function () {
 };
 
 const controlAddHeroBookmark = async function (id) {
-  const movie = await model.loadMovieForBookmark(id);
-
   if (
     model.state.bookmarks.some((bookmark) => {
-      return movie.id === bookmark.id;
+      return id * 1 === bookmark.id;
     })
   ) {
     heroView.toggleBookmarksButton();
 
     model.state.bookmarks = model.state.bookmarks.filter(
-      (el) => el.id !== movie.id,
+      (el) => el.id !== id * 1,
     );
   } else {
+    // NEED TO PUT ALL MOVIES INTO ONE STATE OBJECT SO MAKES THIS EASIER TODO
+
     heroView.toggleBookmarksButton(true);
-    model.state.bookmarks.push(movie);
+    const mov = model.state.newMovies.find((el) => {
+      return el.id === id * 1;
+    });
+    const mov2 = model.state.topMovies.find((el) => {
+      return el.id === id * 1;
+    });
+    if (mov) model.state.bookmarks.push(mov);
+    if (mov2) model.state.bookmarks.push(mov2);
   }
 
   model.persistBookmarks();
@@ -85,20 +92,28 @@ const controlScroller = async function () {
 };
 
 const controlAddScrollerBookmark = async function (id, target) {
-  const movie = await model.loadMovieForBookmark(id);
-
   if (
     model.state.bookmarks.some((bookmark) => {
-      return movie.id === bookmark.id;
+      return id * 1 === bookmark.id;
     })
   ) {
     scrollerView.toggleBookmarksButton(target);
     model.state.bookmarks = model.state.bookmarks.filter(
-      (el) => el.id !== movie.id,
+      (el) => el.id !== id * 1,
     );
   } else {
     scrollerView.toggleBookmarksButton(target, false);
-    model.state.bookmarks.push(movie);
+
+    // NEED TO PUT ALL MOVIES INTO ONE STATE OBJECT SO MAKES THIS EASIER TODO
+
+    const mov = model.state.newMovies.find((el) => {
+      return el.id === id * 1;
+    });
+    const mov2 = model.state.topMovies.find((el) => {
+      return el.id === id * 1;
+    });
+    if (mov) model.state.bookmarks.push(mov);
+    if (mov2) model.state.bookmarks.push(mov2);
   }
 
   model.persistBookmarks();

@@ -93,10 +93,12 @@ export const loadSearchResults = async function (searchInput) {
 export const loadMovieTrailer = async function (id) {
   try {
     const data = await AJAX(`/movie/${id}/videos?language=en-US`);
+
     const result = data.results.find((movie) => {
-      return movie.type === 'Trailer';
+      return movie.type.includes('Trailer');
     });
 
+    if (!result) return 'https://www.youtube.com/';
     return `https://www.youtube.com/watch?v=` + result.key;
   } catch (err) {
     console.error(`${err}: Movie trailer did not load`);
