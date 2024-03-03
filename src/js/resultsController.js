@@ -1,10 +1,10 @@
-import * as model from "./model.js";
+import * as model from './model.js';
 
-import searchView from "./views/searchView.js";
-import scrollerView from "./views/scrollerView.js";
-import bookmarkView from "./views/bookmarkView.js";
-import randomizerView from "./views/randomizerView.js";
-import resultsView from "./views/resultsView.js";
+import searchView from './views/searchView.js';
+import scrollerView from './views/scrollerView.js';
+import bookmarkView from './views/bookmarkView.js';
+import randomizerView from './views/randomizerView.js';
+import resultsView from './views/resultsView.js';
 
 const controlSearchResults = async function () {
   const query = searchView.getQuery();
@@ -56,20 +56,22 @@ const controlResultsGrid = async function (query) {
 };
 
 const controlAddGridBookmark = async function (id, target) {
-  const movie = await model.loadMovieForBookmark(id);
-
   if (
     model.state.bookmarks.some((bookmark) => {
-      return movie.id === bookmark.id;
+      return id * 1 === bookmark.id;
     })
   ) {
     scrollerView.toggleBookmarksButton(target);
     model.state.bookmarks = model.state.bookmarks.filter(
-      (el) => el.id !== movie.id
+      (el) => el.id !== id * 1,
     );
   } else {
     scrollerView.toggleBookmarksButton(target, false);
-    model.state.bookmarks.push(movie);
+
+    const mov = model.state.search.find((el) => {
+      return el.id === id * 1;
+    });
+    if (mov) model.state.bookmarks.push(mov);
   }
 
   model.persistBookmarks();
