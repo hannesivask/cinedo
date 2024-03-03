@@ -54,13 +54,13 @@
 src/js/config_temp.js
 
 # Ignore package files
-package-lock.json
+
 
 # vsCode files
 /.vscode
 
 # ignore all files starting with . or ~
-.*
+
 ~*
 
 # ignore node/grunt dependency directories
